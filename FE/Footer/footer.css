@@ -1,0 +1,133 @@
+a {
+  color: #a4a4a4;
+  text-decoration: none !important;
+}
+
+li {
+  list-style-type: none !important;
+}
+
+.footer-wrapper {
+  width: 100%;
+  background-color: #171717;
+}
+
+.footer-main {
+  width: 100%;
+  height: 100%;
+  padding: 70px 0 30px;
+}
+
+.footer-main-content {
+  gap: 20px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  max-width: 1230px;
+  border-bottom: solid 1px #dae1e7;
+}
+
+.footer-item {
+  width: 25%;
+  padding: 0 15px 30px;
+  /* border: 1px solid #fff; */
+}
+
+.footer-item h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footer-item .line {
+  width: 35px;
+  height: 3px;
+  margin: 16px 0;
+  background-color: red;
+}
+
+.footer-item ul {
+  color: #a4a4a4;
+  font-size: 14px;
+}
+
+.footer-item ul li {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  list-style-type: none;
+}
+
+.footer-item li i {
+  color: #fff;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.footer-item a:hover {
+  transition: all ease 0.2s;
+  color: #c30005;
+}
+
+.footer-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.footer-menu a {
+  color: #a4a4a4;
+  text-decoration: none;
+}
+
+.footer-item .footer-social {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: center;
+  border-radius: 100rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-item .footer-social:hover {
+  transition: all ease 0.2s;
+  filter: brightness(0.75);
+}
+
+.footer-item .footer-social.facebook {
+  background-color: #3a589d;
+}
+
+.footer-item .footer-social.instagram {
+  background-color: #3b6994;
+}
+
+.footer-item .footer-social.twitter {
+  background-color: #2478ba;
+}
+
+.footer-item .footer-social.youtube {
+  background-color: #ff0303;
+}
+
+.footer-item .footer-social i {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+/* footer-cre */
+.footer-cre p {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 10px 0 15px;
+  background-color: #000;
+}
+
+.footer-cre a {
+  color: rgba(255, 255, 255, 0.8);
+}

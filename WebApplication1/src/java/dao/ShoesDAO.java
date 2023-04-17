@@ -11,9 +11,9 @@ import entity.Shoes;
 
 public class ShoesDAO {
 
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    private Connection conn = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
 
     public List<Shoes> findAll() {
         List<Shoes> shoess = new ArrayList<>();
@@ -23,6 +23,7 @@ public class ShoesDAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
+                System.out.println("1");
                shoess.add(new Shoes(rs.getInt("id"),
                                     rs.getString("name"),
                                     rs.getInt("remaining"),

@@ -1,97 +1,74 @@
 package entity;
 
+import java.util.List;
+
 public class Shoes {
-    private Integer id;
     private String name;
-    private Integer remaining;
-    private Integer price;
-    private String image;
-    private String material;
-    private String gender;
-    private String description;
-
-    public Shoes() {
-    }
-
-    public Shoes(Integer id, String name, Integer remaining, Integer price, String image, String material, String gender, String description) {
-        this.id = id;
-        this.name = name;
-        this.remaining = remaining;
-        this.price = price;
-        this.image = image;
-        this.material = material;
-        this.gender = gender;
-        this.description = description;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getRemaining() {
-        return remaining;
-    }
-
-    public void setRemaining(Integer remaining) {
-        this.remaining = remaining;
-    }
-
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Shoes{" + "id=" + id + ", name=" + name + ", remaining=" + remaining + ", price=" + price + ", material=" + material + ", gender=" + gender + ", description=" + description + '}';
-    }
-        
+    private String imgage;
+    private int remaining;
+    private int producerId;
+    private int price;
+    private List<Style>styles;
+    private List<Type>types;
+	@Override
+	public String toString() {
+		return "Shoes [name=" + name + ", imgage=" + imgage + ", remaining=" + remaining + ", producerId=" + producerId
+				+ ", price=" + price + ", styles=" + styles + ", types=" + types + "]";
+	}
+	public Shoes() {
+	}
+	public Shoes(String name, String imgage, int remaining, int producerId, int price, List<Style> styles,
+			List<Type> types) {
+		this.name = name;
+		this.imgage = imgage;
+		this.remaining = remaining;
+		this.producerId = producerId;
+		this.price = price;
+		this.styles = styles;
+		this.types = types;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getImgage() {
+		return imgage;
+	}
+	public void setImgage(String imgage) {
+		this.imgage = imgage;
+	}
+	public int getRemaining() {
+		return remaining;
+	}
+	public void setRemaining(int remaining) {
+		this.remaining = remaining;
+	}
+	public int getProducerId() {
+		return producerId;
+	}
+	public void setProducerId(int producerId) {
+		this.producerId = producerId;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public List<Style> getStyles() {
+		return styles;
+	}
+	public void setStyles(List<Style> styles) {
+		this.styles = styles;
+	}
+	public List<Type> getTypes() {
+		return types;
+	}
+	public void setTypes(List<Type> types) {
+		this.types = types;
+	}
+	
     
 }

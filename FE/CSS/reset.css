@@ -28,3 +28,16 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: "Roboto", sans-serif;
 }
+
+:root {
+  --text-primary: #c30005;
+  --text-secondary: #d26e4b;
+  --text-bgPrimary: #1f2028;
+  /*  */
+  --shadow-shadowPrimary: '0 2px 3px -2px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.24)';
+  --shadow-shadowHover: '0 4px 10px -4px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23)';
+  --shadow-shadowAuth: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)';
+  --shadow-shadowAccount: '0 15px 30px 0 rgba(0, 0, 0, 0.2)';
+  --shadow-shadowSearch: 'inset 0 -1.4em 1em 0 rgba(0,0,0,0.02)';
+  --shadow-shadowPink: '0 0 0 4px rgba(234,76,137,0.1)';
+}

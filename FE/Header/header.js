@@ -29,10 +29,58 @@ const navData = [
   },
 ];
 
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
+// const $ = document.querySelector.bind(document)
+// const $$ = document.querySelectorAll.bind(document)
 
-const headerNavList = $('.header__nav--list')
+const header = document.querySelector('.header')
+header.innerHTML = `
+<div class='header__inner'></div>
+<header class='header__wrapper'>
+  <div class="header__main--1">
+    <div class="header__main--2">
+      <div class='header__left'>
+        <a href="/dang-nhap" class='header__left--text' href="">
+          Đăng nhập / Đăng ký
+        </a>
+      </div>
+
+      <a href="#" class="header__logo">
+        <div class="header__logo--icon"></div>
+      </a>
+
+      <div class="header__right">
+        <div class="header__right--search">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="header__right--text">
+          <span class="">
+            Giỏ hàng / Thanh toán
+          </span>
+          <span class="header__right--cart">
+            <i class="fas fa-shopping-cart"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__nav--wrapper">
+    <div class="header__nav--main">
+      <ul class="header__nav--list">
+
+        <!-- <a class='header__nav--item'>
+          <div class=''>
+            Giày nam
+          </div>
+        </a> -->
+        <!-- {navData.map((nav) => (
+        <Nav key={nav.name} name={nav.name} to={nav.to} />
+        ))} -->
+      </ul>
+    </div>
+  </div>
+</header>
+`
+const headerNavList = document.querySelector('.header__nav--list')
 
 for (let i = 0; i < navData.length; i++) {
   const a = document.createElement("a");
@@ -43,7 +91,7 @@ for (let i = 0; i < navData.length; i++) {
   headerNavList.appendChild(a)
 }
 
-const navListData = $$('.header__nav--item')
+const navListData = document.querySelectorAll('.header__nav--item')
 
 // navListData.forEach(nav => {
 //   nav.addEventListener('click', () => {

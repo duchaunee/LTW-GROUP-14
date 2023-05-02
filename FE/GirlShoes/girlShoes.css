@@ -1,0 +1,66 @@
+.girlShoes {
+  min-height: 666px;
+}
+
+
+/* header */
+.girlShoes__header {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+  min-height: 60px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.girlShoes__header--left {
+  flex: 1 1 0%;
+}
+
+.girlShoes__header--left>a {
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #95959f;
+  text-decoration: none;
+}
+
+.girlShoes__header--left>div {
+  margin: 0 8px;
+  display: inline-block;
+}
+
+.girlShoes__header--left>span {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.girlShoes__header--right {
+  display: flex;
+  align-items: center;
+}
+
+.girlShoes__header--right>p {
+  display: inline-block;
+  font-size: 16px;
+  color: #353535;
+  margin-right: 32px;
+}
+
+.girlShoes__header--right>p>span {
+  font-weight: bold;
+}
+
+.girlShoes__header--right>select {
+  outline: none;
+  margin-right: 12px;
+  padding: 12px;
+  padding-right: 64px;
+  color: var(--text-bgPrimary);
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: var(--shadow-shadowSearch);
+}

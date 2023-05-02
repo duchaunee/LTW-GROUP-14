@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Girl Shoes</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="../CSS/reset.css">
+  <link rel="stylesheet" href="girlShoes.css">
+  <link rel="stylesheet" href="../Header/header.css">
+  <link rel="stylesheet" href="../Footer/footer.css">
+</head>
+
+<body>
+  <div class="header"></div>
+  <div class='girlShoes'>
+    <div class="girlShoes__header">
+      <div class="girlShoes__header--left">
+        <a href='#' class=''>
+          Trang chủ
+        </a>
+        <div class="">/</div>
+        <span class=''>Giày nữ</span>
+      </div>
+      <div class="girlShoes__header--right">
+        <p class=''>
+          <span class=''>Số lượng</span>: 12 sản phẩm
+        </p>
+        <select class='' name="sort-by" id="">
+          <option key='0' value="default">Sắp xếp theo</option>
+          <option key='1' value="latest">Mới nhất</option>
+          <option key='2' value="oldest">Cũ nhất</option>
+          <option key='3' value="lowest-price">Giá tăng dần</option>
+          <option key='4' value="highest-price">Giá giảm dần</option>
+          <option key='5' value="a-z">A - Z</option>
+          <option key='6' value="z-a">Z - A</option>
+        </select>
+
+        <select class='' name="sort-by" id="">
+          <option key='0' value="default">Lọc sản phẩm theo</option>
+          <option key='1' value="all">Tất cả</option>
+          <option key='2' value="classic">Classic</option>
+          <option key='3' value="sunbaked">Sunbaked</option>
+          <option key='4' value="chuck-07s">Chuck 07S</option>
+          <option key='5' value="one-star">One Star</option>
+          <option key='6' value="psy-kicks">PSY Kicks</option>
+        </select>
+      </div>
+    </div>
+
+    {/* bot */}
+    <div class="w-full">
+      <div class='max-w-[1230px] min-h-[666px] pt-[30px] mx-auto flex'>
+        {/* left */}
+        <div class='max-w-[25%] px-[15px] pb-[30px]'>
+          <div class="w-full ">
+            <ValueFilter productPreview={productPreview} setProductPreview={setProductPreview}
+              queryRef={queryRef} filterRef={filterRef} selectNameProduct={selectNameProduct}
+              setCurrentPage={setCurrentPage} />
+            <NewestProduct loading={loading} productDemo={productDemo}></NewestProduct>
+          </div>
+        </div>
+
+        {/* right */}
+        <div class="flex-1">
+          {productPreview.length == 0 && !loading
+          ? (
+          <div class='flex flex-col items-center'>
+            <img class='w-[350px] object-cover' src="./notFound.jpg" alt="" />
+            <h1 class='text-[26px] text-center text-bgPrimary font-mono'>Không tìm thấy sản phẩm
+              nào</h1>
+          </div>
+          )
+          : (
+          <>
+            <div class={`px-[15px] ${productPreview.length> 0 && 'min-h-[596px]'} grid
+              grid-cols-4`}>
+              {(pageProducts.length === 0
+              ? Array(8).fill()
+              : pageProducts).map((item, idx) => (
+              <div key={idx} class="w-full px-[10px] pb-5">
+                <Skeleton loading={loading} class={`${loading && 'overflow-hidden rounded-[6px]'
+                  }`}>
+                  <Card width='w-full'>
+                    <ProductItem product={item} id={item?.id} img={item?.imgURL} name={item?.name}
+                      price={solvePrice(item?.price)} idURL={fieldValue} text={admin
+                      ? 'Sửa sản phẩm' : 'Thêm vào giỏ' } />
+                  </Card>
+                </Skeleton>
+              </div>
+              ))}
+            </div>
+            {productPreview?.length > itemsPerPage
+            &&
+            <Pagination products={productPreview} currentPage={currentPage}
+              setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} quantity={quantity}
+              setPageProducts={setPageProducts} />
+            }
+          </>
+          )
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+  <script defer src="./girlShoes.js"></script>
+  <script defer src="../Header/header.js"></script>
+  <script defer src="../Footer/footer.js"></script>
+</body>
+
+</html>

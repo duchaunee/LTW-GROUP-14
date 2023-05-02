@@ -111,8 +111,6 @@ footerEl.innerHTML = `
 `
 
 const footerItem3 = $('.footer__item--grid')
-console.log('footerItem3: ', footerItem3);
-console.log('dit cu may');
 for (let i = 0; i < navDataFooter.length; i++) {
   const li = document.createElement("li");
   const a = document.createElement("a");

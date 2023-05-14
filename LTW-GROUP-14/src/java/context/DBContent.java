@@ -9,10 +9,10 @@ public class DBContent {
 	private final String password = "12345";
 	
 	public Connection getConnection() throws Exception{
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection connection = DriverManager.getConnection(url, userName, password);
-		System.out.println("getConnection: " + connection);
-		return connection;
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, userName, password);
+            System.out.println("getConnection: " + connection);
+            return connection;
 		
 	}
 	

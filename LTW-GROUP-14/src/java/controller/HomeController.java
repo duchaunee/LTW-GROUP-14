@@ -1,11 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package controller;
 
-import dao.ShoesDAO;
 import entity.Shoes;
 import java.io.IOException;
 import java.util.List;
@@ -32,10 +26,8 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ShoesDAO productDAO = new ShoesDAO();
-        List <Shoes> products = productDAO.findAll();
-        request.setAttribute("listShoes", products);
-        request.getRequestDispatcher("tmp.jsp").forward(request, response);
+        request.getRequestDispatcher("index.html").forward(request, response);
+        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

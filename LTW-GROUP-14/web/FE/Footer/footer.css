@@ -1,0 +1,128 @@
+.footer {
+  width: 100%;
+  background-color: var(--text-bgPrimary);
+}
+
+.footer__wrapper {
+  width: 100%;
+  height: 100%;
+  padding-top: 70px;
+}
+
+.footer__wrapper--main {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1230px;
+  border-bottom: 1px solid #dae1e7;
+}
+
+.footer__item {
+  width: 25%;
+  padding: 0 15px;
+  padding-bottom: 30px;
+}
+
+.footer__item>h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.footer__item>div {
+  width: 50px;
+  height: 3px;
+  margin: 16px 0;
+  background-color: #DC2626;
+}
+
+.footer__item>ul {
+  font-size: 14px;
+  color: #a4a4a4;
+}
+
+/* different */
+/* footer__item 3 */
+.footer__item--grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.footer__item--2 {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  list-style-type: none;
+}
+
+.footer__item--2>i {
+  font-size: 18px;
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer__item--2 p a {
+  color: #a4a4a4;
+  text-decoration: none;
+  transition: all ease-in-out 0.15s;
+}
+
+.footer__item--2 p a:hover {
+  color: var(--text-primary)
+}
+
+.footer__item--3 {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+  list-style-type: none;
+}
+
+.footer__item--3>a {
+  transition: all;
+  cursor: pointer;
+}
+
+.footer__item--3>a:hover {
+  color: var(--text-primary)
+}
+
+.footer__item-4>a {
+  margin-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: center;
+  border-radius: 100rem;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer__item-4>a:hover {
+  transition: all ease-in-out 0.15s;
+  filter: brightness(.75);
+}
+
+.footer__item-4 a i {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.footer__cre>p {
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer__cre p>a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}

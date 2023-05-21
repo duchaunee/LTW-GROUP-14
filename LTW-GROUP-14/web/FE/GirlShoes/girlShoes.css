@@ -1,0 +1,449 @@
+.girlShoes {
+  min-height: 666px;
+}
+
+
+/* header */
+.girlShoes__header {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+  min-height: 60px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.girlShoes__header--left {
+  flex: 1 1 0%;
+}
+
+.girlShoes__header--left>a {
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #95959f;
+  text-decoration: none;
+}
+
+.girlShoes__header--left>div {
+  margin: 0 8px;
+  display: inline-block;
+}
+
+.girlShoes__header--left>span {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.girlShoes__header--right {
+  display: flex;
+  align-items: center;
+}
+
+.girlShoes__header--right>p {
+  display: inline-block;
+  font-size: 16px;
+  color: #353535;
+  margin-right: 32px;
+}
+
+.girlShoes__header--right>p>span {
+  font-weight: bold;
+}
+
+.girlShoes__header--right>select {
+  outline: none;
+  margin-right: 12px;
+  padding: 12px;
+  padding-right: 64px;
+  color: var(--text-bgPrimary);
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: var(--shadow-shadowSearch);
+}
+
+/* bot */
+.girlShoes__bot {
+  width: 100%;
+}
+
+.girlShoes__bot--main {
+  max-width: 1230px;
+  min-height: 666px;
+  padding-top: 30px;
+  display: flex;
+  margin: 0 auto;
+}
+
+/* left */
+/* khoang gia */
+.girlShoes__bot--left {
+  max-width: 25%;
+  padding: 0 15px;
+  padding-bottom: 30px;
+}
+
+.girlShoes__bot--left>div {
+  width: 100%;
+}
+
+.girlShoes__bot--filter {
+  width: 100%;
+}
+
+.girlShoes__bot--filter>p {
+  font-weight: 700;
+  color: var(--text-bgPrimary);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.girlShoes__bot--filter>div {
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.girlShoes__bot-range {
+  width: 50%;
+  position: relative;
+}
+
+.girlShoes__bot-range input {
+  padding: 8px 15px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--text-bgPrimary);
+  background-color: transparent;
+  color: var(--text-bgPrimary);
+  outline: none;
+}
+
+.girlShoes__bot-range label {
+  background-color: white;
+  position: absolute;
+  display: inline-block;
+  font-weight: 500;
+  cursor: pointer;
+  top: 0;
+  left: 10px;
+  padding: 0 5px;
+  font-size: 16px;
+  transform: translateY(-50%);
+  color: var(--text-bgPrimary);
+}
+
+.girlShoes__bot--line {
+  width: 24px;
+  height: 2px;
+  background-color: #aaa;
+}
+
+.girlShoes__bot--filter>span {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.girlShoes__bot--filter span button {
+  background-color: #666;
+  border-radius: 100rem;
+  color: white;
+  font-size: 16px;
+  padding: 6px 24px;
+  cursor: pointer;
+  border: 0;
+}
+
+.girlShoes__bot--filter span div {
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+  justify-content: center;
+  gap: 4px;
+}
+
+.girlShoes__bot--filter span div p:nth-child(2n+1) {
+  display: inline-block;
+  font-weight: 700;
+  margin: 1px 0;
+}
+
+.girlShoes__bot--filter span div p:nth-child(2n) {
+  display: inline;
+}
+
+/* san pham moi nhat */
+.girlShoes__bot---newest {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.girlShoes__bot---newest p {
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-bgPrimary);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.girlShoes__bot---newestList {
+  padding: 15px;
+  padding-bottom: 0;
+  background-color: #fcfcfc;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.girlShoes__bot---newestItem {
+  min-height: 80px;
+  display: flex;
+  gap: 16px;
+  border: 1px dashed #ececec;
+}
+
+.girlShoes__bot---newestItem img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.girlShoes__bot---newestItem div {
+  flex: 1 1 0%;
+}
+
+.girlShoes__bot---newestItem div a {
+  display: block;
+  color: #334862;
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.girlShoes__bot---newestItem div span {
+  color: #111111;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.girlShoes__bot---newestItem div span p {
+  display: inline-block;
+  font-size: 14PX;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+/* right */
+.girlShoes__bot--right {
+  flex: 1 1 0%;
+}
+
+.girlShoes__bot--right>div {
+  padding: 0 15px;
+  min-height: 596px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.girlShoes__bot--productList {
+  width: 100%;
+  padding: 0 10px;
+  padding-bottom: 20px;
+}
+
+.girlShoes__bot--productList>div {
+  width: 100%;
+  display: inline-flex;
+  box-shadow: var(--shadow-shadowPrimary);
+  transition: all ease 0.5s;
+}
+
+.girlShoes__bot--productList>div:hover {
+  box-shadow: var(--shadow-shadowHover);
+}
+
+.girlShoes__bot--productItem {
+  width: 100%;
+  background-color: #fff;
+}
+
+.girlShoes__bot--productItem.img a {
+  display: block;
+  height: 150px;
+  touch-action: none;
+  cursor: pointer;
+}
+
+.girlShoes__bot--productItem.img a img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.girlShoes__bot--productItem.content {
+  padding-top: 10px;
+  padding: 0 10px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.girlShoes__bot--productItem.name {
+  margin-bottom: 10px;
+  color: var(--text-bgPrimary);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.girlShoes__bot--productItem.price {
+  color: var(--text-bgPrimary);
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.girlShoes__bot--productItem.price p {
+  display: inline-block;
+  font-size: 14px;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+.girlShoes__bot--productItem.btn>div {
+  display: flex;
+  justify-content: center;
+}
+
+.girlShoes__bot--productItem.btn>div button {
+  border: none;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 115px;
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--text-primary);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+}
+
+/* pagination */
+.girlShoes__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.girlShoes__pagination {
+  list-style-type: none;
+}
+
+.girlShoes__pagination--left button {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.girlShoes__pagination--left i {
+  font-size: 18px;
+  color: var(--text-bgPrimary);
+}
+
+.girlShoes__pagination--left span {
+  font-size: 16px;
+}
+
+.girlShoes__pagination-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* .girlShoes__pagination-center button:first-child {
+  color: white;
+  background-color: var(--text-bgPrimary);
+} */
+
+.girlShoes__pagination-center button {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  padding: 8px 0;
+  border: 1px solid #F3F4F6;
+  line-height: 2rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.girlShoes__pagination-center i {
+  font-size: 18px;
+  color: var(--text-primary);
+  display: block;
+  border-radius: 0.25rem;
+  width: 48px;
+  aspect-ratio: 1 / 1;
+  padding: 8px 0;
+  border: 1px solid #F3F4F6;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.girlShoes__pagination--right button {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  border: 1px solid #F3F4F6;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.girlShoes__pagination--right button {
+  font-size: 16px;
+}

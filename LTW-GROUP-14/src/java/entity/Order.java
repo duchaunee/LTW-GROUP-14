@@ -1,39 +1,103 @@
 package entity;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class Order {
-	private int amount;
-	private int customerId;
-	private List<OrderLine>orderLines;
-	public Order() {
-	}
-	public Order(int amount, int customerId, List<OrderLine> orderLines) {
-		this.amount = amount;
-		this.customerId = customerId;
-		this.orderLines = orderLines;
-	}
-	@Override
-	public String toString() {
-		return "Order [amount=" + amount + ", customerId=" + customerId + ", orderLines=" + orderLines + "]";
-	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-	public int getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
-	public List<OrderLine> getOrderLines() {
-		return orderLines;
-	}
-	public void setOrderLines(List<OrderLine> orderLines) {
-		this.orderLines = orderLines;
-	}
-	
+    private Integer id;
+    private User user;
+    private OrderAddress orderAddress;
+    private Integer deliveryfee;
+    private Integer discount;
+    private Integer totalPayment;
+    private LocalDateTime orderTime;
+    private Integer amount;
+    private LocalDateTime createAt;
+
+    public Order() {
+    }
+
+    public Order(Integer id, User user, OrderAddress orderAddress, Integer deliveryfee, Integer discount, Integer totalPayment, LocalDateTime orderTime, Integer amount, LocalDateTime createAt) {
+        this.id = id;
+        this.user = user;
+        this.orderAddress = orderAddress;
+        this.deliveryfee = deliveryfee;
+        this.discount = discount;
+        this.totalPayment = totalPayment;
+        this.orderTime = orderTime;
+        this.amount = amount;
+        this.createAt = createAt;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public OrderAddress getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(OrderAddress orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public Integer getDeliveryfee() {
+        return deliveryfee;
+    }
+
+    public void setDeliveryfee(Integer deliveryfee) {
+        this.deliveryfee = deliveryfee;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public Integer getTotalPayment() {
+        return totalPayment;
+    }
+
+    public void setTotalPayment(Integer totalPayment) {
+        this.totalPayment = totalPayment;
+    }
+
+    public LocalDateTime getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(LocalDateTime orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(LocalDateTime createAt) {
+        this.createAt = createAt;
+    }
+    
 }

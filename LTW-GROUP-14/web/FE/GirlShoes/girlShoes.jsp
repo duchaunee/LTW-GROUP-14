@@ -1,19 +1,31 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : girlShoes
+    Created on : May 21, 2023, 1:46:31 PM
+    Author     : DUC HAU
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Girl Shoes</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="../CSS/reset.css" type="text/css">
-  <link rel="stylesheet" href="../CSS/lineClamp.css" type="text/css">
-  <link rel="stylesheet" href="girlShoes.css" type="text/css">
-  <link rel="stylesheet" href="../Header/header.css" type="text/css">
-  <link rel="stylesheet" href="../Footer/footer.css" type="text/css" >
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<!--  <link rel="stylesheet" href="../CSS/reset.css">
+  <link rel="stylesheet" href="../CSS/lineClamp.css">-->
+  <!--<link rel="stylesheet" href="girlShoes.css">-->
+  <!--<link rel="stylesheet" href="../Header/header.css">-->
+  <!--<link rel="stylesheet" href="../Footer/footer.css">-->
+  
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/CSS/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/CSS/lineClamp.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/Footer/footer.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/Header/header.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/GirlShoes/girlShoes.css"/>
 </head>
 
 <body>
@@ -210,10 +222,15 @@
     </div>
   </div>
   <div class="footer"></div>
-  <script defer src="./girlShoes.js"></script>
-  <script defer src="../Header/header.js"></script>
-  <script defer src="../Footer/footer.js"></script>
+  
+  <script defer src="${pageContext.request.contextPath}/FE/GirlShoes/girlShoes.js"></script>
+  <script defer src="${pageContext.request.contextPath}/FE/Header/header.js"></script>
+  <script defer src="${pageContext.request.contextPath}/FE/Footer/footer.js"></script>
+  
+  
+<!--  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/Header/header.js"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/Footer/footer.js"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/FE/GirlShoes/girlShoes.js"/>-->
 </body>
 
 </html>
-

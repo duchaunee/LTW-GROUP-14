@@ -5,7 +5,7 @@
 package dao;
 
 import connect.DBConnect;
-import entity.Cart;
+import entity.ImageProduct;
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,34 +14,35 @@ import java.util.List;
  *
  * @author Admin
  */
-public class CartDAO extends DAO{
-    private UserDAO udao=new UserDAO();
-    public CartDAO(){}
-    public List<Cart>findAll(){
-        List<Cart>list=new ArrayList<>();
-        String query="select * from cart";
+public class ImageProductDAO extends DAO{
+    public ImageProductDAO(){}
+    public List<ImageProduct>findAll(){
+        List<ImageProduct>list=new ArrayList<>();
+        String query="select * from image_product";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
             rs=ps.executeQuery();
             while(rs.next()){
-                list.add(new Cart(rs.getInt(1),udao.findById(rs.getInt(2)),
-                                    rs.getTimestamp(3).toLocalDateTime()));
+                list.add(new ImageProduct(rs.getInt(1),rs.getString(2),
+                                    rs.getString(3),rs.getString(4),rs.getString(5),
+                                    rs.getString(6)));
             }
         }catch(Exception e){
         }
         return list;
     }
-    public Cart findById(Integer Id) throws Exception{
-        String query="select * from cart where id=?";
+    public ImageProduct findById(Integer Id) throws Exception{
+        String query="select * from image_product where id=?";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
             ps.setInt(1, Id);
             rs=ps.executeQuery();
             if(rs.next()){
-                return new Cart(rs.getInt(1),udao.findById(rs.getInt(2)),
-                                    rs.getTimestamp(3).toLocalDateTime());
+                return new ImageProduct(rs.getInt(1),rs.getString(2),
+                                    rs.getString(3),rs.getString(4),rs.getString(5),
+                                    rs.getString(6));
             }
             else{
             }

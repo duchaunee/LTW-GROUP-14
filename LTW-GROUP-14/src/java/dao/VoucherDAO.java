@@ -5,8 +5,8 @@
 package dao;
 
 import connect.DBConnect;
-import entity.Cart;
 import entity.User;
+import entity.Voucher;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,34 +14,34 @@ import java.util.List;
  *
  * @author Admin
  */
-public class CartDAO extends DAO{
+public class VoucherDAO extends DAO{
     private UserDAO udao=new UserDAO();
-    public CartDAO(){}
-    public List<Cart>findAll(){
-        List<Cart>list=new ArrayList<>();
-        String query="select * from cart";
+    public VoucherDAO(){} 
+    public List<Voucher>findAll(){
+        List<Voucher>list=new ArrayList<>();
+        String query="select * from voucher";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
             rs=ps.executeQuery();
             while(rs.next()){
-                list.add(new Cart(rs.getInt(1),udao.findById(rs.getInt(2)),
-                                    rs.getTimestamp(3).toLocalDateTime()));
+                list.add(new Voucher(rs.getInt(1),udao.findById(rs.getInt(2)),
+                                    rs.getString(3),rs.getInt(4)));
             }
         }catch(Exception e){
         }
         return list;
     }
-    public Cart findById(Integer Id) throws Exception{
-        String query="select * from cart where id=?";
+    public Voucher findById(Integer Id) throws Exception{
+        String query="select * from voucher where id=?";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
             ps.setInt(1, Id);
             rs=ps.executeQuery();
             if(rs.next()){
-                return new Cart(rs.getInt(1),udao.findById(rs.getInt(2)),
-                                    rs.getTimestamp(3).toLocalDateTime());
+                return new Voucher(rs.getInt(1),udao.findById(rs.getInt(2)),
+                                    rs.getString(3),rs.getInt(4));
             }
             else{
             }

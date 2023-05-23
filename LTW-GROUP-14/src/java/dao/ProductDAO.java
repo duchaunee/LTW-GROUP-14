@@ -7,8 +7,6 @@ package dao;
 import connect.DBConnect;
 import entity.Product;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,20 +17,25 @@ import java.util.List;
 public class ProductDAO extends DAO{
     public ProductDAO(){}
     public List<Product>findAll(){
-        List<Product>list=new ArrayList<>();
-        String query="select * from product";
+        List<Product> list = new ArrayList<>();
+        String query = "select * from product";
         try{
             conn = new DBConnect().getConnection();
-            ps=conn.prepareStatement(query);
-            rs=ps.executeQuery();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
             while(rs.next()){
-                list.add(new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime()));
+                list.add(new Product(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getTimestamp(8).toLocalDateTime(),
+                                    rs.getTimestamp(9).toLocalDateTime()));
             }
         }catch(Exception e){
+            System.out.println(e);
         }
         return list;
     }
@@ -44,11 +47,15 @@ public class ProductDAO extends DAO{
             ps.setInt(1, Id);
             rs=ps.executeQuery();
             if(rs.next()){
-                return new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime());
+                return new Product(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getTimestamp(8).toLocalDateTime(),
+                                    rs.getTimestamp(9).toLocalDateTime());
             }
             else{
             }
@@ -64,11 +71,15 @@ public class ProductDAO extends DAO{
             ps.setString(1, name);
             rs=ps.executeQuery();
             if(rs.next()){
-                return new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime());
+                return new Product(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getTimestamp(8).toLocalDateTime(),
+                                    rs.getTimestamp(9).toLocalDateTime());
             }
             else{
             }
@@ -86,6 +97,6 @@ public class ProductDAO extends DAO{
         } catch (SQLException e) {
         }
     }
-
+    
    
 }

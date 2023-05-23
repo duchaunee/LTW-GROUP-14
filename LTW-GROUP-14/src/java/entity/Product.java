@@ -85,6 +85,11 @@ public class Product {
         this.updateAt = updateAt;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", price=" + price + ", inventory=" + inventory + ", category=" + category + ", brand=" + brand + ", description=" + description + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
+    }
+    
     public Product(Integer id, String name, String price, Integer inventory, String category, String brand, String description, LocalDateTime createAt, LocalDateTime updateAt) {
         this.id = id;
         this.name = name;
@@ -98,5 +103,7 @@ public class Product {
     }
 
     public Product() {
+    }
+    public static void main(String[] args) {
     }
 }

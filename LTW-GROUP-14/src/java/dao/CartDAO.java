@@ -6,7 +6,6 @@ package dao;
 
 import connect.DBConnect;
 import entity.Cart;
-import entity.User;
 import java.util.ArrayList;
 import java.util.List;
 

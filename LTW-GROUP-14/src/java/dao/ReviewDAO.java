@@ -5,7 +5,6 @@
 package dao;
 
 import connect.DBConnect;
-import entity.Product;
 import entity.Review;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class ReviewDAO extends DAO{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
             rs=ps.executeQuery();
-            list.add(new Review(rs.getInt(1), product, orderItem, user, query, query, LocalDateTime.MAX))
+            
         }catch(Exception e){
         }
         return list;

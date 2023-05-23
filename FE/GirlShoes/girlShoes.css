@@ -358,7 +358,7 @@
 }
 
 /* pagination */
-.girlShoes__pagination {
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,11 +368,11 @@
   margin-top: 16px;
 }
 
-.girlShoes__pagination {
+.pagination {
   list-style-type: none;
 }
 
-.girlShoes__pagination--left button {
+.pagination--left button {
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -384,28 +384,28 @@
   cursor: pointer;
 }
 
-.girlShoes__pagination--left i {
+.pagination--left i {
   font-size: 18px;
   color: var(--text-bgPrimary);
 }
 
-.girlShoes__pagination--left span {
+.pagination--left span {
   font-size: 16px;
 }
 
-.girlShoes__pagination-center {
+.pagination-center {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 }
 
-/* .girlShoes__pagination-center button:first-child {
+/* .pagination-center button:first-child {
   color: white;
   background-color: var(--text-bgPrimary);
 } */
 
-.girlShoes__pagination-center button {
+.pagination-center button {
   width: 44px;
   height: 44px;
   display: flex;
@@ -420,7 +420,7 @@
   background-color: #fff;
 }
 
-.girlShoes__pagination-center i {
+.pagination-center i {
   font-size: 18px;
   color: var(--text-primary);
   display: block;
@@ -433,7 +433,7 @@
   text-align: center;
 }
 
-.girlShoes__pagination--right button {
+.pagination--right button {
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -444,6 +444,6 @@
   cursor: pointer;
 }
 
-.girlShoes__pagination--right button {
+.pagination--right button {
   font-size: 16px;
 }

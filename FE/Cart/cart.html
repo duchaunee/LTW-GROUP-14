@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="../CSS/reset.css">
+  <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+  <div class="cart_wrapper">
+    <div class="cart_main">
+      <div class="cart_body">
+        <div class="cart">
+
+          <!-- ============ KHI GIỎ HÀNG TRỐNG ============ -->
+          <!-- <div class="w-full h-[480px] flex flex-col gap-7 items-center justify-center">
+            <div style={{ backgroundImage: "url('/emptyCart.png')" }}
+              class="w-[520px] h-[500px] bg-contain bg-no-repeat bg-center"></div>
+            <div
+              class='text-center text-[28px] font-bold text-bgPrimary font-mono leading-[32px] uppercase'>
+              Giỏ hàng của bạn hiện đang trống
+            </div>
+            <NavLink to='/'
+              class='bg-primary text-white px-4 py-3 hover:bg-[#a40206] transition-all ease-linear duration-[120ms]'>
+              <FontAwesomeIcon class='mr-[6px]' icon={faLongArrowAltLeft} />
+              <span class='text-[20px]'>Quay lại trang chủ</span>
+            </NavLink>
+          </div> -->
+
+          <!-- LEFT-->
+          <div class="cart-left">
+            <table class=''>
+              <thead>
+                <tr class=''>
+                  <td class='product'>Sản phẩm</td>
+                  <td class='price'>Giá</td>
+                  <td class='quantity'>Số lượng</td>
+                  <td class='total'>Tổng</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class=''>
+                  <td class='product'>
+                    <div class="delete">
+                      <i class="fas fa-times"></i>
+                    </div>
+                    <img class='' src="https://source.unsplash.com/random" alt="" />
+                    <div class="info">
+                      <span class=''>Chuck 70 Psy-Kicks Ox</span>
+                      <span class=''>Giày nam</span>
+                    </div>
+                  </td>
+                  <!-- {/* {solvePrice(product.price)} */} -->
+                  <td class='price'>
+                    <span class=''>
+                      2.800.000<p class=''>₫</p>
+                    </span>
+                  </td>
+                  <td class='quantity'>
+                    <button type='button' class='minus'>
+                      <i class="fas fa-minus"></i>
+                      <!-- <FontAwesomeIcon class='text-[16px] font-medium' icon={faMinus} /> -->
+                    </button>
+                    <div
+                      class='number flex-1 text-bgPrimary outline-none text-center text-[16px] font-bold'>
+                      <!-- {quantity < 10 ? `0${quantity}` : quantity} -->
+                      01
+                    </div>
+                    <!-- //chỉ đc set đến max số lượng tồn kho -->
+                    <button type='button' class='plus'>
+                      <i class="fas fa-plus"></i>
+                      <!-- <FontAwesomeIcon class='text-[16px] font-bold' icon={faPlus} /> -->
+                    </button>
+                  </td>
+                  <td class='total col-span-2 flex items-center font-bold'>
+                    <!-- {solvePrice(price * quantity)} -->
+                    <p class='text-bgPrimary text-center text-[16px]'>
+                      2.800.000
+                    </p>
+                    <p class='inline-block text-[16px] align-top ml-[2px]'>₫</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="mt-6 flex gap-4">
+              <NavLink to='/'
+                class='border-[2px] border-primary text-primary px-4 py-1 hover:bg-primary hover:text-white flex items-center font-medium transition-all ease-linear duration-[120ms]'>
+                <FontAwesomeIcon class='mr-[6px]' icon={faLongArrowAltLeft} />
+                <span class='text-[14] uppercase'>Tiếp tục xem sản phẩm</span>
+              </NavLink>
+              <button onClick={handleUpdateCartProduct}
+                class='px-4 py-1 bg-primary hover:bg-[#9f0d11] text-white font-medium transition-all ease-linear flex items-center duration-[120ms]'>
+                <span class='text-[14] uppercase'>Cập nhật giỏ hàng</span>
+              </button>
+              <button onClick={confirmDelete}
+                class='px-4 py-1 bg-primary hover:bg-[#9f0d11] text-white font-medium transition-all ease-linear flex items-center duration-[120ms]'>
+                <span class='text-[14] uppercase'>Xóa giỏ hàng</span>
+              </button>
+            </div>
+          </div>
+          <!-- RIGHT -->
+          <div class="cart-right">
+            <div
+              class="w-full border-[3px] border-transparent border-b-[#ececec] text-[14px] font-bold py-2 uppercase tracking-wider">
+              <h1 class=''>Tổng thanh toán</h1>
+            </div>
+            <div
+              class='flex items-center justify-between border border-transparent border-b-[#ddd] py-4 text-[14px]'>
+              <h2 class=''>Tổng phụ</h2>
+              <h2 class='font-bold'>
+                {totalPayment > 0 ? solvePrice(totalPayment) : 0}₫</h2>
+            </div>
+            <div
+              class='flex items-center justify-between border border-transparent border-b-[#ddd] py-4 text-[14px]'>
+              <h2 class=''>Giao hàng</h2>
+              <div class="text-right">
+                {/* lấy 1% giá trị hàng */}
+                <p>Phí giao hàng toàn quốc:
+                  <span class='font-bold ml-1'>{solvePrice(deliveryFee)}₫</span>
+                </p>
+                <p class=''>Nhận hàng vào <span class='font-bold'>{deliveryDate()}</span></p>
+              </div>
+            </div>
+            <div
+              class='flex items-center justify-between border border-transparent border-b-[#ddd] py-3 text-[14px]'>
+              <h2 class=''>Giảm giá từ shop:</h2>
+              <span class='font-bold ml-1'>{solvePrice(discount)}₫</span>
+            </div>
+            <div
+              class='flex items-center justify-between border-[3px] border-transparent border-b-[#ddd] py-4 text-[14px]'>
+              <h2 class=''>Tổng thanh toán</h2>
+              <h2 class='font-bold'>
+                {totalPayment + deliveryFee - discount > 0
+                ? solvePrice(totalPayment + deliveryFee - discount)
+                : 0}₫</h2>
+            </div>
+            <div class='mt-6 text-[14px]'>
+              <button onClick={handleCheckOut}
+                class='block text-center w-full px-2 py-3 bg-secondary font-bold tracking-widest text-white hover:brightness-90 transition-all ease-in-out duration-100 uppercase'>Tiến
+                hành thanh toán
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

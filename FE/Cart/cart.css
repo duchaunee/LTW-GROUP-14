@@ -1,0 +1,219 @@
+.cart_wrapper {
+  width: 100%;
+  padding: 30px 0;
+}
+
+.cart_main {
+  max-width: 1230px;
+  min-height: 600px;
+  margin: 0 auto;
+}
+
+.cart_body {
+  width: 100%;
+  padding: 0 15px 30px;
+}
+
+.cart {
+  width: 100%;
+  display: flex;
+}
+
+/* ========== LEFT ==========  */
+.cart-left {
+  flex-basis: 58.33%;
+  padding-right: 30px;
+  border-right: 1px solid #ececec;
+}
+
+.cart-left table {
+  width: 100%;
+}
+
+.cart-left thead tr {
+  border-bottom: 3px solid #ececec;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+thead tr .product {
+  grid-column: span 6 / span 6;
+}
+
+thead tr .price {
+  grid-column: span 2 / span 2;
+}
+
+thead tr .quantity {
+  grid-column: span 2 / span 2;
+}
+
+thead tr .total {
+  grid-column: span 2 / span 2;
+}
+
+/* product */
+tbody tr {
+  display: grid;
+  align-items: center;
+  gap: 20px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  border-radius: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid #ececec;
+}
+
+tbody tr .product {
+  grid-column: span 6 / span 6;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+
+tr .product .delete {
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #b8b8b8;
+  border-radius: 100rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-in-out 0.1s;
+}
+
+.product .delete i {
+  color: #b8b8b8;
+  font-size: 16px;
+  margin-top: 2px;
+  transition: all ease-in-out 0.1s;
+}
+
+tr .product .delete:hover,
+tr .product .delete:hover i {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+tr .product img {
+  grid-column: span 2 / span 2;
+  border-radius: 4px;
+  height: 60px;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+tr .product .info {
+  grid-column: span 4 / span 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.product .info span:nth-child(1) {
+  font-size: 16px;
+  font-weight: 500;
+  color: #334862;
+  cursor: pointer;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product .info span:nth-child(2) {
+  color: #888;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+tbody tr .price {
+  grid-column: span 2 / span 2;
+  display: flex;
+}
+
+tr .price span {
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+}
+
+.price span p {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+tbody tr .quantity {
+  grid-column: span 2 / span 2;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+tr .quantity .minus {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  color: var(--text-bgPrimary);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.quantity .minus i {
+  font-size: 14px;
+  color: #555;
+}
+
+tr .quantity .number {
+  flex: 1 1 0%;
+  color: var(--text-bgPrimary);
+  outline: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+tr .quantity .plus {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  color: var(--text-bgPrimary);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.quantity .plus i {
+  font-size: 14px;
+  color: #555;
+}
+
+
+/* .cart-right {
+  flex: 1 1 0%; 
+  padding: 15px 30px 30px;
+  height: 100%;
+  border: 2px solid;
+} */

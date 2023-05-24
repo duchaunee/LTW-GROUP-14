@@ -144,7 +144,8 @@ tbody tr .price {
   display: flex;
 }
 
-tr .price span {
+tr .price span,
+tr .price p {
   font-size: 16px;
   font-weight: 700;
   display: flex;
@@ -290,4 +291,101 @@ tr .total span {
   padding: 15px 30px 30px;
   height: 100%;
   border: 2px solid var(--text-primary);
+}
+
+.cart-right .title {
+  width: 100%;
+  border-bottom: 3px solid #ececec;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cart-right .price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 0;
+  font-size: 14px;
+}
+
+.cart-right .price h2:nth-child(2) {
+  font-weight: 700;
+}
+
+.cart-right .deliveryFee {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 0;
+  font-size: 14px;
+}
+
+.cart-right .deliveryFee>div {
+  text-align: right;
+}
+
+.deliveryFee .delivery-value {
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.deliveryFee .date {
+  font-weight: 700;
+}
+
+.cart-right .discount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+.cart-right .discount>span {
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.cart-right .total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #ddd;
+  padding: 16px 0;
+  font-size: 14px;
+}
+
+.cart-right .total>h2 {
+  font-weight: 700;
+}
+
+.cart-right .btn-checkout {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.cart-right .btn-checkout button {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 12px 8px;
+  background-color: var(--text-secondary);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+  transition: all ease-in-out 0.1s;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.cart-right .btn-checkout button:hover {
+  filter: brightness(.9);
 }

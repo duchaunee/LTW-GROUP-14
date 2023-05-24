@@ -46,6 +46,7 @@
               </thead>
               <tbody>
                 <!-- Mỗi thẻ tr là 1 cart item -->
+                <!-- Nhớ làm 1 cái hàm chuyển price dạng string 2800000 về dạng 2.800.000 rồi mới hiển thị ra giao diện nhé -->
                 <tr class=''>
                   <td class='product'>
                     <div class="delete">
@@ -59,32 +60,65 @@
                   </td>
                   <!-- {/* {solvePrice(product.price)} */} -->
                   <td class='price'>
-                    <span class=''>
-                      2.800.000<p class=''>₫</p>
-                    </span>
+                    <span class='' id="price1">2800000</span>
+                    <p class=''>₫</p>
                   </td>
                   <td class='quantity'>
-                    <button type='button' class='minus'>
+                    <button onclick="decreaseQuantity('product1', 'price1', 'total1')" type='button'
+                      class='minus'>
                       <i class="fas fa-minus"></i>
-                      <!-- <FontAwesomeIcon class='text-[16px] font-medium' icon={faMinus} /> -->
                     </button>
-                    <div
-                      class='number flex-1 text-bgPrimary outline-none text-center text-[16px] font-bold'>
-                      <!-- {quantity < 10 ? `0${quantity}` : quantity} -->
-                      01
-                    </div>
+                    <!-- id: product + index tăng dần khi loop item -->
+                    <div class='number' id="product1">01 </div>
                     <!-- //chỉ đc set đến max số lượng tồn kho -->
-                    <button type='button' class='plus'>
+                    <button onclick="increaseQuantity('product1', 'price1', 'total1')" type='button'
+                      class='plus'>
                       <i class="fas fa-plus"></i>
-                      <!-- <FontAwesomeIcon class='text-[16px] font-bold' icon={faPlus} /> -->
                     </button>
                   </td>
                   <td class='total'>
                     <!-- {solvePrice(price * quantity)} -->
-                    <p class=''>2.800.000</p>
+                    <p class='' id="total1">2800000</p>
                     <span class=''>₫</span>
                   </td>
                 </tr>
+
+                <tr class=''>
+                  <td class='product'>
+                    <div class="delete">
+                      <i class="fas fa-times"></i>
+                    </div>
+                    <img class='' src="https://source.unsplash.com/random" alt="" />
+                    <div class="info">
+                      <span class=''>Chuck 70 Psy-Kicks Ox</span>
+                      <span class=''>Giày nam</span>
+                    </div>
+                  </td>
+                  <!-- {/* {solvePrice(product.price)} */} -->
+                  <td class='price'>
+                    <span class='' id="price2">2800000</span>
+                    <p class=''>₫</p>
+                  </td>
+                  <td class='quantity'>
+                    <button onclick="decreaseQuantity('product2', 'price2', 'total2')" type='button'
+                      class='minus'>
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <!-- id: product + index tăng dần khi loop item -->
+                    <div class='number' id="product2">01 </div>
+                    <!-- //chỉ đc set đến max số lượng tồn kho -->
+                    <button onclick="increaseQuantity('product2', 'price2', 'total2')" type='button'
+                      class='plus'>
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </td>
+                  <td class='total'>
+                    <!-- {solvePrice(price * quantity)} -->
+                    <p class='' id="total2">2800000</p>
+                    <span class=''>₫</span>
+                  </td>
+                </tr>
+
               </tbody>
             </table>
             <div class="action">
@@ -102,43 +136,37 @@
           </div>
           <!-- RIGHT -->
           <div class="cart-right">
-            <div
-              class="w-full border-[3px] border-transparent border-b-[#ececec] text-[14px] font-bold py-2 uppercase tracking-wider">
+            <div class="title">
               <h1 class=''>Tổng thanh toán</h1>
             </div>
-            <div
-              class='flex items-center justify-between border border-transparent border-b-[#ddd] py-4 text-[14px]'>
+            <div class='price'>
               <h2 class=''>Tổng phụ</h2>
               <h2 class='font-bold'>
                 4.650.000₫</h2>
             </div>
-            <div
-              class='flex items-center justify-between border border-transparent border-b-[#ddd] py-4 text-[14px]'>
+            <div class='deliveryFee'>
               <h2 class=''>Giao hàng</h2>
-              <div class="text-right">
+              <div class="">
                 <!--  lấy 1% giá trị hàng  -->
                 <p>Phí giao hàng toàn quốc:
-                  <span class='font-bold ml-1'>30.000₫</span>
+                  <span class='delivery-value'>30.000₫</span>
                 </p>
-                <p class=''>Nhận hàng vào <span class='font-bold'>26 Th05 - 29 Th05</span></p>
+                <p class=''>Nhận hàng vào <span class='date'>26 Th05 - 29 Th05</span></p>
               </div>
             </div>
-            <div
-              class='flex items-center justify-between border border-transparent border-b-[#ddd] py-3 text-[14px]'>
+            <div class='discount'>
               <h2 class=''>Giảm giá từ shop:</h2>
-              <span class='font-bold ml-1'>0₫</span>
+              <span class=''>0₫</span>
             </div>
-            <div
-              class='flex items-center justify-between border-[3px] border-transparent border-b-[#ddd] py-4 text-[14px]'>
-              <h2 class=''>Tổng thanh toán</h2>
+            <div class='total '>
+              <span class=''>Tổng thanh toán</span>
               <h2 class='font-bold'>
                 <!-- totalPayment + deliveryFee - discount -->
                 4.680.000₫
               </h2>
             </div>
-            <div class='mt-6 text-[14px]'>
-              <button onClick={handleCheckOut}
-                class='block text-center w-full px-2 py-3 bg-secondary font-bold tracking-widest text-white hover:brightness-90 transition-all ease-in-out duration-100 uppercase'>Tiến
+            <div class='btn-checkout '>
+              <button class='hover:brightness-90'>Tiến
                 hành thanh toán
               </button>
 
@@ -149,6 +177,36 @@
       </div>
     </div>
   </div>
+  <script>
+    function increaseQuantity(id, price, total) {
+      const currentQuantity = document.getElementById(id);
+      const newQuantity = parseInt(currentQuantity.innerHTML.trim()) + 1 < 10
+        ? `0${parseInt(currentQuantity.innerHTML.trim()) + 1}`
+        : parseInt(currentQuantity.innerHTML.trim()) + 1;
+      currentQuantity.innerHTML = newQuantity
+      // 
+      const priceEl = document.getElementById(price);
+      const totalEl = document.getElementById(total);
+      totalEl.innerText = parseInt(priceEl.innerText) * parseInt(newQuantity)
+    }
+
+    function decreaseQuantity(id, price, total) {
+      const currentQuantity = document.getElementById(id);
+      const currentValue = parseInt(currentQuantity.innerHTML.trim());
+      if (currentValue > 1) {
+        const newQuantity = currentValue - 1 < 10
+          ? `0${currentValue - 1}`
+          : currentValue - 1;
+        currentQuantity.innerHTML = newQuantity
+        // 
+        const priceEl = document.getElementById(price);
+        const totalEl = document.getElementById(total);
+        totalEl.innerText = parseInt(priceEl.innerText) * parseInt(newQuantity)
+      }
+    }
+
+  </script>
+
 </body>
 
 </html>

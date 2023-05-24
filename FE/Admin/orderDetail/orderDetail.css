@@ -1,3 +1,11 @@
+.line {
+  width: 100px;
+  height: 3px;
+  margin: 10px 0;
+  background-color: #DC2626;
+}
+
+/*  */
 .admin_wrapper {
   width: 100%;
   height: 100%;
@@ -88,4 +96,307 @@
   /* border-radius: 0 12px 12px 0; */
   flex: 1 1 0%;
   padding: 30px 25px 20px;
+}
+
+.order-detail_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-detail_top {
+  display: flex;
+}
+
+.order-detail_orderDetail {
+  width: 100%;
+  padding-right: 16px;
+  border-right: 1px solid #ddd;
+}
+
+.order-detail_orderDetail .title {
+  font-size: 18px;
+  color: var(--text-bgPrimary);
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.order-detail_orderDetail .title>div {
+  display: inline-block;
+  padding: 0 4px;
+  border: 1px solid #777;
+  margin-left: 8px;
+  font-size: 16px;
+}
+
+.title>div>p {
+  display: inline-block;
+  color: var(--text-primary);
+  opacity: 0.75;
+}
+
+.order-detail_product .title {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 2px solid #ccc;
+}
+
+.order-detail_product .title h2 {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--text-bgPrimary);
+  padding: 8px 0;
+}
+
+.order-detail_product .info-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-product>div {
+  display: flex;
+  padding-bottom: 16px;
+  margin-top: 16px;
+}
+
+.info-product .img img {
+  height: 80px;
+  object-fit: cover;
+}
+
+.info-product .info {
+  padding-left: 16px;
+}
+
+.info-product .info .name {
+  display: flex;
+}
+
+.info .name>a {
+  color: #334862;
+  cursor: pointer;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info .name>p {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.info-product .info .category {
+  font-size: 14px;
+  color: #777;
+}
+
+.info .category>p {
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.info-product .info .date {
+  color: var(--text-primary);
+  padding: 0 4px;
+  font-size: 12px;
+  border: 1px solid var(--text-primary);
+  display: inline-block;
+}
+
+.order-detail_product .info-date,
+.order-detail_product .info-price,
+.order-detail_product .info-deliveryFee,
+.order-detail_product .info-discount,
+.order-detail_product .info-method,
+.order-detail_product .info-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-detail_product .info-date h2:nth-child(2),
+.order-detail_product .info-price h2:nth-child(2),
+.order-detail_product .info-deliveryFee h2:nth-child(2),
+.order-detail_product .info-discount h2:nth-child(2),
+.order-detail_product .info-method h2:nth-child(2),
+.order-detail_product .info-total h2:nth-child(2) {
+  font-weight: 700;
+  display: inline-block;
+  font-size: 14px;
+}
+
+/* ================== */
+.order-detail_userDetail {
+  width: 100%;
+  padding-left: 16px;
+}
+
+.order-detail_userDetail h1:nth-child(1) {
+  font-size: 18px;
+  color: var(--text-bgPrimary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.order-detail_userDetail .title {
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 2px solid #ccc;
+}
+
+.order-detail_userDetail .title h2 {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--text-bgPrimary);
+  padding: 8px 0;
+}
+
+.order-detail_user .info-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-user>div {
+  display: flex;
+  padding-bottom: 16px;
+  margin-top: 16px;
+}
+
+/* here  */
+.info-user .img img {
+  height: 80px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 100rem;
+}
+
+.info-user .info {
+  padding-left: 16px;
+}
+
+.info-user .info .name {
+  color: var(--text-bgPrimary);
+}
+
+.info-user .info .name p {
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 4px;
+  margin-left: 0;
+}
+
+.info-user .info .email {
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.info-user .info .email-value {
+  display: inline-block;
+}
+
+.info-user .info .member {
+  color: var(--text-primary);
+  padding: 0 4px;
+  font-size: 12px;
+  border: 1px solid var(--text-primary);
+  display: inline-block;
+}
+
+/*  */
+.order-detail_user .info-city,
+.order-detail_user .info-district,
+.order-detail_user .info-wards,
+.order-detail_user .info-address,
+.order-detail_user .info-phone,
+.order-detail_user .info-note {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.order-detail_user .info-city h2:nth-child(2),
+.order-detail_user .info-district h2:nth-child(2),
+.order-detail_user .info-wards h2:nth-child(2),
+.order-detail_user .info-address h2:nth-child(2),
+.order-detail_user .info-phone h2:nth-child(2),
+.order-detail_user .info-note h2:nth-child(2) {
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* ====== BOTTOM ========= */
+.order-detail_bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-shadowPrimary);
+  padding: 0 12px;
+}
+
+.button-status_wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-status_wrapper button {
+  text-align: center;
+  color: var(--text-bgPrimary);
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  padding: 12px 0;
+  border: none;
+  outline: none;
+  background-color: #fff;
+}
+
+.button-status_wrapper button:hover {
+  color: var(--text-primary);
+}
+
+.button-status_wrapper button.active {
+  border-bottom-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.button-changeStatus {
+  background-color: var(--text-primary);
+  color: #fff;
+  padding: 4px 8px;
+  transition: all linear 120ms;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.button-changeStatus:hover {
+  background-color: #a40206;
+}
+
+.button-changeStatus span {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
 }

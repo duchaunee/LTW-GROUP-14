@@ -75,141 +75,117 @@
       <!-- ///////////////////////////////////// RIGHT ///////////////////////////////////////// -->
       <!-- TẤT CẢ CHỈ KHÁC NHAU CÁI RIGHT THÔI NHÉ -->
       <div class="admin_right">
-        <!-- ${loading && 'blur-[2px]'} -->
-        <div class="w-full h-auto">
-          <div class="max-w-[1230px] mx-auto ">
-            <div class="w-full px-[15px]">
-              <div class="w-full flex">
-                <form class='w-full flex flex-col '>
-                  <!-- top  -->
-                  <div class="flex">
-                    <div class="w-full pr-4 border border-transparent border-r-[#ddd]">
-                      <h1 class='text-[18px] text-bgPrimary font-bold uppercase flex items-center'>
-                        Chi tiết đơn hàng
-                        <div class="inline-block px-1 border border-[#777] ml-2 text-[16px]">
-                          <p class="inline-block text-primary opacity-75">{order?.orderStatus}</p>
-                        </div>
-                      </h1>
-                      <div class="w-[100px] h-[3px] my-[10px] bg-red-600"></div>
-                      <div class="">
-                        <div
-                          class="flex justify-between uppercase font-bold border-[2px] border-transparent border-b-[#ccc]">
-                          <h2 class='text-[14px] tracking-widest text-bgPrimary py-2'>Sản phẩm</h2>
-                          <h2 class='text-[14px] tracking-widest text-bgPrimary py-2'>Tổng</h2>
-                        </div>
-                        <div
-                          class="flex items-center justify-between border border-transparent border-b-[#ddd]">
-                          <div class="flex pb-4 mt-4">
-                            <a to={`/san-pham/${order?.cartProduct.id}`} class=''>
-                              <img class="h-[80px] object-cover" src={order?.cartProduct.imgURL}
-                                alt="" />
-                            </a>
-                            <div class="pl-4">
-                              <div class="flex">
-                                <a to={`/san-pham/${order?.cartProduct.id}`} class='text-[#334862]'>
-                                  {order?.cartProduct.name || 'day la ten de chay skeleton'}
-                                </a>
-                                <p class='inline-block ml-1'> ×{order?.cartProduct.quantity}</p>
-                              </div>
-                              <div class="text-[14px] text-[#777]">
-                                <p class="mr-1 inline-block">Phân loại hàng:</p>
-                                {`${solveCategory(order?.cartProduct.category)} |
-                                ${solveBrand(order?.cartProduct.brand)}`}
-                              </div>
-                              <div
-                                class="text-primary px-1 text-[12px] border border-primary inline-block">
-                                7 ngày trả hàng</div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
-                          <h2 class=''>Thời gian đặt hàng</h2>
-                          <h2 class={`${loading && 'w-[100px]' } font-bold inline-block
-                            text-[14px]`}>
-                            {(order && `${order?.orderDate} | ${order?.orderTime}`) || '25 tháng 4
-                            năm 2002'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
-                          <h2 class=''>Tổng phụ</h2>
-                          <h2 class={`${loading && 'w-[100px]' } font-bold inline-block
-                            text-[14px]`}>
-                            {solvePrice(order?.cartProduct.price) || '9.999.999'} ₫
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
-                          <h2 class=''>Giao hàng</h2>
-                          <h2 class='font-bold inline-block text-[14px]'>
-                            {solvePrice(order?.deliveryFee) || '9.999.999'} ₫
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
-                          <h2 class=''>Giảm giá từ shop</h2>
-                          <h2 class='font-bold inline-block text-[14px]'>
-                            {solvePrice(order?.discount) || '9.999.999'} ₫
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
-                          <h2 class=''>Phương thức thanh toán</h2>
-                          <h2 class='font-bold inline-block text-[14px]'>
-                            {order && order?.shippingAddress.paymentMethod
-                            ? `${order?.shippingAddress.paymentMethod === "cash"
-                            ? 'Trả tiền mặt khi nhận hàng'
-                            : 'Chuyển khoản ngân hàng'}`
-                            : 'Trả tiền mặt khi nhận hàng'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
-                          <h2 class=''>Tổng cộng</h2>
-                          <h2 class='font-bold inline-block text-[14px]'>
-                            {`${order && order?.cartProduct.price + order?.deliveryFee -
-                            order?.discount > 0
-                            ? solvePrice(order?.cartProduct.price + order?.deliveryFee -
-                            order?.discount)
-                            : 0} ₫` || '9.999.999 ₫'}
-                          </h2>
-                        </div>
+        <form class='order-detail_wrapper'>
+          <!-- top  -->
+          <div class="order-detail_top">
+            <!-- chi tiet don hang -->
+            <div class="order-detail_orderDetail">
+              <h1 class='title'>
+                Chi tiết đơn hàng
+                <div class="">
+                  <p class="">Đang xử lý</p>
+                </div>
+              </h1>
+              <div class="line"></div>
+              <div class="order-detail_product">
+                <div class="title">
+                  <h2 class=''>Sản phẩm</h2>
+                  <h2 class=''>Tổng</h2>
+                </div>
+                <div class="info-product">
+                  <div class="">
+                    <a class='img'>
+                      <img class="h-[80px] object-cover" src="https://source.unsplash.com/random"
+                        alt="" />
+                    </a>
+                    <div class="info">
+                      <div class="name">
+                        <a class=''>
+                          Chuck Taylor All Star Simple Step Summer Fundamentals
+                        </a>
+                        <p class=''> ×3</p>
+                      </div>
+                      <div class="category ">
+                        <p class="">Phân loại hàng:</p>
+                        Giày trẻ em | Classic
+                        <!-- Category | Brand -->
+                      </div>
+                      <div class="date">
+                        7 ngày trả hàng
                       </div>
                     </div>
-                    <div class="w-full pl-4">
-                      <h1 class='text-[18px] text-bgPrimary font-bold uppercase'>Thông tin khách
-                        hàng</h1>
-                      <div class="w-[100px] h-[3px] my-[10px] bg-red-600"></div>
-                      <div
-                        class="flex justify-between uppercase font-bold border-[2px] border-transparent border-b-[#ccc]">
-                        <h2 class='text-[14px] tracking-widest text-bgPrimary py-2'>Thông tin</h2>
-                        <h2 class='text-[14px] tracking-widest text-bgPrimary py-2'>Cụ thể</h2>
-                      </div>
+                  </div>
+                </div>
+                <div class="info-date ">
+                  <h2 class=''>Thời gian đặt hàng</h2>
+                  <h2 class="">
+                    2 Tháng 5, 2023 | 00:12:34
+                    <!-- date | time -->
+                  </h2>
+                </div>
+                <div class="info-price ">
+                  <h2 class=''>Tổng phụ</h2>
+                  <h2 class="">
+                    750.000 ₫
+                  </h2>
+                </div>
+                <div class="info-deliveryFee ">
+                  <h2 class=''>Giao hàng</h2>
+                  <h2 class=''>
+                    30.000 ₫
+                  </h2>
+                </div>
+                <div class="info-discount ">
+                  <h2 class=''>Giảm giá từ shop</h2>
+                  <h2 class=''>
+                    20.000 ₫
+                  </h2>
+                </div>
+                <div class="info-method ">
+                  <h2 class=''>Phương thức thanh toán</h2>
+                  <h2 class=''>
+                    Trả tiền mặt khi nhận hàng
+                  </h2>
+                </div>
+                <div class="info-total ">
+                  <h2 class=''>Tổng cộng</h2>
+                  <h2 class=''>
+                    <!-- price + deliveryFee - discount -->
+                    760.000 ₫
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <!-- thong tin khach hang -->
+            <div class="order-detail_userDetail">
+              <h1 class=''>Thông tin khách
+                hàng</h1>
+              <div class="line"></div>
+              <div class="title">
+                <h2 class=''>Thông tin</h2>
+                <h2 class=''>Cụ thể</h2>
+              </div>
+              <div class="order-detail_user">
+                <div class="info-user">
+                  <div class="">
+                    <a class='img'>
+                      <img class="" src="https://source.unsplash.com/random" alt="" />
+                    </a>
+                    <div class="info">
                       <div class="">
-                        <div
-                          class="flex items-center justify-between border border-transparent border-b-[#ddd]">
-                          <div class="flex pb-4 mt-4">
-                            <a // to={`/san-pham/${order?.cartProduct.id}`} class=''>
-                              <img class="h-[80px] aspect-square object-cover rounded-full"
-                                src={order?.imgAvatar} alt="" />
-                            </a>
-                            <div class="pl-4">
-                              <div class="">
-                                <div class='text-bgPrimary'>
-                                  <p class="font-medium inline-block mr-1">Họ tên:</p>
-                                  {order?.displayName || 'day la ten de chay skeleton'}
-                                </div>
-                                <p class="font-medium inline-block mr-1">Email:</p>
-                                <p class='inline-block'> {order?.displayEmail}</p>
-                              </div>
-                              <div
-                                class="text-primary px-1 text-[12px] border border-primary inline-block">
-                                Thành viên của ShoesPlus</div>
-                            </div>
-                          </div>
+                        <div class='name '>
+                          <p class="">Họ tên:</p>Đỗ Đức Hậu - B20DCCN
                         </div>
-                        <!-- <div
+                        <p class="email">Email:</p>
+                        <p class='email-value'>duchaunee@gmail.com</p>
+                      </div>
+                      <div class="member">
+                        Thành viên của ShoesPlus
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div
                           class="flex justify-between text-[14px] py-2 border border-transparent border-b-[#ddd]">
                           <h2 class=''>Thời gian đặt hàng</h2>
                             <h2 class={`${loading && 'w-[100px]' } font-bold inline-block
@@ -218,95 +194,77 @@
                               năm 2002'}
                             </h2>
                         </div> -->
-                        <div
-                          class="flex justify-between py-2 border border-transparent border-b-[#ddd] text-[14px]">
-                          <h2 class=''>Tỉnh / Thành phố
-                          </h2>
-                          <h2 class='font-bold inline-block '>
-                            {(order && order?.shippingAddress.city) || 'Bắc
-                            Ninhhhhhhhhhhhhhhhhhhh'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between py-2 border border-transparent border-b-[#ddd] text-[14px]">
-                          <h2 class=''>Quận / Huyện
-                          </h2>
-                          <h2 class='font-bold inline-block'>
-                            {(order && order?.shippingAddress.district) || 'Bắc
-                            Ninhhhhhhhhhhhhhhhhhhh'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between py-2 border border-transparent border-b-[#ddd] text-[14px]">
-                          <h2 class=''>Phường / Xã
-                          </h2>
-                          <h2 class='font-bold inline-block'>
-                            {(order && order?.shippingAddress.wards) || 'Bắc
-                            Ninhhhhhhhhhhhhhhhhhhh'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between py-2 border border-transparent border-b-[#ddd] text-[14px]">
-                          <h2 class=''>Địa chỉ cụ thể
-                          </h2>
-                          <h2 class='font-bold inline-block '>
-                            {(order && order?.shippingAddress.address) || 'Bắc
-                            Ninhhhhhhhhhhhhhhhhhhh'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between py-2 border border-transparent border-b-[#ddd] text-[14px]">
-                          <h2 class=''>Số điện thoại
-                          </h2>
-                          <h2 class='font-bold inline-block '>
-                            {(order && order?.shippingAddress.phoneNumber) || 'Bắc
-                            Ninhhhhhhhhhhhhhhhhhhh'}
-                          </h2>
-                        </div>
-                        <div
-                          class="flex justify-between py-2 border border-transparent border-b-[#ddd] text-[14px]">
-                          <h2 class=''>Ghi chú
-                          </h2>
-                          <h2 class='font-bold inline-block '>
-                            {order && order?.shippingAddress.note
-                            ? order.shippingAddress.note
-                            : <p class={`${loading || 'italic' }`}>Không có ghi chú</p>}
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ height: '.1875rem' , width: '100%' ,
-                    backgroundPositionX: '-1.875rem' , backgroundSize: '7.25rem .1875rem' ,
-                    backgroundImage: 'repeating-linear-gradient(45deg,#6fa6d6,#6fa6d6 33px,transparent 0,transparent 41px,#f18d9b 0,#f18d9b 74px,transparent 0,transparent 82px)'
-                    , }} class='my-4'></div>
-                  {/* bottom */}
-                  <div class="">
-                    <div
-                      class="w-full flex items-center justify-between item shadow-shadowPrimary px-3">
-                      {['Đang xử lý', 'Vận chuyển', 'Đang giao', 'Hoàn thành']
-                      .map(item => (
-                      <button key={item} onClick={(e)=> {
-                        e.preventDefault()
-                        if (order.orderStatus === 'Hoàn thành') {
-                        toast.error('Đơn hàng đã hoàn thành, không thể cập nhật', {
-                        autoClose: 1200
-                        })
-                        }
-                        else if (order.orderStatus === 'Đã hủy') {
-                        toast.error('Đơn hàng đã bị hủy, không thể cập nhật', {
-                        autoClose: 1200
-                        })
-                        }
-                        else setActiveStatus(item)
-                        }}
-                        value={item}
-                        class={`${activeStatus === item ? 'border-b-primary text-primary' :
-                        'border-b-[#fff]'} text-center text-bgPrimary cursor-pointer transition-all
-                        ease-in-out duration-150 border-[2px] border-t-0 border-l-0 border-r-0
-                        hover:text-primary font-medium py-3`}>{item}</button>
-                      ))}
-                      <button onClick={(e)=> {
+                <div class="info-city">
+                  <h2 class=''>Tỉnh / Thành phố</h2>
+                  <h2 class=' '>Bắc Ninh</h2>
+                </div>
+                <div class="info-district">
+                  <h2 class=''>Quận / Huyện </h2>
+                  <h2 class=''>Bắc Ninh </h2>
+                </div>
+                <div class="info-wards">
+                  <h2 class=''>Phường / Xã</h2>
+                  <h2 class=''>Bắc Ninh</h2>
+                </div>
+                <div class="info-address">
+                  <h2 class=''>Địa chỉ cụ thể </h2>
+                  <h2 class=' '> Bắc Ninh </h2>
+                </div>
+                <div class="info-phone">
+                  <h2 class=''>Số điện thoại </h2>
+                  <h2 class=' '> 0912345678 </h2>
+                </div>
+                <div class="info-note">
+                  <h2 class=''>Ghi chú </h2>
+                  <h2 class=' '>
+                    Nhớ cẩn thận nha shop
+                    <!-- Khi không có ghi chú (kiểm tra điều kiện) thì hiện lên thẻ p bên dưới -->
+                    <!-- <p class={`${loading || 'italic' }`}>Không có ghi chú</p>} -->
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- đây là thanh line loot từ shopee :v -->
+          <div style="height: .1875rem;
+                  width: 100%;
+                  background-position-x: -1.875rem;
+                  background-size: 7.25rem .1875rem;
+                  background-image: repeating-linear-gradient(45deg, #6fa6d6, #6fa6d6 33px, transparent 0, transparent 41px, #f18d9b 0, #f18d9b 74px, transparent 0, transparent 82px);
+                  margin: 16px 0;">
+          </div>
+
+          <!-- bottom -->
+          <div class="">
+            <div class="order-detail_bottom">
+              <!-- Nếu đơn hàng 'Hoàn thành' || 'Đã hủy'  thì không được phép ấn vào các butotn -->
+              <!-- onClick={(e)=> {
+              e.preventDefault()
+              if (order.orderStatus === 'Hoàn thành') {
+              toast.error('Đơn hàng đã hoàn thành, không thể cập nhật', {
+              autoClose: 1200
+              })
+              }
+              else if (order.orderStatus === 'Đã hủy') {
+              toast.error('Đơn hàng đã bị hủy, không thể cập nhật', {
+              autoClose: 1200
+              })
+              }
+              else setActiveStatus(item)
+              }} -->
+
+              <div class="button-status_wrapper">
+                <button value="Đang xử lý" class="active">Đang xử lý</button>
+                <button value="Vận chuyển" class="">Vận chuyển</button>
+                <button value="Đang giao" class="">Đang giao</button>
+                <button value="Hoàn thành" class="">Hoàn thành</button>
+                <!-- lí do có thêm button "trống" này để chừa chỗ có button cuối "Cập nhật trình trạng" -->
+                <button value="" class=""></button>
+              </div>
+
+              <!-- Cái butotn cuối này phải xử lý Nếu đơn hàng 'Hoàn thành' || 'Đã hủy'  thì không được phép cập nhật đơn hàng-->
+              <!-- onClick={(e)=> {
                         e.preventDefault()
                         console.log(activeStatus);
                         if (order.orderStatus === 'Hoàn thành') {
@@ -320,19 +278,13 @@
                         })
                         }
                         else confirmUpdateStatus(e)
-                        }}
-                        class='bg-primary text-white px-2 py-1 hover:bg-[#a40206] transition-all
-                        ease-linear duration-[120ms]'>
-                        <span class='tracking-wider uppercase text-[14px] font-medium'>Cập nhật tình
-                          trạng</span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+                        }} -->
+              <button class='button-changeStatus'>
+                <span class=''>Cập nhật tình trạng</span>
+              </button>
             </div>
           </div>
-        </div>
+        </form>
         <!-- <Routes>
           <Route path='' element={<HomeAdmin />} />
           <Route path='home' element={<HomeAdmin />} />

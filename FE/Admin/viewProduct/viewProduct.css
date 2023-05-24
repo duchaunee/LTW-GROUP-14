@@ -318,6 +318,7 @@ tbody tr .action {
   display: flex;
   align-items: center;
   gap: 20px;
+  margin-left: 12px;
 }
 
 .action .edit i {

@@ -122,6 +122,7 @@ thead>tr {
   padding: 16px 0;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border-bottom: 3px solid #ececec;
 }
 
 thead>tr .avatar {

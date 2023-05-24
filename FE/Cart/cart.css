@@ -210,10 +210,84 @@ tr .quantity .plus {
   color: #555;
 }
 
+tbody tr .total {
+  grid-column: span 2 / span 2;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
 
-/* .cart-right {
-  flex: 1 1 0%; 
+tr .total p {
+  color: var(--text-bgPrimary);
+  text-align: center;
+  font-size: 16px;
+}
+
+tr .total span {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+/* ==== */
+.cart-left .action {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.cart-left .action .continue {
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  padding: 4px 16px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition: all linear 120ms;
+  text-decoration: none;
+}
+
+.cart-left .action .continue:hover {
+  background-color: var(--text-primary);
+  color: #fff;
+}
+
+.action .continue i {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.action .continue span,
+.action .update span,
+.action .delete span {
+  text-transform: uppercase;
+}
+
+.cart-left .action .update,
+.cart-left .action .delete {
+  padding: 4px 16px;
+  background-color: var(--text-primary);
+  color: #fff;
+  font-weight: 500;
+  transition: all linear 120ms;
+  display: flex;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-left .action .update:hover,
+.cart-left .action .delete:hover {
+  background-color: #9f0d11;
+}
+
+.cart-right {
+  flex: 1 1 0%;
   padding: 15px 30px 30px;
   height: 100%;
-  border: 2px solid;
-} */
+  border: 2px solid var(--text-primary);
+}

@@ -1,15 +1,15 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="GirlShoesController", urlPatterns={"/girl"})
-public class GirlShoesController extends HttpServlet {
+@WebServlet(name="AdminAddProductController", urlPatterns={"/admin-addproduct"})
+public class AdminAddProduct extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -20,15 +20,15 @@ public class GirlShoesController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-     
-        request.getRequestDispatcher("FE/GirlShoes/girlShoes.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
 
     } 
 
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("FE/Admin/addProduct/addProduct.jsp").forward(request, response);
     } 
 
     /** 

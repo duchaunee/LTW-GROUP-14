@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/controller/GirlShoesController.java</file>
-            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/controller/NewServlet.java</file>
-            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/controller/HomeController.java</file>
+            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/dao/OrderDAO.java</file>
+            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/connect/DBConnect.java</file>
+            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/dao/ProductDAO.java</file>
+            <file>file:/C:/Users/phanv/Desktop/Webapp%20Java/LTW-GROUP-14/LTW-GROUP-14/src/java/dao/OrderItemDAO.java</file>
         </group>
     </open-files>
 </project-private>

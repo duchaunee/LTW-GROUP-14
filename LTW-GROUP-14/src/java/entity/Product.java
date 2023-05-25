@@ -12,6 +12,15 @@ public class Product {
     private String description;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
+    private Integer image_id;
+
+    public Integer getImage_id() {
+        return image_id;
+    }
+
+    public void setImage_id(Integer image_id) {
+        this.image_id = image_id;
+    }
 
     public Integer getId() {
         return id;
@@ -104,6 +113,5 @@ public class Product {
 
     public Product() {
     }
-    public static void main(String[] args) {
-    }
+    
 }

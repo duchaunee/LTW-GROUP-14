@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +18,8 @@
 </head>
 
 <body>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
+
   <div class='admin_wrapper'>
     <div class="admin_main">
       <!-- /////////////////////////////////// TAB LEFT /////////////////////////////////////// -->
@@ -79,7 +82,7 @@
       <!-- ///////////////////////////////////// RIGHT ///////////////////////////////////////// -->
       <!-- TẤT CẢ CHỈ KHÁC NHAU CÁI RIGHT THÔI NHÉ -->
       <div class="admin_right">
-        <form class="add-product_wrapper">
+          <form class="add-product_wrapper" method="post" action="/admin-addproduct" enctype="multipart/form-data">
           <div class="add-product_main">
             <!-- LEFT -->
             <div class="add-product_left">
@@ -218,6 +221,7 @@
       </div>
     </div>
   </div>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
 
   <!-- <script src="./addProduct.js"></script> -->
 </body>

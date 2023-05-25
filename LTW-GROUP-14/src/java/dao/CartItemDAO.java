@@ -4,11 +4,8 @@
  */
 package dao;
 
-import context.DBConnect;
+import connect.DBConnect;
 import entity.CartItem;
-import entity.Product;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

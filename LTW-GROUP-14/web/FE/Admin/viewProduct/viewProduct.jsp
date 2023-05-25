@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
   <div class='admin_wrapper'>
     <div class="admin_main">
       <!-- /////////////////////////////////// TAB LEFT /////////////////////////////////////// -->
@@ -153,7 +154,7 @@
                     </span>
                   </td>
                   <td class='info'>
-                    <img class='' src="https://source.unsplash.com/random" alt="" />
+                    <img class='' src="/productImage?imgId=${p.image_id}&number=0" alt="" />
                     <div class="">
                       <span class='name'>${p.name}</span>
                       <span class='desc'>
@@ -208,6 +209,7 @@
       </div>
     </div>
   </div>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
 
   <!-- <script src="./addProduct.js"></script> -->
 </body>

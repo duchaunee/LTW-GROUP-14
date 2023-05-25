@@ -2,22 +2,23 @@ package entity;
 
 public class ImageProduct {
     private Integer id;
-    private String url;
-    private String previewUrl1;
-    private String previewUrl2;
-    private String previewUrl3;
-    private String previewUrl4;
+    private byte[] img;
+    private byte[] imgPreview1;
+    private byte[] imgPreview2;
+    private byte[] imgPreview3;
+    private byte[] imgPreview4;
+   
 
     public ImageProduct() {
     }
 
-    public ImageProduct(Integer id, String url, String previewUrl1, String previewUrl2, String previewUrl3, String previewUrl4) {
+    public ImageProduct(Integer id, byte [] img, byte[] imgPreview1, byte[] imgPreview2, byte[] imgPreview3, byte[] imgPreview4) {
         this.id = id;
-        this.url = url;
-        this.previewUrl1 = previewUrl1;
-        this.previewUrl2 = previewUrl2;
-        this.previewUrl3 = previewUrl3;
-        this.previewUrl4 = previewUrl4;
+        this.img = img;
+        this.imgPreview1 = imgPreview1;
+        this.imgPreview2 = imgPreview2;
+        this.imgPreview3 = imgPreview3;
+        this.imgPreview4 = imgPreview4;
     }
 
     public Integer getId() {
@@ -28,44 +29,47 @@ public class ImageProduct {
         this.id = id;
     }
 
-    public String getUrl() {
-        return url;
+    public byte[] getImg() {
+        return img;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImg(byte [] img) {
+        this.img = img;
     }
 
-    public String getPreviewUrl1() {
-        return previewUrl1;
+    public byte[] getImgPreview1() {
+        return imgPreview1;
     }
 
-    public void setPreviewUrl1(String previewUrl1) {
-        this.previewUrl1 = previewUrl1;
+    public void setImgPreview1(byte[] imgPreview1) {
+        this.imgPreview1 = imgPreview1;
     }
 
-    public String getPreviewUrl2() {
-        return previewUrl2;
+    public byte[] getImgPreview2() {
+        return imgPreview2;
     }
 
-    public void setPreviewUrl2(String previewUrl2) {
-        this.previewUrl2 = previewUrl2;
+    public void setImgPreview2(byte[] imgPreview2) {
+        this.imgPreview2 = imgPreview2;
     }
 
-    public String getPreviewUrl3() {
-        return previewUrl3;
+    public byte[] getImgPreview3() {
+        return imgPreview3;
     }
 
-    public void setPreviewUrl3(String previewUrl3) {
-        this.previewUrl3 = previewUrl3;
+    public void setImgPreview3(byte[] imgPreview3) {
+        this.imgPreview3 = imgPreview3;
     }
 
-    public String getPreviewUrl4() {
-        return previewUrl4;
+    public byte[] getImgPreview4() {
+        return imgPreview4;
     }
 
-    public void setPreviewUrl4(String previewUrl4) {
-        this.previewUrl4 = previewUrl4;
+    public void setImgPreview4(byte[] imgPreview4) {
+        this.imgPreview4 = imgPreview4;
     }
+    
+    
+
     
 }

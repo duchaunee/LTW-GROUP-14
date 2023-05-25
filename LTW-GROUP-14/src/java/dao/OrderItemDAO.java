@@ -4,11 +4,8 @@
  */
 package dao;
 
-import context.DBConnect;
-import entity.Order;
+import connect.DBConnect;
 import entity.OrderItem;
-import entity.Product;
-import entity.User;
 import java.util.ArrayList;
 import java.util.List;
 

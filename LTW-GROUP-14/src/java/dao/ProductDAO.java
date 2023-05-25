@@ -4,20 +4,23 @@
  */
 package dao;
 
-import context.DBConnect;
+import connect.DBConnect;
 import entity.Product;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Admin
  */
 public class ProductDAO extends DAO{
-    public ProductDAO(){}
+    public ProductDAO(){
+    
+    }
+    
     public List<Product>findAll(){
         List<Product>list=new ArrayList<>();
         String query="select * from product";
@@ -26,11 +29,17 @@ public class ProductDAO extends DAO{
             ps=conn.prepareStatement(query);
             rs=ps.executeQuery();
             while(rs.next()){
-                list.add(new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime()));
+                Product product = new Product(rs.getInt(1),
+                                            rs.getString(2),
+                                            rs.getString(3),
+                                            rs.getInt(4),
+                                            rs.getString(5),
+                                            rs.getString(6),
+                                            rs.getString(7),
+                                            rs.getTimestamp(8).toLocalDateTime(),
+                                            rs.getTimestamp(9).toLocalDateTime());
+                product.setImage_id(rs.getInt("image_id"));
+                list.add(product);
             }
         }catch(Exception e){
         }
@@ -44,11 +53,17 @@ public class ProductDAO extends DAO{
             ps.setInt(1, Id);
             rs=ps.executeQuery();
             if(rs.next()){
-                return new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime());
+                Product product = new Product(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getTimestamp(8).toLocalDateTime(),
+                                    rs.getTimestamp(9).toLocalDateTime());
+                product.setImage_id(rs.getInt("image_id"));
+                return product;
             }
             else{
             }
@@ -64,11 +79,17 @@ public class ProductDAO extends DAO{
             ps.setString(1, name);
             rs=ps.executeQuery();
             if(rs.next()){
-                return new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime());
+                Product product = new Product(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getTimestamp(8).toLocalDateTime(),
+                                    rs.getTimestamp(9).toLocalDateTime());
+                product.setImage_id(rs.getInt("image_id"));
+                return product;
             }
             else{
             }
@@ -85,15 +106,40 @@ public class ProductDAO extends DAO{
             ps.setString(1, "%"+pattern+"%");
             rs=ps.executeQuery();
             while(rs.next()){
-                list.add(new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime()));
+                list.add(new Product(rs.getInt(1),
+                                    rs.getString(2),
+                                    rs.getString(3),
+                                    rs.getInt(4),
+                                    rs.getString(5),
+                                    rs.getString(6),
+                                    rs.getString(7),
+                                    rs.getTimestamp(8).toLocalDateTime(),
+                                    rs.getTimestamp(9).toLocalDateTime()));
             }
         }catch(Exception e){
         }
         return list;
+    }
+    
+    public void save(HttpServletRequest request){
+        String query = "INSERT INTO product(name, price, inventory, category, brand, description, create_at, update_at, image_id)"
+                      + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, request.getParameter("name"));
+            ps.setString(2, request.getParameter("price"));
+            ps.setString(3, request.getParameter("inventory"));
+            ps.setString(4, request.getParameter("category"));
+            ps.setString(5, request.getParameter("brand"));
+            ps.setString(6, request.getParameter("desc"));
+            ps.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setString(9, "9");
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     public List<Product>pagningProduct(Integer id){
         List<Product>list=new ArrayList<>();
@@ -104,11 +150,17 @@ public class ProductDAO extends DAO{
             ps.setInt(1, (id-1)*3);
             rs=ps.executeQuery();
             while(rs.next()){
-                list.add(new Product(rs.getInt(1),rs.getString(4),
-                                    rs.getString(5),rs.getInt(6),rs.getString(7),
-                                    rs.getString(8),rs.getString(9),
-                                    rs.getTimestamp(10).toLocalDateTime(),
-                                    rs.getTimestamp(11).toLocalDateTime()));
+                Product product = new Product(rs.getInt(1),
+                                            rs.getString(2),
+                                            rs.getString(3),
+                                            rs.getInt(4),
+                                            rs.getString(5),
+                                            rs.getString(6),
+                                            rs.getString(7),
+                                            rs.getTimestamp(8).toLocalDateTime(),
+                                            rs.getTimestamp(9).toLocalDateTime());
+                product.setImage_id(rs.getInt("image_id"));
+                list.add(product);
             }
         }catch(Exception e){
         }

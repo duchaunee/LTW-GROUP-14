@@ -6,9 +6,7 @@ package dao;
 
 import connect.DBConnect;
 import entity.ImageProduct;
-import entity.User;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStream;
 
 /**
  *
@@ -16,38 +14,43 @@ import java.util.List;
  */
 public class ImageProductDAO extends DAO{
     public ImageProductDAO(){}
-    public List<ImageProduct>findAll(){
-        List<ImageProduct>list=new ArrayList<>();
-        String query="select * from image_product";
-        try{
-            conn = new DBConnect().getConnection();
-            ps=conn.prepareStatement(query);
-            rs=ps.executeQuery();
-            while(rs.next()){
-                list.add(new ImageProduct(rs.getInt(1),rs.getString(2),
-                                    rs.getString(3),rs.getString(4),rs.getString(5),
-                                    rs.getString(6)));
-            }
-        }catch(Exception e){
-        }
-        return list;
-    }
+    
     public ImageProduct findById(Integer Id) throws Exception{
         String query="select * from image_product where id=?";
         try{
             conn = new DBConnect().getConnection();
-            ps=conn.prepareStatement(query);
+            ps = conn.prepareStatement(query);
             ps.setInt(1, Id);
-            rs=ps.executeQuery();
+            rs = ps.executeQuery();
             if(rs.next()){
-                return new ImageProduct(rs.getInt(1),rs.getString(2),
-                                    rs.getString(3),rs.getString(4),rs.getString(5),
-                                    rs.getString(6));
+                return new ImageProduct(rs.getInt("id"),
+                                        rs.getBytes("img"),
+                                        rs.getBytes("img_preview1"),
+                                        rs.getBytes("img_preview2"),
+                                        rs.getBytes("img_preview3"),
+                                        rs.getBytes("img_preview4"));
+                                    
             }
             else{
             }
         }catch(Exception e){
         }
         return null;
+    }
+    
+    public void save(InputStream[] image){
+        String query = "INSERT INTO image_product (img, img_preview1, img_preview2, img_preview3, img_preview4) "
+                     + "VALUES(?, ?, ?, ?, ?)";
+        try{
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            for (int i = 0; i < image.length; i++){
+                ps.setBlob(i + 1, image[i]);
+            }
+            ps.executeUpdate();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

@@ -93,7 +93,7 @@ public class ProductDAO extends DAO{
             String query = "DELETE FROM product WHERE id = ?";
             ps=conn.prepareStatement(query);
             ps.setInt(1, Id);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (SQLException e) {
         }
     }

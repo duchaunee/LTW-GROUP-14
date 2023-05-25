@@ -60,7 +60,7 @@ public class UserDAO extends DAO{
             String query = "DELETE FROM user WHERE id = ?";
             ps=conn.prepareStatement(query);
             ps.setInt(1, Id);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (SQLException e) {
         }
     }

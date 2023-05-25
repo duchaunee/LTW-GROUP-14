@@ -82,7 +82,7 @@
         <div class='view-product_wrapper'>
           <div class="view-product_top">
             <span class='view-product_quantity'>
-              <p class=''>Số lượng</p>: ${productList.size()} sản phẩm
+              <p class=''>Số lượng</p>: ${size} sản phẩm
             </span>
             <div class='view-product_filter'>
               <div class="">
@@ -140,11 +140,12 @@
               </thead>
               <tbody>
                 <!-- mỗi sản phẩm là 1 hàng -->
+                
                 <c:forEach items="${productList}" var="p">
                 <tr class=''>
                   <td class='order'>
                     <span class=''>
-                      ${productList.indexOf(p) + 1}
+                      ${productList.indexOf(p) + 1+3*(current-1)}
                       <!-- 
                         {(idx + 1) + itemsPerPage * (currentPage - 1)}  
                         ==> Công thức tính số thứ tự
@@ -189,29 +190,13 @@
           </div>
 
           <!-- pagination -->
-          <ol class="pagination">
-            <li class="pagination--left">
-              <button>
-                <i class="fas fa-long-arrow-alt-left"></i>
-                <span class="text-[16px]">Prev Page</span>
-              </button>
-            </li>
-            <div class="pagination-center">
-              <button class=''>1</button>
-              <button class=''>2</button>
-              <li class=''>
-                <i class="fas fa-ban"></i>
-              </li>
-            </div>
-            <li class="pagination--right">
-              <button>
-                <span class="text-[16px]">Next Page</span>
-                <i class="fas fa-long-arrow-alt-right"></i>
-                <FontAwesomeIcon class='text-[18px] text-bgPrimary' icon={faLongArrowAltRight} />
-              </button>
-            </li>
-          </ol>
-        </div>
+          <ul class="pagination">
+                <c:forEach begin="1" end="${page}" var="i">
+                  <li>
+                    <a href="admin-viewproduct?index=${i}">${i}</a>
+                  </li>
+                </c:forEach>
+          </ul>
         <!-- <Routes>
           <Route path='' element={<HomeAdmin />} />
           <Route path='home' element={<HomeAdmin />} />

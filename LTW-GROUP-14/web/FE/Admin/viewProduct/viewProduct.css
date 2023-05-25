@@ -344,91 +344,24 @@ tbody tr .action {
 
 /* pagination */
 .pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  font-size: 18px;
-  font-weight: 500;
-  margin-top: 16px;
-}
-
-.pagination {
   list-style-type: none;
-}
-
-.pagination--left button {
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  outline: none;
-  border: none;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.pagination--left i {
-  font-size: 18px;
-  color: var(--text-bgPrimary);
-}
-
-.pagination--left span {
-  font-size: 16px;
-}
-
-.pagination-center {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 8px;
+  margin-top: 20px;
 }
 
-/* .pagination-center button:first-child {
-  color: white;
-  background-color: var(--text-bgPrimary);
-} */
-
-.pagination-center button {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  padding: 8px 0;
-  border: 1px solid #F3F4F6;
-  line-height: 2rem;
-  text-align: center;
-  cursor: pointer;
-  background-color: #fff;
+.pagination li {
+  margin-right: 10px;
 }
 
-.pagination-center i {
-  font-size: 18px;
-  color: var(--text-primary);
-  display: block;
-  border-radius: 0.25rem;
-  width: 48px;
-  aspect-ratio: 1 / 1;
-  padding: 8px 0;
-  border: 1px solid #F3F4F6;
-  line-height: 2rem;
-  text-align: center;
+.pagination a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 3px;
 }
 
-.pagination--right button {
-  display: inline-flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  border: 1px solid #F3F4F6;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-.pagination--right button {
-  font-size: 16px;
+.pagination a:hover {
+  background-color: #ccc;
 }

@@ -8,6 +8,15 @@
   padding: 35px 15px;
 }
 
+  .form-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .form-row select {
+    margin-right: 10px;
+  }
+
 .admin_main {
   max-width: 1230px;
   min-height: 600px;
@@ -273,4 +282,26 @@ thead>tr .action {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.05em;
+}
+.pagination {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination li {
+  margin-right: 10px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 3px;
+}
+
+.pagination a:hover {
+  background-color: #ccc;
 }

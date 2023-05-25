@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +10,10 @@
   <title>View Order</title>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="../../CSS/reset.css">
-  <link rel="stylesheet" href="viewOrder.css">
+    <link rel="stylesheet" type="text/css" 
+        href="${pageContext.request.contextPath}/FE/CSS/reset.css">
+  <link rel="stylesheet" type="text/css" 
+        href="${pageContext.request.contextPath}/FE/Admin/viewOrder/viewOrder.css">
 </head>
 
 <body>
@@ -80,26 +84,27 @@
             <div class="view-order_top">
               <div class='view-order_quantity'>
                 <p class=''>Số lượng</p>
-                : 40 đơn hàng
+                : ${size} orders
               </div>
               <div class="">
-                <select class='view-order_status' name="sort-by" id="">
-                  <option key='0' value="default">Lọc đơn hàng theo</option>
-                  <option key='1' value="all">Tất cả</option>
-                  <option key='2' value="Đang xử lý">Đang xử lý</option>
-                  <option key='3' value="Vận chuyển">Vận chuyển</option>
-                  <option key='4' value="Đang giao">Đang giao</option>
-                  <option key='5' value="Hoàn thành">Hoàn thành</option>
-                  <option key='6' value="Đã hủy">Đã hủy</option>
-                </select>
-              </div>
-              <div class="">
-                <select class='view-order_date' name="sort-by" id="">
-                  <option key='0' value="default">Sắp xếp đơn hàng theo</option>
-                  <option key='1' value="latest">Mới nhất</option>
-                  <option key='2' value="oldest">Cũ nhất</option>
-                </select>
-              </div>
+                    <select class="view-order_status" name="sort" onchange="javascript:document.form1.submit();">
+                        <option key="0" value="default">Lọc đơn hàng theo</option>
+                        <option key="1" value="all">Tất cả</option>
+                        <option key="2" value="Đang xử lý">Đang xử lý</option>
+                        <option key="3" value="Vận chuyển">Vận chuyển</option>
+                        <option key="4" value="Đang giao">Đang giao</option>
+                        <option key="5" value="Hoàn thành">Hoàn thành</option>
+                        <option key="6" value="Đã hủy">Đã hủy</option>
+                    </select>
+                </div>
+
+                <div class="">
+                    <select class="view-order_date" name="sort-by" onchange="javascript:document.form1.submit();">
+                        <option key="0" value="default">Sắp xếp đơn hàng theo</option>
+                        <option key="1" value="latest">Mới nhất</option>
+                        <option key="2" value="oldest">Cũ nhất</option>
+                    </select>
+                </div>
             </div>
             <div class="view-order_bottom">
               <table class=''>
@@ -115,54 +120,30 @@
                 </thead>
                 <!-- style={{ height: `${loading ? '0' : itemsPerPage * 70 + 20}px` }} -->
                 <tbody>
-
-                  <!-- KHI DB CHƯA CÓ ĐƠN HÀNG NÀO -->
-                  <!-- <div class="w-full h-full flex flex-col gap-4 mt-8 items-center">
-                    <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                      class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                    <div
-                      class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                      Chưa có đơn hàng nào được tạo ra
-                    </div>
-                  </div> -->
-
-                  <!-- KHI FILTER MÀ KHÔNG CÓ ĐƠN HÀNG NÀO HỢP LỆ -->
-                  <!-- <div class="w-full flex flex-col gap-4 items-center mt-8">
-                    <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                      class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                    <div
-                      class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                      Chưa có đơn hàng nào
-                      <p class="inline-block text-primary ml-[6px]">{filterRef.current.value}
-                      </p>
-                    </div>
-                  </div> -->
-
-                  <!-- Mỗi 1 thẻ tr là 1 hàng -->
-                  <tr class='view-order_item'>
-                    <td class='name '>
-                      <p class="">Đỗ Đức Hậu</p>
-                    </td>
-                    <td class='address'>
-                      <span class='text-[16px] line-clamp-2'>Quế Võ - Bắc Ninh</span>
-                    </td>
-                    <td class='phone'>
-                      <p class="">0912345678</p>
-                    </td>
-                    <td class='date'>
-                      <p class="">02/05/2023</p>
-                    </td>
-                    <td class='status'>
-                      <!-- Nếu status là Đã hủy thì phải đổi color thành text-primary -->
-                      <p>Hoàn thành</p>
-                    </td>
-                    <td class='detail'>
-                      <button class=''>
+                  <c:forEach items="${orderList}" var="p">
+                <tr class='view-order_item'>
+                  <td class='name'>
+                    <span class=''>${p.getOrder().getUser().getName()}</span>
+                  </td>
+                  <td class='address'>
+                    <span class=''>${p.getOrder().getOrderAddress().getAddress()}</span>
+                  </td>
+                  <td class='phone'>
+                    <span class=''>${p.getOrder().getOrderAddress().getPhoneNumber()}</span>
+                  </td>
+                  <td class='date'>
+                    <span class=''>${p.getOrder().getOrderTime()}</span>
+                  </td>
+                  <td class='status'>
+                    <span class=''>${p.orderStatus}</span>
+                  </td>
+                  <td class='detail'>
+                    <button class=''>
                         <span class=''>Xem chi tiết</span>
                       </button>
-                    </td>
-                  </tr>
-
+                  </td>
+                </tr>
+                </c:forEach>
                 </tbody>
               </table>
             </div>
@@ -172,6 +153,13 @@
             </div>
             )} -->
           </div>
+          <ul class="pagination">
+                <c:forEach begin="1" end="${page}" var="i">
+                  <li>
+                    <a href="admin-vieworder?index=${i}">${i}</a>
+                  </li>
+                </c:forEach>
+          </ul>
 
 
           <!-- Pagination -->

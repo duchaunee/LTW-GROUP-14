@@ -1,7 +1,6 @@
 .infoAccount_wrapper {
-  margin: 30px 0;
   max-width: 1230px;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .infoAccount_main {
@@ -15,4 +14,307 @@
 .info-voucher .title {
   color: #353535;
   display: block;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.info-voucher button {
+  margin-top: 20px;
+  width: 250px;
+  height: 40px;
+  background-color: var(--text-primary);
+  color: #fff;
+  font-size: 15px;
+  line-height: 37px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all ease-in 0.15s;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.info-voucher button:hover {
+  background-color: #a40206;
+  filter: brightness(0.97);
+}
+
+.info-voucher .value-voucher {
+  transition: all linear 0.2s;
+  /* margin-top: 16px; */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.info-voucher .value-voucher>table {
+  width: 250px;
+}
+
+.value-voucher>table thead {
+  display: block;
+  width: 100%;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 3px solid #ccc;
+}
+
+.value-voucher thead tr {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.value-voucher>table tbody {
+  width: 100%;
+}
+
+.value-voucher tbody tr {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 4px 0;
+}
+
+/* =================== */
+.infoAccount_main form .info-account {
+  width: 100%;
+  margin-bottom: 48px;
+  color: #222;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form .info-account .info {
+  color: #353535;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.info-account .avatar p {
+  margin-bottom: 8px;
+  font-weight: 700;
+  display: block;
+}
+
+.info-account .avatar .image {
+  width: 222px;
+  height: 222px;
+  background-color: #f2f5f8;
+  border: 2px dashed var(--text-bgPrimary);
+  border-radius: 4px;
+}
+
+.avatar .image label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.avatar .image i {
+  font-size: 26px;
+}
+
+.avatar .image span {
+  font-size: 16px;
+}
+
+.avatar .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info-account .avatar .title-sub {
+  display: block;
+  margin-top: 8px;
+  color: #353535;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.info-account .name .title {
+  margin-bottom: 8px;
+  font-weight: 700;
+  display: block;
+}
+
+.info-account .name input {
+  vertical-align: middle;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #333;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  transition: all linear 150ms;
+}
+
+.info-account .name input:focus {
+  box-shadow: var(--shadow-shadowPink);
+  border: 1px solid #ea4c8966;
+}
+
+.info-account .name span {
+  color: #353535;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/*  */
+
+.info-account .email .title {
+  margin-bottom: 8px;
+  font-weight: 700;
+  display: block;
+}
+
+.info-account .email input {
+  vertical-align: middle;
+  pointer-events: none;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #999;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+
+.info-account .email input::placeholder {
+  color: #999;
+}
+
+.info-account .email input:focus {
+  box-shadow: var(--shadow-shadowPink);
+  border: 1px solid #ea4c8966;
+}
+
+.info-account .email span {
+  color: #353535;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* ============= google ============= */
+form .changePass-google {
+  width: 100%;
+  color: #222;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.changePass-google p {
+  color: #353535;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.changePass-google span {
+  color: #353535;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* ============= email ============= */
+form .changePass-email {
+  width: 100%;
+  color: #222;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form .changePass-email .title {
+  color: #353535;
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.current-password label,
+.new-password label,
+.confirm-new-password label {
+  margin-bottom: 8px;
+  font-weight: 700;
+  display: block;
+}
+
+.current-password input,
+.new-password input,
+.confirm-new-password input {
+  vertical-align: middle;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #333;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  transition: all linear 150ms;
+}
+
+
+.current-password input:focus,
+.new-password input:focus,
+.confirm-new-password input:focus {
+  box-shadow: var(--shadow-shadowPink);
+  border: 1px solid #ea4c8966;
+}
+
+.current-password input::placeholder,
+.new-password input::placeholder,
+.confirm-new-password input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* BUTTON */
+.save-info {
+  margin-top: 20px;
+  width: 150px;
+  height: 40px;
+  background-color: var(--text-primary);
+  color: #fff;
+  font-size: 15px;
+  line-height: 37px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  transition: background-color ease-in 0.3s;
+}
+
+.save-info:hover {
+  background-color: #9f0206;
 }

@@ -16,32 +16,28 @@
   <div class="infoAccount_wrapper">
     <div class="infoAccount_main">
       <div class="info-voucher">
-        <span class='title text-[#353535] block text-[16px] font-bold uppercase '>Thông tin mã giảm
-          giá</span>
-        <button class='mt-[20px] w-[250px] h-10 bg-primary text-white text-[15px] leading-[37px]
-          font-bold tracking-[1px] uppercase transition-transform ease-in duration-500
-          focus:outline-none hover:bg-[#a40206]'>
-          Xem mã giảm giá hiện có
-        </button>
-        <div style={{ height: `${showVouchers ? vouchers.length * 32 + 38 : 0}px` }}
-          class={`${showVouchers || 'h-0 opacity-0' } transition-all ease-linear duration-200
-          mt-4`}>
-          <table class='w-[250px]'>
-            <thead
-              class='block w-full pb-2 mb-1 border-[3px] border-t-0 border-l-0 border-r-0 border-[#ccc]'>
-              <tr class='flex w-full justify-between'>
+        <span class='title'>Thông tin mã giảm giá</span>
+        <button class='toggle-voucher'> Xem mã giảm giá hiện có</button>
+        <div class="value-voucher">
+          <table class=''>
+            <thead class=''>
+              <tr class=''>
                 <td class="">Mã giảm giá</td>
                 <td class="">Giá trị (VNĐ)</td>
               </tr>
             </thead>
-            <tbody class='w-full'>
-              {vouchers.map((voucher) => (
-              <tr key={voucher.voucherID}
-                class="flex justify-between border border-t-0 border-l-0 border-r-0 border-[#ddd] py-1">
-                <td class="">{voucher.code}:</td>
-                <td class="">{solvePrice(voucher.value)}</td>
+            <tbody class=''>
+              <!-- Mỗi 1 thẻ tr này là 1 hàng voucher -->
+              <tr class="">
+                <td class="">GIAM100k:</td>
+                <td class="">100.000</td>
               </tr>
-              ))}
+
+              <tr class="">
+                <td class="">GIAM100k:</td>
+                <td class="">100.000</td>
+              </tr>
+
             </tbody>
           </table>
         </div>
@@ -51,115 +47,81 @@
                   background-position-x: -1.875rem;
                   background-size: 7.25rem .1875rem;
                   background-image: repeating-linear-gradient(45deg, #6fa6d6, #6fa6d6 33px, transparent 0, transparent 41px, #f18d9b 0, #f18d9b 74px, transparent 0, transparent 82px);
-                  margin: 24px 0;">
+                  margin: 32px 0;">
       </div>
 
-      <form onSubmit={handleSubmit}>
-        <div class="w-full mb-12 text-[#222] text-[14px] flex flex-col gap-5 ">
-          <span class='text-[#353535] block text-[16px] font-bold uppercase '>Thông tin tài
-            khoản</span>
-          <div class=''>
-            <label class='mb-2 font-bold block'>Ảnh hiển thị</label>
-            <UploadSquare src={src} srcURL={src.imgAvatar || localStorage.getItem('imgAvatar') ||
-              currentUser?.photoURL || "" } setSrc={setSrc} handleImageChange={handleUploadAvatar}
-              name='imgAvatar' text='Tải lên ảnh hiển thị' id='upload-avatar' width='w-[222px]' />
-            <span class='block mt-2 text-[#353535] text-[16px] italic'>Ảnh sẽ được tự động cắt
-              theo hình tròn khi tải lên</span>
+      <form>
+        <div class="info-account">
+          <span class='info'>Thông tin tài khoản</span>
+
+          <div class='avatar'>
+            <p class='mb-2 font-bold block'>Ảnh hiển thị</p>
+            <div class="image">
+              <label class='' for="upload-avatar">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span class=''>Tải lên ảnh hiển thị</span>
+
+                <!-- Khi src ảnh tải lên thì phải hiển thị ở đây và ẩn thẻ i + span bên trên đi -->
+                <!-- <img class='' src="https://source.unsplash.com/random" alt="" /> -->
+              </label>
+              <input type="file" name=imgAvatar id=upload-avatar hidden />
+            </div>
+            <span class='title-sub '>Ảnh sẽ được tự động cắt theo hình tròn khi tải lên</span>
           </div>
-          <p>
-            <label class='mb-2 font-bold block' htmlFor="account_display_name">Tên hiển thị
-              *</label>
-            <input // || "" là do lúc mới chạy, onAuthStateChanged để trong useEffect (nó gắn liền
-              với dispatch active user) vì thế lúc mới chạy, thằng infoChange.name lấy ra từ redux
-              nó bị "" và thằng localStorage.getItem('displayName') nó cũng bị null do chưa chạy đc
-              vào useEffect(chưa render xong UI), nên cả 2 thằng đó đều falsy thì mình sẽ lấy "" //
-              CÓ BUG: Nếu xóa hết tên thì nó không bị "" , mà sẽ getItem từ localStrogate và set lại
-              value, vì thế nếu muốn đặt tên khác thì phải copy paste vào, THÔI CHỊU KHÓ LAG 1 TÍ
-              CŨNG ĐC :V BỎ THẰNG LOCALSTROGATE ĐI // value={infoChange.name ||
-              localStorage.getItem('displayName') || "" } value={infoChange.name} onChange={(e)=>
-            updateInfoChange(e)}
-            name="name"
-            class='align-middle bg-white shadow-sm text-[#333] w-full h-10 outline-none border
-            border-solid border-[#ddd] text-[16px] px-3 mb-2 transition-all ease-linear duration-150
-            focus:shadow-shadowPink focus:border focus:border-[#ea4c8966]' id='account_display_name'
-            type="text" />
-            <span class='text-[#353535] text-[16px] italic'>Đây sẽ là cách mà tên của bạn sẽ
+
+          <p class="name">
+            <label class='title' htmlFor="account_display_name">Tên hiển thị *</label>
+            <input value='put your name here' name="name" class='' id='account_display_name'
+              type="text" />
+            <span class=''>Đây sẽ là cách mà tên của bạn sẽ
               được hiển thị trong phần tài khoản và trong phần đánh giá</span>
           </p>
 
-          <p>
-            <label class='mb-2 font-bold block'>Địa chỉ email *</label>
-            <input name="email" autoComplete="off" placeholder={displayEmail ||
-              localStorage.getItem('displayEmail') || "" }
-              class='align-middle pointer-events-none bg-white shadow-sm text-[#222] w-full h-10 outline-none border border-solid border-[#ddd] text-[16px] px-3 mb-2'
+          <p class="email">
+            <label class='title'>Địa chỉ email *</label>
+            <input name="email" autocomplete="off" placeholder="put your email here" class=''
               type="text" />
-            <span class='text-[#353535] text-[16px] italic'>Bạn không thể thay đổi email</span>
+            <span class=''>Bạn không thể thay đổi email</span>
           </p>
         </div>
-        {/* HIỆN ĐANG ĐĂNG NHẬP BẰNG TÀI KHOẢN GOOGLE */}
-        {/* NÓ BỊ NHẤP NHÁY DO NHẢY TỪ KHÔNG ĐĂNG NHẬP BẰNG GOOGLE -> ĐĂNG NHẬP BẰNG GOOGLE */}
-        {/* GIẢI QUYẾT LÀ LƯU BIẾN NÀY VÀO LOCAL STROGATE */}
-        {
-        isGoogleUser
-        ? <div class="w-full text-[#222] text-[14px] flex flex-col gap-5">
-          <span class='text-[#353535] block text-[16px] font-bold uppercase '>Thay đổi mật
-            khẩu</span>
-          <span class='text-[#353535] text-[16px] italic'>Bạn không thể thay đổi mật khẩu do
-            đang đăng nhập bằng tài khoản Google</span>
-        </div>
-        : <div class="w-full text-[#222] text-[14px] flex flex-col gap-5">
-          <span class='text-[#353535] block text-[16px] font-bold uppercase '>Thay đổi mật
-            khẩu</span>
-          <p>
-            <label class='mb-2 font-bold block' htmlFor="password_current">Mật khẩu hiện
+
+        <!-- NẾU PROVIDER CỦA USER LÀ GOOGLE THÌ HIỂN THỊ CÁI NÀY RA, KHÔNG CHO PHÉP ĐỔI MẬT KHẨU -->
+        <!-- <div class="changePass-google">
+          <p class=''>Thay đổi mật khẩu</p>
+          <span class=''>Bạn không thể thay đổi mật khẩu do đang đăng nhập bằng tài khoản
+            Google</span>
+        </div> -->
+
+        <!-- CÒN NẾU PROVIDER CỦA USER LÀ EMAIL THÌ HIỂN THỊ CÁI NÀY RA => ĐƯỢC PHÉP ĐỔI MẬT KHẨU -->
+        <div class="changePass-email">
+          <span class='title'>Thay đổi mật khẩu</span>
+
+          <p class="current-password">
+            <label class='' for="current-password">Mật khẩu hiện
               tại</label>
-            <input autoComplete="off" name="password" value={infoChange.password} onChange={(e)=>
-            updateInfoChange(e)}
-            placeholder='Bỏ trống nếu không đổi'
-            class='placeholder:italic align-middle bg-white shadow-sm text-[#333] w-full h-10
-            outline-none border border-solid border-[#ddd] text-[16px] px-3 mb-2 transition-all
-            ease-linear duration-150 focus:shadow-shadowPink focus:border focus:border-[#ea4c8966]'
-            id='password_current'
-            type="password" />
+            <input autocomplete="off" name="password" placeholder='Bỏ trống nếu không đổi' class=''
+              id='current-password' type="password" />
           </p>
 
-          <p>
-            <label class='mb-2 font-bold block' htmlFor="password_1">Mật khẩu mới</label>
-            <input value={infoChange.newPassword} autoComplete="off"
-              placeholder='Bỏ trống nếu không đổi' name="newPassword" onChange={(e)=>
-            updateInfoChange(e)}
-            class='placeholder:italic align-middle bg-white shadow-sm text-[#333] w-full h-10
-            outline-none border border-solid border-[#ddd] text-[16px] px-3 mb-2 transition-all
-            ease-linear duration-150 focus:shadow-shadowPink focus:border focus:border-[#ea4c8966]'
-            id='password_1'
-            type="password" />
+          <p class="new-password">
+            <label class='' for="new-password">Mật khẩu mới</label>
+            <input autocomplete="off" name="newPassword" placeholder='Bỏ trống nếu không đổi'
+              class='' id='new-password' type="password" />
           </p>
 
-          <p>
-            <label class='mb-2 font-bold block' htmlFor="password_2">Xác nhận mật khẩu
-              mới</label>
-            <input autoComplete="off" name="newPassword2" value={infoChange.newPassword2}
-              onChange={(e)=> updateInfoChange(e)}
-            class='align-middle bg-white shadow-sm text-[#333] w-full h-10 outline-none border
-            border-solid border-[#ddd] text-[16px] px-3 mb-2 transition-all ease-linear duration-150
-            focus:shadow-shadowPink focus:border focus:border-[#ea4c8966]'
-            id='password_2'
-            type="password" />
+          <p class="confirm-new-password">
+            <label class='' for="confirm-new-password">Xác nhận mật khẩu mới</label>
+            <input autocomplete="off" name="newPassword2" class='' id='confirm-new-password'
+              type="password" />
           </p>
         </div>
-        }
 
-        <button type="submit"
-          class='mt-[20px] w-[150px] h-10 bg-primary text-white text-[15px] leading-[37px] font-bold tracking-[1px] uppercase transition-transform ease-in duration-500 focus:outline-none hover:bg-[#a40206]'>
-          {loading ?
-          <Spinning /> : "Lưu thay đổi"}
-        </button>
+        <button type="submit" class='save-info'> Lưu thay đổi</button>
       </form>
     </div>
   </div>
 
-
-  <!-- <script src="scrtip.js"></script> -->
+  <script src="infoAccount.js"></script>
 </body>
 
 </html>

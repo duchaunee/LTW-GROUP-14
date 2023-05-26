@@ -7,5 +7,7 @@ toggleVoucher.addEventListener('click', () => {
     voucher.style.maxHeight = null;
   } else {
     voucher.style.maxHeight = voucher.scrollHeight + "px";
+    // 
+    voucher.style.marginTop = '16px'
   }
 })

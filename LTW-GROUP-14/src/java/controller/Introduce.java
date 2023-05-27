@@ -1,18 +1,15 @@
-package controller.admin;
+package controller;
 
-import dao.ProductDAO;
-import entity.Product;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="AdminShowProduct", urlPatterns={"/admin-viewproduct"})
-public class AdminViewProduct extends HttpServlet {
-    private final ProductDAO productDAO = new ProductDAO();
+@WebServlet(name="Introduce", urlPatterns={"/introduce"})
+public class Introduce extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -24,24 +21,32 @@ public class AdminViewProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Introduce</title>");  
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Introduce at " + request.getContextPath () + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     } 
 
-    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /** 
+     * Handles the HTTP <code>GET</code> method.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int size = productDAO.countProduct();
-        int page = size/3 + (size%3 == 0 ? 0:1);
-        String indexPage = request.getParameter("index");
-        if(indexPage == null) indexPage="1";
-        int index=Integer.parseInt(indexPage);
-        List<Product>productList = productDAO.findAll();
-        request.setAttribute("productList", productList);
-        request.setAttribute("page", page);
-        request.setAttribute("size", size);
-        request.setAttribute("current", index);
-        request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
+        request.getRequestDispatcher("FE/Introduce/introduce.jsp").forward(request, response);
     } 
 
     /** 
@@ -54,7 +59,7 @@ public class AdminViewProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
     /** 

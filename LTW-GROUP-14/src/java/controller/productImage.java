@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name="productImage", urlPatterns={"/productImage"})
-public class productImage extends HttpServlet {
+public class ProductImage extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -58,7 +58,7 @@ public class productImage extends HttpServlet {
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(productImage.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductImage.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         response.getOutputStream().close();

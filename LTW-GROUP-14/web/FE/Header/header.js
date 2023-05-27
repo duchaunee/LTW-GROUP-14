@@ -5,7 +5,7 @@ const navData = [
   },
   {
     name: 'Giới thiệu',
-    href: "/gioi-thieu"
+    href: "/introduce"
   },
   {
     name: 'Giày nữ',

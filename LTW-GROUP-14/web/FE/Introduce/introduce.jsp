@@ -21,7 +21,7 @@
                     <h1>GIỚI THIỆU</h1>
                 </div>
                 <div class="link">
-                    <a href="#">TRANG CHỦ  </a>/  GIỚI THIỆU kekeke
+                    <a href="#">TRANG CHỦ  </a>/  GIỚI THIỆU 
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
         <div id="content">
             <div class="section-content">
                 <div class="image-content">
-                    <img src="./Assets/image/03306320213d3356ce875921ff197762.jpg" alt="">
+                    <img src="http://mauweb.monamedia.net/converse/wp-content/uploads/2019/05/03306320213d3356ce875921ff197762.jpg" alt="">
 
                 </div>
                 <div class="tiltle-content">

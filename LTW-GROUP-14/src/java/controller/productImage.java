@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="productImage", urlPatterns={"/productImage"})
+@WebServlet(name="ProductImage", urlPatterns={"/productImage"})
 public class ProductImage extends HttpServlet {
    
     /** 

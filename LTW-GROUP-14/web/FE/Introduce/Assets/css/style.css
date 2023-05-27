@@ -42,8 +42,9 @@ html{
 
 }
 #content{
-    height: 1000px;
+    height: 1100px;
     max-width: 1230px;
+    margin: auto;
 }
 .section-content{
     display: flex;

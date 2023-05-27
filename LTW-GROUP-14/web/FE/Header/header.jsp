@@ -4,83 +4,77 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Header</title>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/CSS/reset.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/Header/header.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/CSS/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/Header/header.css">
+  </head>
+  
+  <style>
+  .header__logo--icon {
+    background-image: url("${pageContext.request.contextPath}/resources/imgPublic/logo.png");
+  }
+</style>
 
-<body>
-  <!-- <header class="header-wrapper">
-    <div class="header-main">
-      <div class="header-inner">
-        <div class="header-left">
-          <a href="">Đăng nhập / Đăng ký</a>
-        </div>
-        <div class="header-logo">
-          DUCHAU LOGO
-        </div>
-        <div class="header-right">
-          <div class="header-search">
-            <i class="fas fa-search"></i>
+
+  <body>
+    <div class="header">
+      <div class='header__inner'></div>
+      <header class='header__wrapper'>
+        <div class="header__main--1">
+          <div class="header__main--2">
+            <div class='header__left'>
+              <a href="/dang-nhap" class='header__left--text' href="">
+                Đăng nhập / Đăng ký
+              </a>
+            </div>
+
+            <a href="#" class="header__logo">
+              <div class="header__logo--icon"></div>
+            </a>
+
+            <div class="header__right">
+              <div class="header__right--search">
+                <i class="fas fa-search"></i>
+              </div>
+              <div class="header__right--text">
+                <span class="">
+                  Giỏ hàng / Thanh toán
+                </span>
+                <span class="header__right--cart">
+                  <i class="fas fa-shopping-cart"></i>
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="header-cart">
-            <span class="header-cart-title">
-              Giỏ hàng /
-              <span class="header-cart-price">1,250,000</span>
-              ₫
-            </span>
-            <span class="header-cart-icon">
-              <i class="fa fa-shopping-cart"></i>
-            </span>
+        </div>
+        <div class="header__nav--wrapper">
+          <div class="header__nav--main">
+            <ul class="header__nav--list">
+
+<!--               <a class='header__nav--item'>
+                <div class=''>
+                  Giày nam
+                </div>
+              </a> -->
+<!--              {navData.map((nav) => (
+              <Nav key={nav.name} name={nav.name} to={nav.to} />
+              ))} -->
+            </ul>
           </div>
         </div>
-      </div>
+      </header>
     </div>
-    <div class="header-bottom">
-      <div class="header-bottom-inner">
-        <ul class="header-nav">
-          <li class="menu-item active">
-            <a href="">Trang chủ</a>
-          </li>
 
-          <li class="menu-item">
-            <a href="">Giới thiệu</a>
-          </li>
-
-          <li class="menu-item">
-            <a href="">Giày nữ</a>
-          </li>
-
-          <li class="menu-item">
-            <a href="">Giày nam</a>
-          </li>
-
-          <li class="menu-item">
-            <a href=""> Giày trẻ em</a>
-          </li>
-
-          <li class="menu-item">
-            <a href="">Tin tức</a>
-          </li>
-
-          <li class="menu-item">
-            <a href="">Liên hệ</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </header> -->
-
-  <div class="header">
-  </div>
+    <!--  <div class="header">
+      </div>-->
 
   <script src="${pageContext.request.contextPath}/FE/Header/header.js"></script>
-</body>
+  </body>
 
 </html>

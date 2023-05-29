@@ -15,7 +15,16 @@
   <link rel="stylesheet" type="text/css" 
         href="${pageContext.request.contextPath}/FE/Admin/viewProduct/viewProduct.css">
 </head>
-
+<script>
+        function confirmDelete(){
+            confirm("Bạn có chắc muốn xóa sản phẩm này ?");
+        }
+        
+        function warningDelete(){
+            alert("Không thể xóa sản phẩm có trong đơn hàng");
+        }
+        
+    </script>
 <body>
     <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
   <div class='admin_wrapper'>
@@ -42,7 +51,7 @@
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/manage-account" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
@@ -171,18 +180,19 @@
                     </span>
                   </td>
                   <td class='action'>
-                    <button style="border: none" class="edit">
+                      <a href="/admin-editproduct?id=${p.id}"><button style="border: none" class="edit">
                       <i class="fas fa-edit"></i>
                       <FontAwesomeIcon
                         class='text-[18px] cursor-pointer text-bgPrimary hover:text-green-600 transition-all ease-linear duration-100'
-                        icon={faEdit} />
+                        icon={faEdit} /></a>
                     </button>
-                    <button style="border: none" class='remove'>
+                        <a href="/admin-deleteproduct?id=${p.id}"> <button style="border: none" class='remove' onclick="confirmDelete(${p.countNumberOfOrderDetail()})">
                       <i class="fas fa-trash-alt"></i>
                       <FontAwesomeIcon
                         class='text-[18px] cursor-pointer text-bgPrimary hover:text-primary transition-all ease-linear duration-100'
                         icon={faTrashAlt} />
                     </button>
+                      </a>
                   </td>
                 </tr>
                 </c:forEach>
@@ -210,7 +220,17 @@
     </div>
   </div>
     <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
+    <script>
+        function confirmDelete(id){
+            if(id === 0)
+                confirm("Bạn có chắc muốn xóa sản phẩm này ?");
+            else{
+                alert("Không thể xóa sản phẩm đang có đơn hàng");
+            }
+        }
 
+        
+    </script>
   <!-- <script src="./addProduct.js"></script> -->
 </body>
 

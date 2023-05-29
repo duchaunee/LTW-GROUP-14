@@ -72,7 +72,7 @@ public class ProductDAO extends DAO{
         return null;
     }
     public Product findByName(String name) throws Exception{
-        String query="select * from product where name=?";
+        String query="select * from product where name = ?";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
@@ -94,6 +94,7 @@ public class ProductDAO extends DAO{
             else{
             }
         }catch(Exception e){
+            System.out.println(e);
         }
         return null;
     }
@@ -121,7 +122,7 @@ public class ProductDAO extends DAO{
         return list;
     }
     
-    public void save(HttpServletRequest request){
+    public void save(HttpServletRequest request, Integer image_id){
         String query = "INSERT INTO product(name, price, inventory, category, brand, description, create_at, update_at, image_id)"
                       + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
@@ -135,7 +136,7 @@ public class ProductDAO extends DAO{
             ps.setString(6, request.getParameter("desc"));
             ps.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
             ps.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now()));
-            ps.setString(9, "9");
+            ps.setInt(9, image_id);
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println(e);
@@ -178,5 +179,17 @@ public class ProductDAO extends DAO{
         }catch(Exception e){
         }
         return 0;
+    }
+    
+    public void deleteById(Integer id){
+        String query = "DELETE FROM product where id = ?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareCall(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

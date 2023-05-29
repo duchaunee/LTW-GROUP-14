@@ -7,6 +7,7 @@ package dao;
 import connect.DBConnect;
 import entity.ImageProduct;
 import java.io.InputStream;
+import java.sql.Statement;
 
 /**
  *
@@ -38,19 +39,24 @@ public class ImageProductDAO extends DAO{
         return null;
     }
     
-    public void save(InputStream[] image){
+    public Integer save(InputStream[] image){
         String query = "INSERT INTO image_product (img, img_preview1, img_preview2, img_preview3, img_preview4) "
                      + "VALUES(?, ?, ?, ?, ?)";
         try{
             conn = new DBConnect().getConnection();
-            ps = conn.prepareStatement(query);
+            ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             for (int i = 0; i < image.length; i++){
                 ps.setBlob(i + 1, image[i]);
             }
             ps.executeUpdate();
+            rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
         }
         catch(Exception e){
             System.out.println(e);
         }
+        return null;
     }
 }

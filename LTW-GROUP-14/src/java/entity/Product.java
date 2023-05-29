@@ -1,6 +1,8 @@
 package entity;
 
+import dao.OrderItemDAO;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Product {
     private Integer id;
@@ -14,6 +16,11 @@ public class Product {
     private LocalDateTime updateAt;
     private Integer image_id;
 
+    public Integer countNumberOfOrderDetail(){
+        List<OrderItem> orderItemList = new OrderItemDAO().findByProduct(this.id);
+        return orderItemList.size();
+    }
+    
     public Integer getImage_id() {
         return image_id;
     }

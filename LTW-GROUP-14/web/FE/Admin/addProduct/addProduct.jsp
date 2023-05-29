@@ -89,7 +89,7 @@
 
               <div class="add-product_name">
                 <label for="product-name" class="">Tên sản phẩm</label>
-                <input required name='name' class="" autocomplete="off" type="text"
+                <input value="${product.name}" required name='name' class="" autocomplete="off" type="text"
                   id="product-name" placeholder="Nhập vào tên sản phẩm" />
               </div>
 
@@ -108,13 +108,13 @@
                 <div class="add-product_info">
                   <div class="price">
                     <label for="product-price" class="">Giá</label>
-                    <input required name="price" autocomplete="off" type="text" id="product-price"
+                    <input value="${product.price}" required name="price" autocomplete="off" type="text" id="product-price"
                       placeholder="Giá sản phẩm (VNĐ)" maxLength="7" />
                   </div>
 
                   <div class="inventory">
                     <label for="product-inventory">Số lượng tồn kho</label>
-                    <input required name="inventory" autocomplete="off" type="text"
+                    <input value="${product.inventory}" required name="inventory" autocomplete="off" type="text"
                       id="product-inventory" placeholder="Số lượng (Number)" maxLength="7" />
                   </div>
 
@@ -122,10 +122,13 @@
                     <label for="product-category">Loại</label>
                     <select required name="category" class="" autocomplete="off" type="text"
                       id="product-category" placeholder="Chọn loại sản phẩm">
+                      <c:if test="${product != null}">  
+                        <option value=${product.category} selected>${product.category}</option>
+                      </c:if>
                       <option key='0' value="">Chọn loại sản phẩm</option>
-                      <option key='1' value="giay-nam">Giày nam</option>
-                      <option key='2' value="giay-nu">Giày nữ</option>
-                      <option key='3' value="giay-tre-em">Giày trẻ em</option>
+                      <option key='1' value="Giày nam">Giày nam</option>
+                      <option key='2' value="Giày nữ">Giày nữ</option>
+                      <option key='3' value="Giày trẻ em">Giày trẻ em</option>
                     </select>
                   </div>
 
@@ -133,12 +136,15 @@
                     <label for="product-brand">Thương hiệu</label>
                     <select required name="brand" autocomplete="off" type="text" id="product-brand"
                       placeholder="Product Brand">
+                        <c:if test="${product != null}">
+                        <option value=${product.brand} selected>${product.brand}</option>
+                        </c:if>
                       <option key='0' value="">Chọn thương hiệu</option>
-                      <option key='1' value="classic">Classic</option>
-                      <option key='2' value="sunbaked">Sunbaked</option>
-                      <option key='3' value="chuck-07s">Chuck 07S</option>
-                      <option key='4' value="one-star">One Star</option>
-                      <option key='5' value="psy-kicks">PSY Kicks</option>
+                      <option key='1' value="Classic">Classic</option>
+                      <option key='2' value="Sunbaked">Sunbaked</option>
+                      <option key='3' value="Chuck 07s">Chuck 07S</option>
+                      <option key='4' value="One Star">One Star</option>
+                      <option key='5' value="Psy Kicks">PSY Kicks</option>
                     </select>
                   </div>
                 </div>
@@ -223,7 +229,6 @@
   </div>
     <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
 
-  <!-- <script src="./addProduct.js"></script> -->
 </body>
 
 </html>

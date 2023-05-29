@@ -27,39 +27,38 @@ public class AdminAddProduct extends HttpServlet {
 
    @Override
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-           throws ServletException, IOException {
-       request.setCharacterEncoding("UTF-8");
-       try {
-           InputStream[] image = new InputStream[5];
-           int n = 0;
-           for (Part part : request.getParts()) {
-               String fileName = extractFileName(part);
-               if (fileName != null && fileName.length() > 0) {
-                   image[n] = part.getInputStream();
-                   n += 1;
-               }
-           }
-           new ImageProductDAO().save(image);
-           new ProductDAO().save(request);
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        try {
+            InputStream[] image = new InputStream[5];
+            int n = 0;
+            for (Part part : request.getParts()) {
+                String fileName = extractFileName(part);
+                if (fileName != null && fileName.length() > 0) {
+                    image[n] = part.getInputStream();
+                    n += 1;
+                }
+            }
+            Integer image_id = new ImageProductDAO().save(image);
+            new ProductDAO().save(request, image_id);
             response.sendRedirect("/admin-viewproduct");
-       } catch (IOException | ServletException e) {
-           System.out.println(e);
+        } 
+        catch (IOException | ServletException e) {
+            System.out.println(e);
         }
-   }
+    }
 
-   private String extractFileName(Part part) {
-       String contentDisp = part.getHeader("content-disposition");
-       String[] items = contentDisp.split(";");
-       for (String s : items) {
-           if (s.trim().startsWith("filename")) {
-               String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
-               clientFileName = clientFileName.replace("\\", "/");
-               int i = clientFileName.lastIndexOf('/');
-               return clientFileName.substring(i + 1);
-           }
-       }
-       return null;
-   }
-
-
+    private String extractFileName(Part part) {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                String clientFileName = s.substring(s.indexOf("=") + 2, s.length() - 1);
+                clientFileName = clientFileName.replace("\\", "/");
+                int i = clientFileName.lastIndexOf('/');
+                return clientFileName.substring(i + 1);
+            }
+        }
+        return null;
+    }
 }

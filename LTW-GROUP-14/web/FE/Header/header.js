@@ -86,7 +86,6 @@ for (let i = 0; i < navData.length; i++) {
   const a = document.createElement("a");
   const div = document.createElement("div");
   a.setAttribute('class', 'header__nav--item')
-  a.setAttribute("href", navData[i].href);
   div.textContent = navData[i].name;
   a.appendChild(div)
   headerNavList.appendChild(a)

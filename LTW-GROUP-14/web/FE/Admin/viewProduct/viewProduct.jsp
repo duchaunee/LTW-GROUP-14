@@ -13,11 +13,11 @@
   <link rel="stylesheet" type="text/css" 
         href="${pageContext.request.contextPath}/FE/CSS/reset.css">
   <link rel="stylesheet" type="text/css" 
-        href="${pageContext.request.contextPath}/FE/Admin/viewProduct/viewProduct.css">
+        href="${pageContext.request.contextPath}/FE/Admin/viewProduct/viewProduct.css"> 
 </head>
 
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
+    <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" /> 
   <div class='admin_wrapper'>
     <div class="admin_main">
       <!-- /////////////////////////////////// TAB LEFT /////////////////////////////////////// -->
@@ -26,23 +26,23 @@
           <img class='' src="https://source.unsplash.com/random" alt="" />
           <span class=''>Your name here </span>
         </div>
-        <ul class='admin_leftTab'>
+        <ul class='admin_leftTab'> 
 
-          <a class='admin_leftItem'>
+          <a class='admin_leftItem'> 
             <div class=''>
-              <i style="font-size: 18px;" class="fas fa-home"></i>
-              <span class=''>Trở về trang chủ</span>
-            </div>
+              <i style="font-size: 18px;" class="fas fa-home"></i> 
+              <span class=''>Trở về trang chủ</span> 
+            </div> 
           </a>
 
-          <a class='admin_leftItem '>
+          <a class='admin_leftItem '> 
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-external-link-alt"></i>
               <span class=''>Thống kê cửa hàng</span>
             </div>
           </a>
 
-          <a href="/manage-account" class='admin_leftItem '>
+          <a href="/manage-account" class='admin_leftItem '> 
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
@@ -142,11 +142,11 @@
               <tbody>
                 <!-- mỗi sản phẩm là 1 hàng -->
                 
-                <c:forEach items="${productList}" var="p">
+                <c:forEach items="${productList}" var="p"> 
                 <tr class=''>
                   <td class='order'>
                     <span class=''>
-                      ${productList.indexOf(p) + 1+3*(current-1)}
+                      ${productList.indexOf(p) + 1+3*(current-1)} 
                       <!-- 
                         {(idx + 1) + itemsPerPage * (currentPage - 1)}  
                         ==> Công thức tính số thứ tự
@@ -154,7 +154,7 @@
                     </span>
                   </td>
                   <td class='info'>
-                    <img class='' src="/productImage?imgId=${p.image_id}&number=0" alt="" />
+                    <img class='' src="/productImage?imgId=${p.image_id}&number=0" alt="" /> 
                     <div class="">
                       <span class='name'>${p.name}</span>
                       <span class='desc'>
@@ -171,17 +171,17 @@
                     </span>
                   </td>
                   <td class='action'>
-                      <a href="/admin-editproduct?id=${p.id}"><button style="border: none" class="edit">
+                      <a href="/admin-editproduct?id=${p.id}"><button style="border: none" class="edit"> 
                       <i class="fas fa-edit"></i>
                       <FontAwesomeIcon
-                        class='text-[18px] cursor-pointer text-bgPrimary hover:text-green-600 transition-all ease-linear duration-100'
+                        class='text-[18px] cursor-pointer text-bgPrimary hover:text-green-600 transition-all ease-linear duration-100' 
                         icon={faEdit} /></a>
                     </button>
-                        <a href="/admin-deleteproduct?id=${p.id}"> <button style="border: none" class='remove' onclick="confirmDelete(${p.countNumberOfOrderDetail()})">
-                      <i class="fas fa-trash-alt"></i>
+                        <a href="/admin-deleteproduct?id=${p.id}"> <button style="border: none" class='remove' onclick="confirmDelete(${p.countNumberOfOrderDetail()})"> 
+                      <i class="fas fa-trash-alt"></i> 
                       <FontAwesomeIcon
-                        class='text-[18px] cursor-pointer text-bgPrimary hover:text-primary transition-all ease-linear duration-100'
-                        icon={faTrashAlt} />
+                        class='text-[18px] cursor-pointer text-bgPrimary hover:text-primary transition-all ease-linear duration-100' 
+                        icon={faTrashAlt} /> 
                     </button>
                       </a>
                   </td>
@@ -195,7 +195,7 @@
           <ul class="pagination">
                 <c:forEach begin="1" end="${page}" var="i">
                   <li>
-                    <a href="admin-viewproduct?index=${i}">${i}</a>
+                    <a href="admin-viewproduct?index=${i}">${i}</a> 
                   </li>
                 </c:forEach>
           </ul>
@@ -210,13 +210,13 @@
       </div>
     </div>
   </div>
-    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" /> 
     <script>
         function confirmDelete(id){
             if(id === 0)
-                confirm("Bạn có chắc muốn xóa sản phẩm này ?");
+                confirm("Bạn có chắc muốn xóa sản phẩm này ?"); 
             else{
-                alert("Không thể xóa sản phẩm đang có đơn hàng");
+                alert("Không thể xóa sản phẩm đang có đơn hàng"); 
             }
         }
 

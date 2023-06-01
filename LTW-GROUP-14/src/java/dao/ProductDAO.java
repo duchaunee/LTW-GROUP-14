@@ -204,7 +204,7 @@ public class ProductDAO extends DAO{
     }
     
     public void deleteById(Integer id){
-        String query = "DELETE FROM product where id = ?";
+        String query = "DELETE FROM Product where id = ?";
         try {
             conn = new DBConnect().getConnection();
             ps = conn.prepareCall(query);

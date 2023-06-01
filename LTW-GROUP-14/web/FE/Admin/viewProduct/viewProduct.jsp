@@ -15,16 +15,7 @@
   <link rel="stylesheet" type="text/css" 
         href="${pageContext.request.contextPath}/FE/Admin/viewProduct/viewProduct.css">
 </head>
-<script>
-        function confirmDelete(){
-            confirm("Bạn có chắc muốn xóa sản phẩm này ?");
-        }
-        
-        function warningDelete(){
-            alert("Không thể xóa sản phẩm có trong đơn hàng");
-        }
-        
-    </script>
+
 <body>
     <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
   <div class='admin_wrapper'>

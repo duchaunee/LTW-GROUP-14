@@ -1,10 +1,9 @@
 package service;
 
-import dao.OrderItemDAO;
 import dao.ProductDAO;
-import entity.OrderItem;
 import entity.Product;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 public class ProductService {
     
@@ -13,6 +12,14 @@ public class ProductService {
     public List<Product> findAll(){
         List<Product> productList = productDAO.findAll();
         return productList;
+    }
+    
+    public void save(HttpServletRequest request, Integer image_id){
+        productDAO.save(request, image_id);
+    }
+    
+    public void update(HttpServletRequest request){
+        productDAO.update(request);
     }
     
     public void deleteById(Integer id){

@@ -142,6 +142,28 @@ public class ProductDAO extends DAO{
             System.out.println(e);
         }
     }
+    
+    public void update(HttpServletRequest request){
+        String query = "UPDATE product SET name = ?, price = ?,"
+                     + "inventory = ?, category = ?, brand = ?, description = ?,"
+                     + "update_at = ? WHERE id = ?";
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, request.getParameter("name"));
+            ps.setString(2, request.getParameter("price"));
+            ps.setString(3, request.getParameter("inventory"));
+            ps.setString(4, request.getParameter("category"));
+            ps.setString(5, request.getParameter("brand"));
+            ps.setString(6, request.getParameter("desc"));
+            ps.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
+            ps.setInt(8, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     public List<Product>pagningProduct(Integer id){
         List<Product>list=new ArrayList<>();
         String query="select * from product order by id limit 3 offset ?";

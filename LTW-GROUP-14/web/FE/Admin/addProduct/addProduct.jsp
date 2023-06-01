@@ -99,8 +99,8 @@
                     <i class="fas fa-cloud-upload-alt"></i>
                     <span class=''>Tải lên ảnh sản phẩm</span>
                     <!-- Đây chính là src ảnh sau khi đã up lên để nó hiển thị trong khung -->
-                    <!-- <img class='w-full h-full object-cover object-center'
-                      src="https://source.unsplash.com/random" alt="" /> -->
+<!--                     <img class='w-full h-full object-cover object-center'
+                      src="/productImage?imgId=${product.image_id}&number=0" alt="" />-->
                   </label>
                   <input type="file" name="imgURL" id="upload-product" hidden />
                 </div>
@@ -108,13 +108,13 @@
                 <div class="add-product_info">
                   <div class="price">
                     <label for="product-price" class="">Giá</label>
-                    <input value="${product.price}" required name="price" autocomplete="off" type="text" id="product-price"
+                    <input required name="price" autocomplete="off" type="text" id="product-price"
                       placeholder="Giá sản phẩm (VNĐ)" maxLength="7" />
                   </div>
 
                   <div class="inventory">
                     <label for="product-inventory">Số lượng tồn kho</label>
-                    <input value="${product.inventory}" required name="inventory" autocomplete="off" type="text"
+                    <input required name="inventory" autocomplete="off" type="text"
                       id="product-inventory" placeholder="Số lượng (Number)" maxLength="7" />
                   </div>
 
@@ -122,9 +122,6 @@
                     <label for="product-category">Loại</label>
                     <select required name="category" class="" autocomplete="off" type="text"
                       id="product-category" placeholder="Chọn loại sản phẩm">
-                      <c:if test="${product != null}">  
-                        <option value=${product.category} selected>${product.category}</option>
-                      </c:if>
                       <option key='0' value="">Chọn loại sản phẩm</option>
                       <option key='1' value="Giày nam">Giày nam</option>
                       <option key='2' value="Giày nữ">Giày nữ</option>
@@ -136,9 +133,6 @@
                     <label for="product-brand">Thương hiệu</label>
                     <select required name="brand" autocomplete="off" type="text" id="product-brand"
                       placeholder="Product Brand">
-                        <c:if test="${product != null}">
-                        <option value=${product.brand} selected>${product.brand}</option>
-                        </c:if>
                       <option key='0' value="">Chọn thương hiệu</option>
                       <option key='1' value="Classic">Classic</option>
                       <option key='2' value="Sunbaked">Sunbaked</option>
@@ -153,7 +147,7 @@
               <div class="add-product_desc">
                 <label for="product-desscription">Mô tả sản phẩm</label>
                 <textarea required name="desc" cols="30" autocomplete="off"
-                  id="product-desscription" placeholder="Nhập vào mô tả sản phẩm"></textarea>
+                          id="product-desscription" placeholder="Nhập vào mô tả sản phẩm"></textarea>
               </div>
             </div>
 
@@ -165,7 +159,8 @@
                   <i class="fas fa-cloud-upload-alt"></i>
                   <span class='text-[16px]'>Tải lên ảnh sản phẩm</span>
                   <!-- Đây chính là src ảnh sau khi đã up lên để nó hiển thị trong khung -->
-                  <!-- <img class='w-full h-full object-cover object-center' src={srcURL} alt="" /> -->
+<!--                  <img class='w-full h-full object-cover object-center' 
+                       src="/productImage?imgId=${product.image_id}&number=1" alt="" />-->
                 </label>
                 <input type="file" name={name} id="product-preview-1" hidden />
               </div>
@@ -175,7 +170,8 @@
                   <i class="fas fa-cloud-upload-alt"></i>
                   <span class='text-[16px]'>Tải lên ảnh sản phẩm</span>
                   <!-- Đây chính là src ảnh sau khi đã up lên để nó hiển thị trong khung -->
-                  <!-- <img class='w-full h-full object-cover object-center' src={srcURL} alt="" /> -->
+<!--                  <img class='w-full h-full object-cover object-center' 
+                       src="/productImage?imgId=${product.image_id}&number=2" alt="" />-->
                 </label>
                 <input type="file" name={name} id="product-preview-2" hidden />
               </div>
@@ -185,7 +181,8 @@
                   <i class="fas fa-cloud-upload-alt"></i>
                   <span class='text-[16px]'>Tải lên ảnh sản phẩm</span>
                   <!-- Đây chính là src ảnh sau khi đã up lên để nó hiển thị trong khung -->
-                  <!-- <img class='w-full h-full object-cover object-center' src={srcURL} alt="" /> -->
+<!--                  <img class='w-full h-full object-cover object-center' 
+                       src="/productImage?imgId=${product.image_id}&number=3" alt="" />-->
                 </label>
                 <input type="file" name={name} id="product-preview-3" hidden />
               </div>
@@ -194,8 +191,9 @@
                 <label for="product-preview-4">
                   <i class="fas fa-cloud-upload-alt"></i>
                   <span class='text-[16px]'>Tải lên ảnh sản phẩm</span>
-                  <!-- Đây chính là src ảnh sau khi đã up lên để nó hiển thị trong khung -->
-                  <!-- <img class='w-full h-full object-cover object-center' src={srcURL} alt="" /> -->
+<!--                   Đây chính là src ảnh sau khi đã up lên để nó hiển thị trong khung 
+                  <img class='w-full h-full object-cover object-center'
+                    src="/productImage?imgId=${product.image_id}&number=4" alt="" />-->
                 </label>
                 <input type="file" name={name} id="product-preview-4" hidden />
               </div>

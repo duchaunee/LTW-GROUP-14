@@ -8,6 +8,9 @@ import connect.DBConnect;
 import entity.ImageProduct;
 import java.io.InputStream;
 import java.sql.Statement;
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import utils.Utils;
 
 /**
  *
@@ -39,14 +42,21 @@ public class ImageProductDAO extends DAO{
         return null;
     }
     
-    public Integer save(InputStream[] image){
-        String query = "INSERT INTO image_product (img, img_preview1, img_preview2, img_preview3, img_preview4) "
-                     + "VALUES(?, ?, ?, ?, ?)";
+    public Integer save(HttpServletRequest request){
+        List<InputStream> image = Utils.processImage(request);
+        String query = "INSERT INTO image_product (img";
+        String value = ")VALUES(?";
+        if(image.isEmpty()) return null;
+        for(int i = 1; i < image.size(); i++){
+            query += ", img_preview" + i;
+            value += ", ?";
+        }
+        query += value + ")";
         try{
             conn = new DBConnect().getConnection();
             ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            for (int i = 0; i < image.length; i++){
-                ps.setBlob(i + 1, image[i]);
+            for (int i = 0; i < image.size(); i++){
+                ps.setBlob(i + 1, image.get(i));
             }
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
@@ -58,5 +68,29 @@ public class ImageProductDAO extends DAO{
             System.out.println(e);
         }
         return null;
+    }
+    
+    public void update(HttpServletRequest request){
+        Integer id = Integer.valueOf(request.getParameter("image_id"));
+        List<InputStream> image = Utils.processImage(request);
+        String query = "UPDATE image_product SET img = ?";
+        if(image.isEmpty()) return;
+        for(int i = 1; i < image.size(); i++){
+            query += ", img_preview" + i + " = ?";
+        }
+        query += "WHERE id = ?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            for (int i = 0; i < image.size(); i++){
+                ps.setBlob(i + 1, image.get(i));
+            }
+            ps.setInt(image.size() + 1, id);
+            ps.executeUpdate();
+            rs = ps.getGeneratedKeys();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

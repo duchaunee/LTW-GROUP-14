@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,8 +121,9 @@
                   <div class="category">
                     <label for="product-category">Loại</label>
                     <select required name="category" class="" autocomplete="off" type="text"
-                        <option value="${product.category}">${product.category}</option>
-                        id="product-category" placeholder="Chọn loại sản phẩm">
+                            id="product-category" placeholder="Chọn loại sản phẩm">
+                        <option value="${product.category}" selected>${product.category}</option>
+                        
                         <option key='0' value="">Chọn loại sản phẩm</option>
                         <c:if test="${!product.category.equals('Giày nam')}">
                             <option key='1' value="Giày nam">Giày nam</option>
@@ -133,18 +136,28 @@
                         </c:if>
                     </select>
                   </div>
-
+                    
                     <div class="brand">
                       <label for="product-brand">Thương hiệu</label>
                       <select required name="brand" autocomplete="off" type="text" id="product-brand"
                         placeholder="Product Brand">
+                        <option value="${product.brand}" selected="">${product.brand}</option>
                         <option key='0' value="">Chọn thương hiệu</option>
-                        <option key='0' value="">Chọn thương hiệu</option>
-                        <option key='1' value="classic">Classic</option>
-                        <option key='2' value="sunbaked">Sunbaked</option>
-                        <option key='3' value="chuck-07s">Chuck 07S</option>
-                        <option key='4' value="one-star">One Star</option>
-                        <option key='5' value="psy-kicks">PSY Kicks</option>
+                        <c:if test="${!product.brand.equals('Classic')}">
+                            <option key='1' value="Classic">Classic</option>
+                        </c:if>
+                        <c:if test="${!product.brand.equals('Sunbaked')}"> 
+                            <option key='2' value="Sunbaked">Sunbaked</option>
+                        </c:if>
+                        <c:if test="${!product.brand.equals('Chuck 07S')}">
+                            <option key='3' value="Chuck 07s">Chuck 07S</option>
+                        </c:if>
+                        <c:if test="${!product.brand.equals('One Star')}">
+                            <option key='4' value="One Star">One Star</option>
+                        </c:if>
+                        <c:if test="${!product.brand.equals('PSY Kicks')}">
+                            <option key='5' value="Psy Kicks">PSY Kicks</option>
+                        </c:if>
                       </select>
                     </div>
                 </div>

@@ -2,29 +2,28 @@ package utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 public class Utils {
     
-    public static InputStream[] processImage(HttpServletRequest request){
+    public static List<InputStream> processImage(HttpServletRequest request){
+        List<InputStream> image = new ArrayList<>();
         try {
-            InputStream[] image = new InputStream[5];
-            int n = 0;
             for (Part part : request.getParts()) {
                 String fileName = extractFileName(part);
                 if (fileName != null && fileName.length() > 0) {
-                    image[n] = part.getInputStream();
-                    n += 1;
+                    image.add(part.getInputStream());
                 }
             }
-            return image;
         }
         catch(IOException | ServletException e){
             System.out.println(e);
         }
-        return null;
+        return image;
     }
     
     private static String extractFileName(Part part) {

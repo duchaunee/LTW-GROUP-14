@@ -35,8 +35,8 @@ public class AdminViewProduct extends HttpServlet {
         int page = size/3 + (size%3 == 0 ? 0:1);
         String indexPage = request.getParameter("index");
         if(indexPage == null) indexPage="1";
-        int index=Integer.parseInt(indexPage);
-        List<Product>productList = productDAO.findAll();
+        int index = Integer.parseInt(indexPage);
+        List<Product>productList = productDAO.pagningProduct(index);
         request.setAttribute("productList", productList);
         request.setAttribute("page", page);
         request.setAttribute("size", size);

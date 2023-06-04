@@ -28,10 +28,9 @@ public class AdminDeleteProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
-        Integer ID = Integer.valueOf(request.getParameter("id"));
-        new ProductService().deleteById(ID);
-        response.sendRedirect("/admin-viewproduct") ;
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        new ProductService().deleteById(id);
+        response.sendRedirect("/admin-viewproduct");
     } 
 
     /** 
@@ -44,7 +43,7 @@ public class AdminDeleteProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response) ;
+        processRequest(request, response);
     }
 
     /** 

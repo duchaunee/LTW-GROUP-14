@@ -17,6 +17,8 @@
 </head>
 
 <body>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
+
   <div class='admin_wrapper'>
     <div class="admin_main">
       <!-- /////////////////////////////////// TAB LEFT /////////////////////////////////////// -->
@@ -27,7 +29,7 @@
         </div>
         <ul class='admin_leftTab'>
 
-          <a class='admin_leftItem'>
+            <a href="/" class='admin_leftItem'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-home"></i>
               <span class=''>Trở về trang chủ</span>
@@ -41,28 +43,28 @@
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/manage-account" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-viewproduct" class='admin_leftItem '>
             <div class=''>
               <i class="fas fa-mountain"></i>
               <span class=''>Xem sản phẩm</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-addproduct" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-plus"></i>
               <span class=''>Thêm sản phẩm</span>
             </div>
           </a>
 
-          <a class='admin_leftItem active'>
+          <a href="/admin-vieworder" class='admin_leftItem active'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-folder"></i>
               <span class=''>Xem đơn đặt hàng</span>
@@ -196,6 +198,8 @@
       localStorage.setItem('prevLocation', window.scrollY);
     })
   </script>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
+
 </body>
 
 </html>

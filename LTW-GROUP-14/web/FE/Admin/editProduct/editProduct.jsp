@@ -35,35 +35,35 @@
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-statistics" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-external-link-alt"></i>
               <span class=''>Thống kê cửa hàng</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/manage-account" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-viewproduct" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i class="fas fa-mountain"></i>
               <span class=''>Xem sản phẩm</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-addproduct" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-plus"></i>
               <span class=''>Thêm sản phẩm</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-vieworder" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-folder"></i>
               <span class=''>Xem đơn đặt hàng</span>

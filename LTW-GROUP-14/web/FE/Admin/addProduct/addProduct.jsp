@@ -30,42 +30,42 @@
         </div>
         <ul class='admin_leftTab'>
 
-          <a class='admin_leftItem'>
+          <a  class='admin_leftItem'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-home"></i>
               <span class=''>Trở về trang chủ</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/FE/Admin/statistics/statistics.jsp" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-external-link-alt"></i>
               <span class=''>Thống kê cửa hàng</span>
             </div>
           </a>
 
-          <a href="/manage-account" class='admin_leftItem '>
+          <a href="/manage-account" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
             </div>
           </a>
 
-            <a href="/admin-viewproduct" class='admin_leftItem '>
+            <a href="/admin-viewproduct" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i class="fas fa-mountain"></i>
               <span class=''>Xem sản phẩm</span>
             </div>
           </a>
 
-          <a href="#" class='admin_leftItem active'>
+          <a href="#" style="text-decoration: none; color: white;" class='admin_leftItem active'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-plus"></i>
               <span class=''>Thêm sản phẩm</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/FE/Admin/viewOrder/viewOrder.jsp" style="text-decoration: none; color: black;" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-folder"></i>
               <span class=''>Xem đơn đặt hàng</span>

@@ -4,7 +4,6 @@
  */
 package controller.admin;
 
-import dao.OrderItemDAO;
 import entity.OrderItem;
 import java.io.IOException;
 import java.util.List;
@@ -13,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.OrderItemService;
 
 /**
  *
@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AdminViewOrder", urlPatterns = {"/admin-vieworder"})
 public class AdminViewOrder extends HttpServlet {
-    private OrderItemDAO orderItemDAO=new OrderItemDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -32,15 +31,9 @@ public class AdminViewOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int size=orderItemDAO.countOrderItem();
-        int page=size/5+(size%5==0?0:1);
-        String indexPage=request.getParameter("index");
-        if(indexPage==null) indexPage="1";
-        int index=Integer.parseInt(indexPage);
-        List<OrderItem>orderList=orderItemDAO.pagningOrderItem(index);
-        request.setAttribute("orderList", orderList);
-        request.setAttribute("page", page);
-        request.setAttribute("size", size);
+        List<OrderItem> orderItemList = new OrderItemService().pagingOrderItem(request);
+        request.setAttribute("orderItemList", orderItemList);
+        
         request.getRequestDispatcher("FE/Admin/viewOrder/viewOrder.jsp").forward(request, response);
     } 
 

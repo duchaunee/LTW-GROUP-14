@@ -1,7 +1,6 @@
-package com.registrationSevlet;
+package authentication;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 import javax.servlet.RequestDispatcher;

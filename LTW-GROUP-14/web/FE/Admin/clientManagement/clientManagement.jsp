@@ -41,14 +41,14 @@
             </div>
           </a>
 
-          <a class='admin_leftItem active'>
+          <a class='admin_leftItem active' >
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+            <a href="/admin-viewproduct" class='admin_leftItem '>
             <div class=''>
               <i class="fas fa-mountain"></i>
               <span class=''>Xem sản phẩm</span>
@@ -62,7 +62,7 @@
             </div>
           </a>
 
-          <a class='admin_leftItem '>
+          <a href="/admin-vieworder" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-folder"></i>
               <span class=''>Xem đơn đặt hàng</span>

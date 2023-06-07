@@ -30,7 +30,7 @@
         </div>
         <ul class='admin_leftTab'>
 
-          <a  class='admin_leftItem'>
+          <a href="/" class='admin_leftItem'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-home"></i>
               <span class=''>Trở về trang chủ</span>
@@ -58,7 +58,7 @@
             </div>
           </a>
 
-          <a href="#" style="text-decoration: none; color: white;" class='admin_leftItem active'>
+          <a href="/admin-addproduct" style="text-decoration: none; color: white;" class='admin_leftItem active'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-plus"></i>
               <span class=''>Thêm sản phẩm</span>

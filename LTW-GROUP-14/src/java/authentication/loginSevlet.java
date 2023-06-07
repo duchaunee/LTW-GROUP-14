@@ -1,4 +1,4 @@
-package com.registrationSevlet;
+package authentication;
 
 import java.io.IOException;
 import java.sql.Connection;

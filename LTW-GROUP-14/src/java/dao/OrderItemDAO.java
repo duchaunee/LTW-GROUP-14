@@ -106,4 +106,29 @@ public class OrderItemDAO extends DAO{
         }
         return orderItemList;
     }
+    
+    public List<OrderItem> findByOrder(Integer order_id){
+        String query = "SELECT * FROM order_item where order_id = ?";
+        List<OrderItem> orderItemList = new ArrayList<>();
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, order_id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Order order = new OrderDAO().findById(rs.getInt("order_id"));
+                Product product = new ProductDAO().findById(rs.getInt("product_id"));
+                OrderItem orderItem = new OrderItem(rs.getInt("id"),
+                                                    order,
+                                                    product,
+                                                    rs.getString("order_status"),
+                                                    rs.getInt("quantity"));
+                orderItemList.add(orderItem);
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return orderItemList;
+    }
 }

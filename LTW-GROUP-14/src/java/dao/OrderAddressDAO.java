@@ -52,4 +52,29 @@ public class OrderAddressDAO extends DAO{
         }
         return null;
     }
+    public int save(String city, String district, String ward, String address, String phoneNumber, String note, String paymentMethod){
+        String query="insert into order_address (city, district, ward, address, phone_number, note, paymentMethod)\n" +
+"values (?, ?, ?, ?, ?, ?, ?)";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, city);
+            ps.setString(2, district);
+            ps.setString(3, ward);
+            ps.setString(4, address);
+            ps.setString(5, phoneNumber);
+            ps.setString(6, note);
+            ps.setString(7, paymentMethod);
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    return generatedId;
+                }
+            }
+        }catch(Exception e){
+        }
+        return 1;
+    }
 }

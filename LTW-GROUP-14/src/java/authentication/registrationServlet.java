@@ -19,9 +19,9 @@ public class registrationServlet extends HttpServlet {
        
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String Cpassword = request.getParameter("Cpassword");
+		String name = request.getParameter("name");
 		String email = request.getParameter("email"); 
-		String password = request.getParameter("password"); 
+		String password = request.getParameter("pass"); 
 		RequestDispatcher dispatcher = null;
 		Connection con = null;
 			
@@ -31,15 +31,12 @@ public class registrationServlet extends HttpServlet {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoesdatabase?useSSL=false","root","1234");
 			PreparedStatement pst = con.prepareStatement("insert into user(name,email,password) value(?,?,?)");
-			if(password == null ? Cpassword == null : password.equals(Cpassword)){
-                        pst.setString(1, "user");
-                            pst.setString(2, email);
-                            pst.setString(3, password);
-                        }
-                            
-   
+			pst.setString(1, name);
+			pst.setString(2, email);
+			pst.setString(3, password);
+			
 			int rowCount = pst.executeUpdate();
-			dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher = request.getRequestDispatcher("registration.jsp");
 			if(rowCount > 0) {
 				request.setAttribute("status", "success");
 			}

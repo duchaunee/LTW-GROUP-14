@@ -186,8 +186,7 @@
               </button>
             </li>
             <div class="pagination-center">
-              <button class=''>1</button>
-              <button class=''>2</button>
+                <a href="url" style="text-decoration: none"><button class=''>1</button></a>
               <li class=''>
                 <i class="fas fa-ban"></i>
               </li>

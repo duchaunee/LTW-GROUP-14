@@ -63,7 +63,7 @@ public class OrderItemDAO extends DAO{
         }
         return 0;
     }
-    public OrderItem findById(Integer Id) throws Exception{
+    public OrderItem findById(Integer Id){
         String query="select * from order_item where id=?";
         try{
             conn = new DBConnect().getConnection();

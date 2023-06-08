@@ -49,4 +49,21 @@ public class VoucherDAO extends DAO{
         }
         return null;
     }
+    public int findByCode(Integer userId, String code) {
+        String query="select value from voucher where user_id=? and name=?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setInt(1, userId);
+            ps.setString(2, code);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                return rs.getInt("value");
+            }
+            else{
+            }
+        }catch(Exception e){
+        }
+        return 0;
+    }
 }

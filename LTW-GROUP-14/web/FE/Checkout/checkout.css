@@ -1,0 +1,362 @@
+.checkout_wrapper {
+  width: 100%;
+  padding: 30px 0;
+}
+
+.checkout_main {
+  max-width: 1230px;
+  margin: 0 auto;
+}
+
+.checkout_body {
+  width: 100%;
+  padding: 0 15px 30px;
+}
+
+.checkout {
+  width: 100%;
+  display: flex;
+}
+
+.checkout-child {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.checkout-left {
+  flex-basis: 58.33%;
+  padding-right: 30px;
+}
+
+.checkout-left .title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: var(--text-bgPrimary);
+  text-transform: uppercase;
+}
+
+.checkout-left .info {
+  width: 100%;
+  color: #222;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.info .name>label,
+.info .email>label,
+.info .city>label,
+.info .district>label,
+.info .wards>label,
+.info .address>label,
+.info .phone>label,
+.info .note>label {
+  margin-bottom: 8px;
+  font-weight: 700;
+  display: block;
+}
+
+.info .name>input {
+  vertical-align: middle;
+  pointer-events: none;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #222;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  transition: all linear 150ms;
+}
+
+.info .name>input::placeholder {
+  color: #999;
+}
+
+.info .name>input:focus {
+  box-shadow: var(--shadow-shadowPink);
+  border-color: #ea4c8966;
+}
+
+.info .name>span,
+.info .email>span {
+  color: #353535;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.info .email>input {
+  vertical-align: middle;
+  pointer-events: none;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #333;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+  transition: all linear 150ms;
+}
+
+.info .email>input::placeholder {
+  color: #999;
+}
+
+.info .city>input,
+.info .district>input,
+.info .wards>input,
+.info .address>input,
+.info .phone>input {
+  vertical-align: middle;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #222;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+
+.info .note>textarea {
+  /* vertical-align: middle; */
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: #222;
+  padding: 0 12px;
+  padding-top: 12px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+}
+
+/* ============ RIGHT ============= */
+.checkout-right {
+  align-self: flex-start;
+  flex: 1 1 0%;
+  padding: 15px 30px 30px;
+  border: 2px solid var(--text-primary);
+}
+
+.checkout-right .title {
+  width: 100%;
+  border-bottom: 3px solid #ececec;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.checkout-right .title h1 {
+  margin-bottom: 16px;
+}
+
+.checkout-right .title>div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-right .title h2 {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+.checkout-right .product {
+  padding: 16px 0;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.checkout-right .product .name {
+  color: #666;
+  grid-column: span 5 / span 5;
+}
+
+.checkout-right .product .quantity {
+  color: var(--text-bgPrimary);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.checkout-right .product .price {
+  font-weight: 700;
+  grid-column: span 2 / span 2;
+  display: inline-block;
+  text-align: right;
+}
+
+.checkout-right .total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.checkout-right .total span {
+  font-weight: 700;
+}
+
+.checkout-right .delivery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 16px 0;
+  font-size: 14px;
+}
+
+.checkout-right .delivery p {
+  text-align: right;
+}
+
+.checkout-right .delivery span {
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.checkout-right .discount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+.checkout-right .discount span {
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.checkout-right .totalPayment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid #ddd;
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+.checkout-right .totalPayment span {
+  font-weight: 700;
+}
+
+.checkout-right .voucher {
+  border-bottom: 3px solid #ddd;
+  padding-bottom: 12px;
+}
+
+.checkout-right .voucher .title {
+  display: flex;
+  padding-top: 24px;
+  gap: 12px;
+}
+
+.voucher .title i {
+  color: #b0b0b0;
+  font-size: 16px;
+  transform: rotate(90deg);
+}
+
+.voucher .title p {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.checkout-right .voucher input {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  width: 100%;
+  padding: 8px 12px;
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.checkout-right .voucher input:focus {
+  box-shadow: var(--shadow-shadowPink);
+}
+
+.checkout-right .voucher button {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #666;
+  transition: all ease-in-out 0.15s;
+  cursor: pointer;
+}
+
+.checkout-right .voucher button:hover {
+  background-color: #c7c7c7;
+}
+
+.checkout-right .method {
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.checkout-right .method>div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.checkout-right .method .cash,
+.checkout-right .method .bank {
+  display: flex;
+  gap: 4px;
+}
+
+.method .cash label,
+.method .bank label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.checkout-right .method button {
+  padding: 12px 24px;
+  background-color: var(--text-secondary);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  transition: all ease-in-out 0.15s;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.checkout-right .method button:hover {
+  filter: brightness(0.9);
+}

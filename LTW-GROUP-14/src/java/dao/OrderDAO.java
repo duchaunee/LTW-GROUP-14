@@ -41,7 +41,7 @@ public class OrderDAO extends DAO{
         }
         return list;
     }
-    public Order findById(Integer Id) throws Exception{
+    public Order findById(Integer Id){
         String query="select * from purchase_order where id=?";
         try{
             conn = new DBConnect().getConnection();

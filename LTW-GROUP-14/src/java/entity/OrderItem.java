@@ -1,5 +1,7 @@
 package entity;
 
+import utils.Utils;
+
 public class OrderItem {
     private Integer id;
     private Order order;
@@ -16,6 +18,11 @@ public class OrderItem {
         this.product = product;
         this.orderStatus = orderStatus;
         this.quantity = quantity;
+    }
+    
+    public String displayAmount(){
+        Integer amount = this.getProduct().getPrice() * this.quantity;
+        return Utils.formatCurrency(amount);
     }
 
     public Integer getId() {

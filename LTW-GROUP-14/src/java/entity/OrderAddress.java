@@ -4,17 +4,17 @@ public class OrderAddress {
     private Integer id;
     private String city;
     private String district;
-    private String wards;
+    private String ward;
     private String address;
     private String phoneNumber;
     private String note;
     private String paymentMethod;
 
-    public OrderAddress(Integer id, String city, String district, String wards, String address, String phoneNumber, String note, String paymentMethod) {
+    public OrderAddress(Integer id, String city, String district, String ward, String address, String phoneNumber, String note, String paymentMethod) {
         this.id = id;
         this.city = city;
         this.district = district;
-        this.wards = wards;
+        this.ward = ward;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.note = note;
@@ -48,12 +48,12 @@ public class OrderAddress {
         this.district = district;
     }
 
-    public String getWards() {
-        return wards;
+    public String getWard() {
+        return ward;
     }
 
-    public void setWards(String wards) {
-        this.wards = wards;
+    public void setWard(String ward) {
+        this.ward = ward;
     }
 
     public String getAddress() {

@@ -51,7 +51,7 @@ public class OrderItemDAO extends DAO{
         return list;
     }
     public int countOrderItem(){
-        String query="select count(*) from order_item";
+        String query="select count(id) from order_item";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import utils.Utils;
 
 public class Order {
     private Integer id;
@@ -18,8 +19,16 @@ public class Order {
     private LocalDateTime createAt;
     private List<OrderItem> orderItemList = new ArrayList<>();
     
+    public String displayOrderDate(){
+        return Utils.formatDate(this.orderTime);
+    }
+    
     public String displayOrderTime(){
-        return this.orderTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return Utils.formatDateTime(this.orderTime);
+    }
+    
+    public String displayDeliveryfee(){
+        return Utils.formatCurrency(this.deliveryfee);
     }
 
     public List<OrderItem> getOrderItemList() {

@@ -155,7 +155,7 @@
                       <p class="">${orderItem.order.orderAddress.phoneNumber}</p>
                     </td>
                     <td class='date'>
-                      <p class="">${orderItem.order.displayOrderTime()}</p>
+                      <p class="">${orderItem.order.displayOrderDate()}</p>
                     </td>
                     <td class='status'>
                       <!-- Nếu status là Đã hủy thì phải đổi color thành text-primary -->
@@ -163,7 +163,8 @@
                     </td>
                     <td class='detail'>
                       <button class=''>
-                        <span class=''>Xem chi tiết</span>
+                          <a href="/view-orderdetail?id=${orderItem.id}" style="text-decoration: none; color: #fff">
+                              Xem chi tiết</a>
                       </button>
                     </td>
                   </tr>
@@ -201,6 +202,13 @@
           <Route path='add-product/:id' element={<AddProduct />} />
           <Route path='view-orders/:id' element={<ViewOrders />} />
         </Routes> -->
+        <ul class="pagination">
+            <c:forEach begin="1" end="${totalPage}" var="i">
+              <li>
+                <a href="admin-vieworder?page=${i}">${i}</a>
+              </li>
+            </c:forEach>
+      </ul>
       </div>
     </div>
   </div>

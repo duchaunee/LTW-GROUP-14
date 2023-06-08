@@ -2,8 +2,12 @@ package utils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
@@ -38,5 +42,19 @@ public class Utils {
             }
         }
         return null;
+    }
+    
+    public static String formatDate(LocalDateTime dateTime){
+        return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+    
+    public static String formatDateTime(LocalDateTime dateTime){
+        return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm:ss"));
+    }
+    
+    public static String formatCurrency(Integer money){
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        return currencyVN.format(money);
     }
 }

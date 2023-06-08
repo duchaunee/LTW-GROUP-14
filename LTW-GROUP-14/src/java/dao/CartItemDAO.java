@@ -49,4 +49,61 @@ public class CartItemDAO extends DAO{
         }
         return null;
     }
+    public List<CartItem> findByCartID(int cartId) {
+        List<CartItem>list=new ArrayList<>();
+        String query="select * from cart_item where cart_id=?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setInt(1, cartId);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                list.add(new CartItem(rs.getInt(1), pDAO.findById(rs.getInt(2)), cDAO.findById(rs.getInt(3)) , 
+                        rs.getInt(4),rs.getTimestamp(5).toLocalDateTime()));
+            }
+        }catch(Exception e){
+        }
+        return list;
+    }
+    public void deleteByCartId(Integer cartId) {
+        String query = "DELETE FROM cart_item WHERE cart_id = ?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, cartId);
+            int rowsAffected = ps.executeUpdate();
+        } catch (Exception e) {
+        } 
+    }
+    public void deleteById(Integer Id) {
+        String query = "DELETE FROM cart_item WHERE id = ?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, Id);
+            int rowsAffected = ps.executeUpdate();
+        } catch (Exception e) {
+        } 
+    }
+    public void increasingQuantity(Integer Id) {
+        
+        String query="update cart_item set quantity=quantity+1 where id=?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, Id);
+            int rowsAffected = ps.executeUpdate();
+        } catch (Exception e) {
+        } 
+    }
+    public void decreasingQuantity(Integer Id) {
+        String query="update cart_item set quantity=quantity-1 where id=?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, Id);
+            int rowsAffected = ps.executeUpdate();
+        } catch (Exception e) {
+        } 
+    }
 }

@@ -202,7 +202,18 @@ public class ProductDAO extends DAO{
         }
         return 0;
     }
-    
+    public void updateQuantity(Integer id, Integer newQuantity){
+        String query = "UPDATE product SET inventory =  ? WHERE id = ?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setInt(1, newQuantity);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        }catch(Exception e){
+        }
+        
+    }
     public void deleteById(Integer id){
         String query = "DELETE FROM product where id = ?";
         try {

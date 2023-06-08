@@ -22,7 +22,7 @@ public class loginSevlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email =  request.getParameter("username");
+		String email =  request.getParameter("email");
 		String password =  request.getParameter("password");
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher = null;
@@ -37,7 +37,7 @@ public class loginSevlet extends HttpServlet {
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()) {
 				session.setAttribute("email", rs.getString("email"));
-				dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher = request.getRequestDispatcher("mainpage.jsp");
 			} else {
 				request.setAttribute("status", "failed");
 				dispatcher = request.getRequestDispatcher("login.jsp");

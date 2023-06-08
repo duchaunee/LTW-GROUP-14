@@ -31,7 +31,7 @@ public class CartDAO extends DAO{
         }
         return list;
     }
-    public Cart findById(Integer Id) throws Exception{
+    public Cart findById(Integer Id){
         String query="select * from cart where id=?";
         try{
             conn = new DBConnect().getConnection();

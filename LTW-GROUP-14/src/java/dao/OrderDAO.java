@@ -91,4 +91,31 @@ public class OrderDAO extends DAO{
         }
         return orderList;
     }
+    public int save(Integer orderAddressId,  Integer userId, Integer deliveryfee, Integer discount, Integer totalPayment,
+            LocalDateTime orderTime, Integer orderAmount, LocalDateTime createAt){
+        String query="insert into purchase_order (order_address_id, user_id, deliveryfee, discount, total_payment, order_time, order_amount,create_at)\n" +
+"values (?, ?, ?, ?, ?, ?, ?,?)";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, orderAddressId);
+            ps.setInt(2, userId);
+            ps.setInt(3, deliveryfee);
+            ps.setInt(4, discount);
+            ps.setInt(5, totalPayment);
+            ps.setTimestamp(6, Timestamp.valueOf(orderTime));
+            ps.setInt(7, orderAmount);
+            ps.setTimestamp(8, Timestamp.valueOf(createAt));
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    return generatedId;
+                }
+            }
+        }catch(Exception e){
+        }
+        return 0;
+    }
 }

@@ -33,7 +33,7 @@ public class UserDAO extends DAO{
         }
         return list;
     }
-    public User findById(Integer Id) throws Exception{
+    public User findById(Integer Id){
         String query="select * from user where id=?";
         try{
             conn = new DBConnect().getConnection();
@@ -95,7 +95,7 @@ public class UserDAO extends DAO{
         return userList;
     }
     
-    public void deleteById(Integer Id) throws  Exception {
+    public void deleteById(Integer Id){
         try {
             conn = new DBConnect().getConnection();
             String query = "DELETE FROM user WHERE id = ?";

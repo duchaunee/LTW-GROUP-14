@@ -95,7 +95,7 @@ public class UserDAO extends DAO{
         return userList;
     }
     
-    public void deleteById(Integer Id){
+    public void deleteById(Integer Id) throws Exception{
         try {
             conn = new DBConnect().getConnection();
             String query = "DELETE FROM user WHERE id = ?";

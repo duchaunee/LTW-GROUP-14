@@ -33,7 +33,7 @@ public class AdminViewOrder extends HttpServlet {
     throws ServletException, IOException {
         List<OrderItem> orderItemList = new OrderItemService().pagingOrderItem(request);
         request.setAttribute("orderItemList", orderItemList);
-        
+        request.getSession().setAttribute("global", "Phan thi");
         request.getRequestDispatcher("FE/Admin/viewOrder/viewOrder.jsp").forward(request, response);
     } 
 

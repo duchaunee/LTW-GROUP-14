@@ -23,7 +23,7 @@
       <div class="admin_left">
         <div class="admin_leftInfo">
           <img class='' src="https://source.unsplash.com/random" alt="" />
-          <span class=''>Your name here </span>
+          <span class=''>${global} </span>
         </div>
         <ul class='admin_leftTab'>
 

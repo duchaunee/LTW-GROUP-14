@@ -54,7 +54,7 @@ public class HomeMainController extends HttpServlet {
         List<Product>list1=productDAO.findHot();
         request.setAttribute("items", list);
         request.setAttribute("items1", list1);
-        request.getRequestDispatcher("FE/Home/Home.jsp").forward(request, response);
+        request.getRequestDispatcher("FE/Home/home.jsp").forward(request, response);
     }
 
     /**

@@ -53,134 +53,43 @@
         <div class="most-new-product">
             <h2>SẢN PHẨM MỚI NHẤT</h2>
 
-            <div id="formList" class="carousel">                                                                                          
-                <div class="carousel-cell">
+            <div id="formList" class="carousel">    
+                <c:forEach items="${items}" var="p" varStatus="status">
+                 <div class="carousel-cell">
                     <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
+                        <img class='' src="/productImage?imgId=${p.image_id}&number=0" alt="" />
                     </div>
                     <div class="carousel-cell-bottom">
                         <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
+                            <a class="carousel-cell-bottom-title" href="#">${p.getName()}</a>
                         </p>
-                        <h1 class="related-products-price">1,120,000 ₫</h1>
+                        <h1 class="related-products-price">${p.getPrice()} ₫</h1>
                         <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
                     </div>                                                   
                 </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">2,100,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">1,250,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">1,250,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>    
-                </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">2,100,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
+                </c:forEach>
             </div>
         </div>
         <div class="sale-product">
             <h2>SẢN PHẨM BÁN CHẠY</h2>
 
-            <div id="formList" class="carousel">                                                                                          
-                <div class="carousel-cell">
+            <div id="formList" class="carousel"> 
+                <c:forEach items="${items1}" var="p" varStatus="status">
+                    <div class="carousel-cell">
                     <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
+                        <img class='' src="/productImage?imgId=${p.image_id}&number=0" alt="" />
                     </div>
                     <div class="carousel-cell-bottom">
                         <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
+                            <a class="carousel-cell-bottom-title" href="#">${p.getName()}</a>
                         </p>
-                        <h1 class="related-products-price">1,120,000 ₫</h1>
+                        <h1 class="related-products-price">${p.getPrice()} ₫</h1>
                         <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
                     </div>                                                   
                 </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">2,100,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">1,250,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">1,250,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
-                <div class="carousel-cell">
-                    <div class="carousel-cell-top">
-                        <img src="./Assest/img/women-chuck-07.jpg" alt="" class="related-products-img">
-                    </div>
-                    <div class="carousel-cell-bottom">
-                        <p class="name-product-carousel-cell">
-                            <a class="carousel-cell-bottom-title" href="#">Chuck Taylor All Star</a>
-                        </p>
-                        <h1 class="related-products-price">2,100,000 ₫</h1>
-                        <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
-                    </div>          
-                </div>
-            </div>
+                </c:forEach>
+                
+               </div>
 
         </div>
         <div></div>

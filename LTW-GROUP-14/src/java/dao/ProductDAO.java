@@ -225,4 +225,52 @@ public class ProductDAO extends DAO{
             System.out.println(e);
         }
     }
+    public List<Product>findNew(){
+        List<Product>list=new ArrayList<>();
+        String query = "Select * FROM product order by id desc limit 5";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Product product = new Product(rs.getInt(1),
+                                            rs.getString(2),
+                                            rs.getString(3),
+                                            rs.getInt(4),
+                                            rs.getString(5),
+                                            rs.getString(6),
+                                            rs.getString(7),
+                                            rs.getTimestamp(8).toLocalDateTime(),
+                                            rs.getTimestamp(9).toLocalDateTime());
+                product.setImage_id(rs.getInt("image_id"));
+                list.add(product);
+            }
+        }catch(Exception e){
+        }
+        return list;
+    }
+    public List<Product>findHot(){
+        List<Product>list=new ArrayList<>();
+        String query = "Select * FROM product order by inventory asc limit 5";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Product product = new Product(rs.getInt(1),
+                                            rs.getString(2),
+                                            rs.getString(3),
+                                            rs.getInt(4),
+                                            rs.getString(5),
+                                            rs.getString(6),
+                                            rs.getString(7),
+                                            rs.getTimestamp(8).toLocalDateTime(),
+                                            rs.getTimestamp(9).toLocalDateTime());
+                product.setImage_id(rs.getInt("image_id"));
+                list.add(product);
+            }
+        }catch(Exception e){
+        }
+        return list;
+    }
 }

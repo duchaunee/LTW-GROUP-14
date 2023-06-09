@@ -159,7 +159,12 @@
                     </td>
                     <td class='status'>
                       <!-- Nếu status là Đã hủy thì phải đổi color thành text-primary -->
-                      <p>Hoàn thành</p>
+                        <c:if test="${!orderItem.order.equals('Đã hủy')}">
+                            <p>${orderItem.orderStatus}</p>
+                        </c:if>
+                        <c:if test="${orderItem.order.equals('Đã hủy')}">
+                            <p style="color: var(--text-primary)">${orderItem.orderStatus}</p>
+                        </c:if>
                     </td>
                     <td class='detail'>
                       <button class=''>
@@ -208,7 +213,7 @@
                 <a href="admin-vieworder?page=${i}">${i}</a>
               </li>
             </c:forEach>
-      </ul>
+        </ul>
       </div>
     </div>
   </div>

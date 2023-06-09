@@ -95,14 +95,16 @@
                 </thead>
                 <!-- style={{ height: `${loading ? '0' : itemsPerPage * 70 + 20}px` }}  cua body -->
                 <tbody>
-                  <!-- <div class="w-full h-full flex flex-col gap-4 items-center mt-8">
-                    <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                      class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                    <div
-                      class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                      Chưa có người dùng nào được tạo ra
-                    </div>
-                  </div> -->
+                    <c:if test="${userList.size() == 0}">
+                        <div class="w-full h-full flex flex-col gap-4 items-center mt-8">
+                          <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
+                            class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
+                          <div
+                            class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
+                            Chưa có người dùng nào được tạo ra
+                          </div>
+                        </div>
+                    </c:if>
 
                   <!-- <div class="w-full flex flex-col gap-4 items-center mt-8">
                     <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
@@ -113,6 +115,7 @@
                       Chưa có người dùng nào
                     </div>
                   </div> -->
+                  <c:forEach var="user" items="${userList}">
                   <tr class=''>
                     <td class='avatar'>
                       <img src="https://source.unsplash.com/random" alt="" class='' />
@@ -125,8 +128,8 @@
                     </td>
                     <td class='login'>
                       <!-- provider của user là google thì hiển thị thằng trên, là email thì hiển thị thằng dưới -->
-                      <i style="color: var(--text-primary);" class="fab fa-google"></i>
-                      <!-- <i style="color: #2563EB;" class="fas fa-envelope"></i> -->
+                        <i style="color: var(--text-primary);" class="fab fa-google"></i>
+                        <i style="color: #2563EB;" class="fas fa-envelope"></i> 
                     </td>
                     <td class='order'>
                       <p class=''>2312</p>
@@ -140,34 +143,7 @@
                       </button>
                     </td>
                   </tr>
-
-                  <tr class=''>
-                    <td class='avatar'>
-                      <img src="https://source.unsplash.com/random" alt="" class='' />
-                    </td>
-                    <td class='name'>
-                      <span class=''>duc hau 1232</span>
-                    </td>
-                    <td class='email'>
-                      <p class="">duchau123@gmail.com</p>
-                    </td>
-                    <td class='login'>
-                      <!-- provider của user là google thì hiển thị thằng trên, là email thì hiển thị thằng dưới -->
-                      <!-- <i style="color: var(--text-primary);" class="fab fa-google"></i> -->
-                      <i style="color: #2563EB;" class="fas fa-envelope"></i>
-                    </td>
-                    <td class='order'>
-                      <p class=''>2312</p>
-                    </td>
-                    <td class='action'>
-                      <button class=''>
-                        <i class="fas fa-lock"></i>
-                      </button>
-                      <button class=''>
-                        <i class="fas fa-gift"></i>
-                      </button>
-                    </td>
-                  </tr>
+                </c:forEach>
                 </tbody>
               </table>
             </div>
@@ -179,25 +155,15 @@
           </div>
           <!-- pagination -->
           <ol class="pagination">
-            <li class="pagination--left">
-              <button>
-                <i class="fas fa-long-arrow-alt-left"></i>
-                <span class="text-[16px]">Prev Page</span>
-              </button>
-            </li>
+            
             <div class="pagination-center">
-                <a href="url" style="text-decoration: none"><button class=''>1</button></a>
-              <li class=''>
-                <i class="fas fa-ban"></i>
-              </li>
+                <c:forEach begin="1" end="${totalPage}" var="i">
+                    <li>
+                        <a href="manage-account?page=${i}" style="text-decoration: none">
+                            <button class=''>${i}</button></a>
+                    </li>
+                </c:forEach>
             </div>
-            <li class="pagination--right">
-              <button>
-                <span class="text-[16px]">Next Page</span>
-                <i class="fas fa-long-arrow-alt-right"></i>
-                <FontAwesomeIcon class='text-[18px] text-bgPrimary' icon={faLongArrowAltRight} />
-              </button>
-            </li>
           </ol>
         </div>
         <!-- <Routes>

@@ -52,7 +52,7 @@ public class Utils {
         return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm:ss"));
     }
     
-    public static String formatCurrency(Integer money){
+    public static String formatCurrency(Long money){
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
         return currencyVN.format(money);

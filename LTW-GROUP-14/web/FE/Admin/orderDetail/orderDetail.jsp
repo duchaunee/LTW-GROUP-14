@@ -79,7 +79,7 @@
       <!-- ///////////////////////////////////// RIGHT ///////////////////////////////////////// -->
       <!-- TẤT CẢ CHỈ KHÁC NHAU CÁI RIGHT THÔI NHÉ -->
       <div class="admin_right">
-        <form class='order-detail_wrapper'>
+        <div class='order-detail_wrapper'>
           <!-- top  -->
           <div class="order-detail_top">
             <!-- chi tiet don hang -->
@@ -87,7 +87,7 @@
               <h1 class='title'>
                 Chi tiết đơn hàng
                 <div class="">
-                  <p class="">Đang xử lý</p>
+                  <p class="">${orderItem.orderStatus}</p>
                 </div>
               </h1>
               <div class="line"></div>
@@ -107,7 +107,7 @@
                         <a class=''>
                           ${orderItem.product.name}
                         </a>
-                        <p class=''> × ${orderItem.quantity}</p>
+                        <p class=''> ×${orderItem.quantity}</p>
                       </div>
                       <div class="category ">
                         <p class="">Phân loại hàng:</p>
@@ -142,7 +142,7 @@
                 <div class="info-discount ">
                   <h2 class=''>Giảm giá từ shop</h2>
                   <h2 class=''>
-                    20.000 ₫
+                    ${orderItem.displayDiscount()}
                   </h2>
                 </div>
                 <div class="info-method ">
@@ -160,7 +160,7 @@
                   <h2 class=''>Tổng cộng</h2>
                   <h2 class=''>
                     <!-- price + deliveryFee - discount -->
-                    760.000 ₫
+                    ${orderItem.displayTotal()}
                   </h2>
                 </div>
               </div>
@@ -246,7 +246,7 @@
 
           <!-- bottom -->
           <div class="">
-            <div class="order-detail_bottom">
+            <form action="/view-orderdetail" class="order-detail_bottom" method="post">
               <!-- Nếu đơn hàng 'Hoàn thành' || 'Đã hủy'  thì không được phép ấn vào các butotn -->
               <!-- onClick={(e)=> {
               e.preventDefault()
@@ -264,12 +264,18 @@
               }} -->
 
               <div class="button-status_wrapper">
-                <button value="Đang xử lý" class="active">Đang xử lý</button>
-                <button value="Vận chuyển" class="">Vận chuyển</button>
-                <button value="Đang giao" class="">Đang giao</button>
-                <button value="Hoàn thành" class="">Hoàn thành</button>
+                <input type="hidden" name="id" value="${orderItem.id}">
+                <input type="hidden" value="${orderItem.orderStatus}" name="statusActive"/>
+                <c:forEach var="status" items="${statusList}">
+                    <c:if test="${orderItem.orderStatus.equals(status)}">
+                        <button type="button" class="status active">${status}</button>
+                    </c:if>
+                    <c:if test="${!orderItem.orderStatus.equals(status)}">
+                        <button type="button" class="status">${status}</button>
+                    </c:if>
+                </c:forEach>
                 <!-- lí do có thêm button "trống" này để chừa chỗ có button cuối "Cập nhật trình trạng" -->
-                <button value="" class=""></button>
+                <button type="button" value="" class=""></button>
               </div>
 
               <!-- Cái butotn cuối này phải xử lý Nếu đơn hàng 'Hoàn thành' || 'Đã hủy'  thì không được phép cập nhật đơn hàng-->
@@ -288,12 +294,12 @@
                         }
                         else confirmUpdateStatus(e)
                         }} -->
-              <button class='button-changeStatus'>
+              <button type="submit" class='button-changeStatus'>
                 <span class=''>Cập nhật tình trạng</span>
               </button>
-            </div>
+            </form>
           </div>
-        </form>
+        </div>
         <!-- <Routes>
           <Route path='' element={<HomeAdmin />} />
           <Route path='home' element={<HomeAdmin />} />
@@ -305,6 +311,8 @@
       </div>
     </div>
   </div>
+                  
+    <!--<div style="width: 100%; height: 200px; background-color: red"></div>-->
     <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
 
 
@@ -316,7 +324,20 @@
     document.addEventListener('scroll', () => {
       localStorage.setItem('prevLocation', window.scrollY);
     });
+    const btnStatus = document.querySelectorAll('.button-status_wrapper .status');
+    const inputStatus = document.querySelector('.button-status_wrapper input[name="statusActive"]');
+    btnStatus.forEach(status => {
+        status.addEventListener('click', () => {
+            btnStatus.forEach(_status => _status.classList.remove('active'));
+            status.classList.add('active');
+            inputStatus.value = status.innerText;
+            console.log(status.innerText)
+        })
+    })
+    
   </script>
+  
+  
 </body>
 
 </html>

@@ -131,6 +131,21 @@ public class OrderItemDAO extends DAO{
         }
         return orderItemList;
     }
+    
+    public void update(OrderItem orderItem){
+        String query = "UPDATE order_item SET order_status = ? where id = ?";
+        System.out.println(orderItem.getOrderStatus());
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, orderItem.getOrderStatus());
+            ps.setInt(2, orderItem.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public void save(Integer productId, Integer orderId, String orderStatus, Integer quantity ){
         String query="insert into order_item (product_id, order_id, order_status, quantity)\n" +
 "values (?, ?, ?, ?)";

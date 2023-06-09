@@ -20,9 +20,28 @@ public class OrderItem {
         this.quantity = quantity;
     }
     
+    public Integer getAmount(){
+        return this.getProduct().getPrice() * this.quantity;
+    }
+    
     public String displayAmount(){
-        Integer amount = this.getProduct().getPrice() * this.quantity;
-        return Utils.formatCurrency(amount);
+        
+        return Utils.formatCurrency(Long.valueOf(getAmount()));
+    }
+    
+    public Long getDiscount(){
+        Integer discountPercent = getOrder().getDiscount();
+        Long discount = Math.round(getProduct().getPrice() * getQuantity() * discountPercent / 100.0);
+        return discount;
+    }
+    
+    public String displayDiscount(){
+        return Utils.formatCurrency(this.getDiscount());
+    }
+    
+    public String displayTotal(){
+        Long total = getAmount() + getDiscount() + getOrder().getDeliveryfee();
+        return Utils.formatCurrency(total);
     }
 
     public Integer getId() {

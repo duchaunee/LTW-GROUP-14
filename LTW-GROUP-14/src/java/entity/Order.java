@@ -28,7 +28,7 @@ public class Order {
     }
     
     public String displayDeliveryfee(){
-        return Utils.formatCurrency(this.deliveryfee);
+        return Utils.formatCurrency(Long.valueOf(this.deliveryfee));
     }
 
     public List<OrderItem> getOrderItemList() {

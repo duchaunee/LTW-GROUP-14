@@ -32,6 +32,8 @@ public class AdminViewOrderDetail extends HttpServlet {
     throws ServletException, IOException {
         try {
             OrderItem orderItem = new OrderItemService().findById(request);
+            String[] statusList = {"Đang xử lý", "Vận chuyển", "Đang giao", "Hoàn thành"};
+            request.setAttribute("statusList", statusList);
             request.setAttribute("orderItem", orderItem);
         } catch (Exception ex) {
             Logger.getLogger(AdminViewOrderDetail.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,7 +51,9 @@ public class AdminViewOrderDetail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        OrderItem orderItem = new OrderItemService().update(request);
+        response.sendRedirect("/view-orderdetail?id=" + orderItem.getId());
     }
 
     /** 

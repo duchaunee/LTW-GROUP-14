@@ -22,4 +22,16 @@ public class OrderItemService {
         Integer id = Integer.valueOf(request.getParameter("id"));
         return orderItemDAO.findById(id);
     }
+    
+    public OrderItem update(HttpServletRequest request){
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        String status = request.getParameter("statusActive");
+        
+        OrderItem orderItem = orderItemDAO.findById(id);
+        orderItem.setOrderStatus(status);
+        
+        orderItemDAO.update(orderItem);
+        return orderItem;
+    }
+    
 }

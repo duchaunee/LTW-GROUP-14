@@ -38,7 +38,7 @@ public class CartDecreasingQuantityController extends HttpServlet {
         int index=Integer.parseInt(request.getParameter("index1"));
         CartItem u=cartItemDAO.findById(index);
         if(u.getQuantity()>=2) cartItemDAO.decreasingQuantity(index);
-        response.sendRedirect(request.getContextPath() + "/CartController");
+       response.sendRedirect(request.getContextPath() + "/CartController");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

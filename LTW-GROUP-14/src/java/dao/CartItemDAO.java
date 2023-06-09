@@ -106,5 +106,9 @@ public class CartItemDAO extends DAO{
         } catch (Exception e) {
         } 
     }
-   
+    public static void main(String[] args){
+        CartItemDAO c=new CartItemDAO();
+        CartItem q=c.findById(1);
+        System.out.println(q.getProduct().getName());
+    }
 }

@@ -36,7 +36,7 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int cartId=2;
+        int cartId=1;
         List<CartItem>cartItemList=cartItemDAO.findByCartID(cartId);
         LocalDate currentDate = LocalDate.now();
         LocalDate deliveryDate = currentDate.plusDays(4);

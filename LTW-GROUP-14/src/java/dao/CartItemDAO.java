@@ -33,7 +33,7 @@ public class CartItemDAO extends DAO{
         return list;
     }
     public CartItem findById(Integer Id){
-        String query="select * from cart_item where id=?";
+        String query="select * from cart where id=?";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
@@ -105,10 +105,5 @@ public class CartItemDAO extends DAO{
             int rowsAffected = ps.executeUpdate();
         } catch (Exception e) {
         } 
-    }
-    public static void main(String[] args){
-        CartItemDAO c=new CartItemDAO();
-        CartItem q=c.findById(1);
-        System.out.println(q.getProduct().getName());
     }
 }

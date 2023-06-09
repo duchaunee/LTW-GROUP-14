@@ -4,9 +4,19 @@ import dao.UserDAO;
 import entity.User;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import utils.Utils;
 
 public class UserService {
     private final UserDAO userDAO = new UserDAO();
+    
+    public User findByEmailAndPassword(HttpServletRequest request){
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        password = Utils.encodeMD5(password);
+        System.out.println(password);
+        User user = userDAO.findByEmailAndPassword(email, password);
+        return user;
+    }
     
     public List<User> pagingUser(HttpServletRequest request){
         Integer size = userDAO.countUser();
@@ -17,5 +27,11 @@ public class UserService {
         Integer currentPage = Integer.valueOf(pageNumber);
         request.setAttribute("currentPage", currentPage);
         return userDAO.pagingUser(currentPage);
+    }
+    
+    public void save(HttpServletRequest request){
+        String email = request.getParameter("email");
+        String password = Utils.encodeMD5(request.getParameter("password"));
+        userDAO.save(email, password);
     }
 }

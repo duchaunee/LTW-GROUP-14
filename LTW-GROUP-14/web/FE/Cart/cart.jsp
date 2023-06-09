@@ -59,15 +59,15 @@
                           <i class="fas fa-times"></i>
                         </button>
                       </form>
-                      <img class='' src="/productImage?imgId=${p.getProduct().image_id}&number=0" alt="" />
+                      <img class='' src="https://s...content-available-to-author-only...h.com/random" alt="" />
                       <div class="info">
                         <span class=''>${p.getProduct().getName()}</span>
                         <span class=''>${p.getProduct().getBrand()}</span>
                       </div>
                     </td>
                     <td class='price'>
-                      <span class='' id="price${status.index+1}">${String.format("%,d",p.getProduct().getPrice())}</span>
-                      <p class=''>d</p>
+                      <span class='' id="price${status.index+1}">${String.format("%,d", Integer.parseInt(p.getProduct().getPrice().replace('.','')))}</span>
+                      <p class=''>₫</p>
                     </td>
                     <td class='quantity'>
                         <form action="CartDecreasingQuantityController" method="post">
@@ -83,7 +83,7 @@
                       </form>
                     </td>
                     <td class='total'>
-                      <p class='' id="total${status.index+1}">${String.format("%,d", p.getProduct().getPrice() * p.getQuantity())}</p>
+                      <p class='' id="total${status.index+1}">${String.format("%,d", Integer.parseInt(p.getProduct().getPrice().replace('.','')) * p.getQuantity())}</p>
                       <span class=''>₫</span>
                     </td>
                   </tr>
@@ -107,7 +107,7 @@
           <div class="cart-right">
              <c:set var="sum" value="0" />
                 <c:forEach items="${items}" var="p">
-                  <c:set var="price" value="${p.getProduct().getPrice()}"/>
+                  <c:set var="price" value="${p.getProduct().getPrice().replace('.','')}"/>
                   <c:set var="quantity" value="${p.getQuantity()}"/>
                   <c:set var="total" value="${price * quantity}"/>
                   <c:set var="sum" value="${sum + total}"/>

@@ -44,7 +44,7 @@
         </div>
 
         <div class="slider last-slider">
-            <img src="./Assest/img/slide-6.png" style="margin-top: 80px; width: 100%;" alt="">
+            <img src="${pageContext.request.contextPath}/FE/Home/Assest/img/slide-6.jpg" alt="">
         </div>
         
     </div>

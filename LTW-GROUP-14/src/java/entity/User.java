@@ -1,6 +1,9 @@
 package entity;
 
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
+import javax.servlet.http.HttpServletRequest;
+import utils.Utils;
 
 public class User {
     private Integer id;
@@ -89,6 +92,7 @@ public class User {
 
     public User() {
     }
+    
 
             
 }

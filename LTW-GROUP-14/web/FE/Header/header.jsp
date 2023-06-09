@@ -29,7 +29,7 @@
         <div class="header__main--1">
           <div class="header__main--2">
             <div class='header__left'>
-              <a href="/dang-nhap" class='header__left--text' href="">
+              <a href="/login" class='header__left--text' href="">
                 Đăng nhập / Đăng ký
               </a>
             </div>

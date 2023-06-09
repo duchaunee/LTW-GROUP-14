@@ -1,10 +1,5 @@
-<%-- 
-    Document   : login
-    Created on : Jun 8, 2023, 10:59:22 PM
-    Author     : Admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +10,13 @@
   <title>Login</title>
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-  <link rel="stylesheet" href="../CSS/reset.css">
-  <link rel="stylesheet" href="../Login/login.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/CSS/reset.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/Login/login.css">
 </head>
 
 <body>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" />
+
   <div class="" id="container">
     <!-- {
     resetPassword
@@ -55,21 +52,21 @@
         </form>
       </div>
       <div class="sign-in_wrapper">
-        <form class='sign-in_form' method="post" action="login" >
+          <form class='sign-in_form' action="/login" method="POST">
           <h1 class="sign-in_title">Đăng nhập</h1>
           <a class="sign-in_google">
             <span class="sign-in_googleIcon">
               <i class="fab fa-google"></i>
               <!-- <FontAwesomeIcon class='icon' icon={faGoogle} /> -->
             </span>
-            <p>Continue with Google</p>
+            <p>Tiếp tục với Google</p>
           </a>
           <span class='sign-in_other'>
             <div class="line"></div>
             <p style="margin: 0 10px"'>Hoặc đăng nhập bằng tài khoản</p>
           <div class="line"></div>
         </span>
-        <input name="email" class=' login_input' type="text" placeholder="Email" />
+            <input name="email" class=' login_input' type="text" placeholder="Email" />
             <input name="password" class='login_input' type="password" placeholder="Password" />
             <a class='sign-in_resetpass'>
               Quên mật khẩu?
@@ -85,7 +82,7 @@
 
     <!-- SIGN UP -->
     <div class="sign-up_wrapper">
-        <form class='sign-up_form' method="post" action="register">
+        <form class='sign-up_form' action="/signup" method="POST">
         <h1 class="sign-up_title">Tạo tài khoản</h1>
         <a class="sign-up_google">
           <span class="sign-up_googleIcon " href="#">
@@ -98,13 +95,13 @@
           <p style="margin: 0 10px"'>Hoặc tạo tài khoản bằng email</p>
           <div class="line"></div>
         </span>
-        <input name="email"
-          class=' login_input ' type="text" placeholder="Email"/>
-          <input name="password"
-            class=' login_input' type="password" placeholder="Password" />
-          <input name="Cpassword" class='login_input' type="password"
-            placeholder="Nhập lại Password" />
-          <button type="submit" class='login_btn '>
+        <input name="email" class=' login_input ' type="text" placeholder="Email"/>
+        
+        <input name="password"
+          class=' login_input' type="password" placeholder="Password" />
+        <input name="confirmPassword" class='login_input' type="password"
+          placeholder="Nhập lại Password" />
+        <button type="submit" class='login_btn '>
             <!-- {loading ?
             <Spinning /> : "Đăng ký"} -->
             Đăng ký
@@ -139,7 +136,9 @@
       </div>
     </div>
   </div>
-  <script src="../login.js"></script>
+  <script src="${pageContext.request.contextPath}/FE/Login/login.js"></script>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
+
 </body>
 
 </html>

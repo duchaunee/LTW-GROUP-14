@@ -24,33 +24,7 @@ public class AdminViewProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pattern=request.getParameter("pattern");
-        if(pattern==null){
-            int size = productDAO.countProduct();
-            int page = size/3 + (size%3 == 0 ? 0:1);
-            String indexPage = request.getParameter("index");
-            if(indexPage == null) indexPage="1";
-            int index = Integer.parseInt(indexPage);
-            List<Product>productList = productDAO.pagningProduct(index);
-            request.setAttribute("productList", productList);
-            request.setAttribute("page", page);
-            request.setAttribute("size", size);
-            request.setAttribute("current", index);
-            request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
-        }
-        else{
-            List<Product>productList=productDAO.findByPattern(pattern);
-            int size = productList.size();
-            int page = size/3 + (size%3 == 0 ? 0:1);
-            String indexPage = request.getParameter("index");
-            if(indexPage == null) indexPage="1";
-            int index = Integer.parseInt(indexPage);
-            request.setAttribute("productList", productList);
-            request.setAttribute("page", page);
-            request.setAttribute("size", size);
-            request.setAttribute("current", index);
-            request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
-        }
+
     } 
 
     
@@ -80,33 +54,7 @@ public class AdminViewProduct extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String pattern=request.getParameter("pattern");
-        if(pattern==null){
-            int size = productDAO.countProduct();
-            int page = size/3 + (size%3 == 0 ? 0:1);
-            String indexPage = request.getParameter("index");
-            if(indexPage == null) indexPage="1";
-            int index = Integer.parseInt(indexPage);
-            List<Product>productList = productDAO.pagningProduct(index);
-            request.setAttribute("productList", productList);
-            request.setAttribute("page", page);
-            request.setAttribute("size", size);
-            request.setAttribute("current", index);
-            request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
-        }
-        else{
-            List<Product>productList=productDAO.findByPattern(pattern);
-            int size = productList.size();
-            int page = size/3 + (size%3 == 0 ? 0:1);
-            String indexPage = request.getParameter("index");
-            if(indexPage == null) indexPage="1";
-            int index = Integer.parseInt(indexPage);
-            request.setAttribute("productList", productList);
-            request.setAttribute("page", page);
-            request.setAttribute("size", size);
-            request.setAttribute("current", index);
-            request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /** 

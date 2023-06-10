@@ -18,6 +18,10 @@ public class UserService {
         return user;
     }
     
+    public User findByEmail(String email){
+        return userDAO.findByEmail(email);
+    }
+    
     public List<User> pagingUser(HttpServletRequest request){
         Integer size = userDAO.countUser();
         Integer totalPage = size/5 + (size % 5 == 0 ? 0:1);

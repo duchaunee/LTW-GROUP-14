@@ -29,9 +29,16 @@
         <div class="header__main--1">
           <div class="header__main--2">
             <div class='header__left'>
-              <a href="/login" class='header__left--text' href="">
-                Đăng nhập / Đăng ký
-              </a>
+                <c:if test="${user == null}">
+                    <a href="/login" class='header__left--text'>
+                      Đăng nhập / Đăng ký
+                    </a>
+                </c:if>
+                <c:if test="${user != null}">
+                    <a href="/profile" class='header__left--text'>
+                        Tài khoản: ${user.name}
+                    </a>
+                </c:if>
             </div>
 
             <a href="#" class="header__logo">
@@ -39,17 +46,24 @@
             </a>
 
             <div class="header__right">
-              <div class="header__right--search">
-                <i class="fas fa-search"></i>
-              </div>
-              <div class="header__right--text">
-                <span class="">
-                  Giỏ hàng / Thanh toán
-                </span>
-                <span class="header__right--cart">
-                  <i class="fas fa-shopping-cart"></i>
-                </span>
-              </div>
+                <div class="header__right--search">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="header__right--text">
+                    <c:if test="${!user.role.equals('ADMIN')}">
+                        <a href="/cart" class="header__right--text">
+                        Giỏ hàng / Thanh toán
+                        </a>
+                        <span class="header__right--cart">
+                            <i class="fas fa-shopping-cart"></i>
+                        </span>
+                    </c:if>
+                        <c:if test="${user.role.equals('ADMIN')}">
+                        <a href="/admin-vieworder" class="header__right--text">
+                            Quản lý
+                        </a>
+                    </c:if>
+                </div>
             </div>
           </div>
         </div>
@@ -74,7 +88,7 @@
     <!--  <div class="header">
       </div>-->
 
-  <script src="${pageContext.request.contextPath}/FE/Header/header.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
   </body>
 
 </html>

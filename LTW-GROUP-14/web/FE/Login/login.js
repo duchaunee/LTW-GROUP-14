@@ -46,3 +46,23 @@ signIn_ResetPass.addEventListener('click', () => {
 resetPass_arrowLeft.addEventListener('click', () => {
   container_signin_reset.classList.remove('show_reset')
 })
+
+function validate(){
+    var email = document.signupForm.email.value;
+    var password = document.signupForm.password.value;
+    var confirmPassword = document.signupForm.confirmPassword.value;
+    var emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
+    if(!emailRegex.test(email)){
+        alert("Email không hợp lệ")
+        return false
+    }
+    if(password.length < 5){
+        alert("Mật khẩu phải có tối thiểu 5 ký tự")
+        return false
+    }
+    if(password !== confirmPassword){
+        alert("Mật khẩu xác nhận không khớp")
+        return false
+    }
+    return true
+}

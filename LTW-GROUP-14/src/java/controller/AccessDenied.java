@@ -1,4 +1,4 @@
-package authentication;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="Logout", urlPatterns={"/logout"})
-public class Logout extends HttpServlet {
+@WebServlet(name="AccessDenied", urlPatterns={"/access-denied"})
+public class AccessDenied extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -27,8 +27,7 @@ public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getSession().removeAttribute("user");
-        response.sendRedirect("/home");
+        request.getRequestDispatcher("accessDenied.html").forward(request, response);
     } 
 
     /** 

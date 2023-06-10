@@ -21,7 +21,7 @@
                     <h1>GIỚI THIỆU</h1>
                 </div>
                 <div class="link">
-                    <a href="#">TRANG CHỦ  </a>/  GIỚI THIỆU kekeke
+                    <a href="#">TRANG CHỦ  </a>/  GIỚI THIỆU
                 </div>
             </div>
 

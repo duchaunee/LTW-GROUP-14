@@ -27,8 +27,8 @@ public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        request.getSession().removeAttribute("account");
-        request.getRequestDispatcher("FE/Home/home.jsp").forward(request, response);
+        request.getSession().removeAttribute("user");
+        response.sendRedirect("/home");
     } 
 
     /** 

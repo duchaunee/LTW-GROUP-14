@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "HomeMainController", urlPatterns = {"/HomeMainController"})
+@WebServlet(name = "HomeMainController", urlPatterns = {"/home"})
 public class HomeMainController extends HttpServlet {
     private ProductDAO productDAO=new ProductDAO();
 

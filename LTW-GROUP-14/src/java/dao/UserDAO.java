@@ -56,6 +56,32 @@ public class UserDAO extends DAO{
         return null;
     }
     
+    public User findByEmail(String email){
+        String query="select * from user where email = ?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setString(1, email);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setProvider(rs.getString("provider"));
+                user.setRole(rs.getString("role"));
+                user.setCreateAt(rs.getTimestamp("create_at").toLocalDateTime());
+                if(rs.getBytes("avatar") != null) 
+                    user.setAvatar(rs.getBytes("avatar"));
+                return user;
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public User findByEmailAndPassword(String email, String password){
         String query="select * from user where email = ? AND password = ?";
         try{

@@ -82,7 +82,8 @@
 
     <!-- SIGN UP -->
     <div class="sign-up_wrapper">
-        <form class='sign-up_form' action="/signup" method="POST">
+        <form class='sign-up_form' action="/signup" name="signupForm" 
+              method="POST" onsubmit="return validate()">
         <h1 class="sign-up_title">Tạo tài khoản</h1>
         <a class="sign-up_google">
           <span class="sign-up_googleIcon " href="#">
@@ -93,10 +94,12 @@
         <span class='sign-up_other'>
           <div class="line"></div>
           <p style="margin: 0 10px"'>Hoặc tạo tài khoản bằng email</p>
+          
           <div class="line"></div>
         </span>
+        <h3>${success}</h3>
         <input name="email" class=' login_input ' type="text" placeholder="Email"/>
-        
+        <h3 style="color: red">${error.get("email")}</h3>
         <input name="password"
           class=' login_input' type="password" placeholder="Password" />
         <input name="confirmPassword" class='login_input' type="password"

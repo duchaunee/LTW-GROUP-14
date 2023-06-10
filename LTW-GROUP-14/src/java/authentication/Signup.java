@@ -1,12 +1,15 @@
 package authentication;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import service.UserService;
+import validator.UserValidator;
 
 @WebServlet(name="Signup", urlPatterns={"/signup"})
 public class Signup extends HttpServlet {
@@ -39,7 +42,14 @@ public class Signup extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        new UserService().save(request);
+        Map<String, String> error = new UserValidator().validate(request);
+        if(!error.isEmpty()){
+            request.setAttribute("error", error);
+        }
+        else{
+            new UserService().save(request);
+            request.setAttribute("success", "Đăng ký thành công");
+        }
         request.getRequestDispatcher("FE/Login/login.jsp").forward(request, response);
     }
 

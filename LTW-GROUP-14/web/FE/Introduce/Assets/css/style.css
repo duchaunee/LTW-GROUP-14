@@ -44,6 +44,8 @@ html{
 #content{
     height: 1000px;
     max-width: 1230px;
+    margin: auto;
+    margin-bottom: 80px
 }
 .section-content{
     display: flex;

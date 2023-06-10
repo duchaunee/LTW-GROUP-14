@@ -30,7 +30,7 @@
         <div id="content">
             <div class="section-content">
                 <div class="image-content">
-                    <img src="./Assets/image/03306320213d3356ce875921ff197762.jpg" alt="">
+                    <img src="${pageContext.request.contextPath}/FE/Introduce/Assets/image/03306320213d3356ce875921ff197762.jpg" alt="">
 
                 </div>
                 <div class="tiltle-content">

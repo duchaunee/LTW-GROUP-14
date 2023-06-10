@@ -41,13 +41,12 @@
             <div class="auto-btn4"></div>  
             </div>
             <!--automatic navigation end-->
-        </div>
-
-        <div class="slider last-slider">
-            <img src="${pageContext.request.contextPath}/FE/Home/Assest/img/slide-6.jpg" alt="">
-        </div>
+        </div>       
         
     </div>
+           <div class="last-slider">
+            <img src="${pageContext.request.contextPath}/FE/Home/Assest/img/slide-6.jpg" alt="">
+        </div>
    
     <div  class="content">
         <div class="most-new-product">

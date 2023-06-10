@@ -1,18 +1,15 @@
-package controller.admin;
+package controller;
 
-import entity.User;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.UserService;
-import utils.Utils;
 
-@WebServlet(name="AdminManageAccount", urlPatterns={"/manage-account"})
-public class AdminManageAccount extends HttpServlet {
+@WebServlet(name="AccessDenied", urlPatterns={"/access-denied"})
+public class AccessDenied extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -23,25 +20,14 @@ public class AdminManageAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
     } 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        User user = Utils.getUserInSession(request);
-        if(user == null){
-            Utils.setLastRequest(request, "/manage-account");
-            response.sendRedirect("/login");
-        }
-        else if(!user.getRole().equals("ADMIN")){
-            response.sendRedirect("/access-denied");
-        }
-        else{
-            List<User> userList = new UserService().pagingUser(request);
-            System.out.println(userList.size());
-            request.getRequestDispatcher("FE/Admin/clientManagement/clientManagement.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("accessDenied.html").forward(request, response);
     } 
 
     /** 

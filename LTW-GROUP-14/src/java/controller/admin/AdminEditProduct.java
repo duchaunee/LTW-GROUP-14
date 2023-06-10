@@ -3,6 +3,7 @@ package controller.admin;
 import dao.ImageProductDAO;
 import dao.ProductDAO;
 import entity.Product;
+import entity.User;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import service.ProductService;
+import utils.Utils;
 
 @WebServlet(name="AdminEditProduct", urlPatterns={"/admin-editproduct"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -38,9 +40,20 @@ public class AdminEditProduct extends HttpServlet {
         Integer id = Integer.valueOf(request.getParameter("id"));
         Product product;
         try {
-            product = new ProductDAO().findById(id);
-            request.setAttribute("product", product);
-            request.getRequestDispatcher("FE/Admin/editProduct/editProduct.jsp").forward(request, response);
+            User user = Utils.getUserInSession(request);
+            if(user == null){
+                Utils.setLastRequest(request, "/admin-editproduct?id=" + id);
+                response.sendRedirect("/login");
+            }
+            else if(!user.getRole().equals("ADMIN")){
+                response.sendRedirect("/access-denied");
+            }
+            else{
+                product = new ProductDAO().findById(id);
+                request.setAttribute("product", product);
+                Utils.removeLastRequest(request);
+                request.getRequestDispatcher("FE/Admin/editProduct/editProduct.jsp").forward(request, response);
+            }
 
         } catch (Exception ex) {
             Logger.getLogger(AdminEditProduct.class.getName()).log(Level.SEVERE, null, ex);

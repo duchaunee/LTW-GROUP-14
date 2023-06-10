@@ -2,6 +2,7 @@ package controller.admin;
 
 import dao.ProductDAO;
 import entity.Product;
+import entity.User;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Utils;
 
 @WebServlet(name="AdminShowProduct", urlPatterns={"/admin-viewproduct"})
 public class AdminViewProduct extends HttpServlet {
@@ -57,17 +59,27 @@ public class AdminViewProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int size = productDAO.countProduct();
-        int page = size/3 + (size%3 == 0 ? 0:1);
-        String indexPage = request.getParameter("index");
-        if(indexPage == null) indexPage="1";
-        int index = Integer.parseInt(indexPage);
-        List<Product>productList = productDAO.pagningProduct(index);
-        request.setAttribute("productList", productList);
-        request.setAttribute("page", page);
-        request.setAttribute("size", size);
-        request.setAttribute("current", index);
-        request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
+        User user = Utils.getUserInSession(request);
+        if(user == null){
+            Utils.setLastRequest(request, "/admin-viewproduct");
+            response.sendRedirect("/login");
+        }
+        else if(!user.getRole().equals("ADMIN")){
+            response.sendRedirect("/access-denied");
+        }
+        else{
+            int size = productDAO.countProduct();
+            int page = size/3 + (size%3 == 0 ? 0:1);
+            String indexPage = request.getParameter("index");
+            if(indexPage == null) indexPage="1";
+            int index = Integer.parseInt(indexPage);
+            List<Product>productList = productDAO.pagningProduct(index);
+            request.setAttribute("productList", productList);
+            request.setAttribute("page", page);
+            request.setAttribute("size", size);
+            request.setAttribute("current", index);
+            request.getRequestDispatcher("FE/Admin/viewProduct/viewProduct.jsp").forward(request, response);
+        }
     } 
 
     /** 

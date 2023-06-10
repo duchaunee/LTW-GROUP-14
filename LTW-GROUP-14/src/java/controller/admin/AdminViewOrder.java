@@ -5,6 +5,7 @@
 package controller.admin;
 
 import entity.OrderItem;
+import entity.User;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import service.OrderItemService;
+import utils.Utils;
 
 /**
  *
@@ -31,10 +33,20 @@ public class AdminViewOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        List<OrderItem> orderItemList = new OrderItemService().pagingOrderItem(request);
-        request.setAttribute("orderItemList", orderItemList);
-        request.getSession().setAttribute("global", "Phan thi");
-        request.getRequestDispatcher("FE/Admin/viewOrder/viewOrder.jsp").forward(request, response);
+        User user = Utils.getUserInSession(request);
+        if(user == null){
+            Utils.setLastRequest(request, "/admin-vieworder");
+            response.sendRedirect("/login");
+        }
+        else if(!user.getRole().equals("ADMIN")){
+            response.sendRedirect("/access-denied");
+        }
+        else{
+            List<OrderItem> orderItemList = new OrderItemService().pagingOrderItem(request);
+            request.setAttribute("orderItemList", orderItemList);
+            request.getSession().setAttribute("global", "Phan thi");
+            request.getRequestDispatcher("FE/Admin/viewOrder/viewOrder.jsp").forward(request, response);
+        }
     } 
 
     /** 

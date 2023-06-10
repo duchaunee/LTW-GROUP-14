@@ -1,5 +1,6 @@
 package utils;
 
+import entity.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
@@ -72,5 +73,21 @@ public class Utils {
             System.out.println(e);
         }
         return null;
+    }
+    
+    public static User getUserInSession(HttpServletRequest request){
+        return (User)request.getSession().getAttribute("user");
+    }
+    
+    public static void setLastRequest(HttpServletRequest request, String lastRequest){
+        request.getSession().setAttribute("lastRequest", lastRequest);
+    }
+    
+    public static String getLastRequest(HttpServletRequest request){
+        return request.getSession().getAttribute("lastRequest").toString();
+    }
+    
+    public static void removeLastRequest(HttpServletRequest request){
+        request.getSession().removeAttribute("lastRequest");
     }
 }

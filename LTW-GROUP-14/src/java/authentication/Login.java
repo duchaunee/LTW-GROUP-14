@@ -2,15 +2,13 @@ package authentication;
 
 import entity.User;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import service.UserService;
+import utils.Utils;
 
 @WebServlet(name="Login", urlPatterns={"/login"})
 public class Login extends HttpServlet {
@@ -51,7 +49,9 @@ public class Login extends HttpServlet {
         }
         else{
             request.getSession().setAttribute("user", user);
-            response.sendRedirect("/home");
+            String lastRequest = Utils.getLastRequest(request);
+            if(lastRequest == null) lastRequest = "/home";
+            response.sendRedirect(lastRequest);
         }
     }
 

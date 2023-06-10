@@ -31,14 +31,14 @@
     <div class="container-signin_reset">
       <!-- RESET PASSWORD -->
       <div class="reset-pass_wrapper">
-        <form class='reset-pass_form'>
+          <form class='reset-pass_form' action="/reset-password" method="POST">
           <h1 class="reset-pass_title">Quên mật khẩu</h1>
           <span class='reset-pass_type'>
             <div class="line"></div>
             <p style="margin: 8px 10px;">Nhập email để lấy lại mật khẩu</p>
             <div class="line"></div>
           </span>
-          <input class='login_input' type="text" placeholder="Email" />
+          <input class='login_input' name="email" type="text" placeholder="Email" />
           <a class='reset-pass_arrowLeft'>
             <i class="fas fa-long-arrow-alt-left"></i>
             <!-- <FontAwesomeIcon class='mr-[6px]' icon={faLongArrowAltLeft} /> -->
@@ -66,6 +66,8 @@
             <p style="margin: 0 10px"'>Hoặc đăng nhập bằng tài khoản</p>
           <div class="line"></div>
         </span>
+          <h3>${resetPasswordMessage}</h3>
+          <h3>${loginError}</h3>
             <input name="email" class=' login_input' type="text" placeholder="Email" />
             <input name="password" class='login_input' type="password" placeholder="Password" />
             <a class='sign-in_resetpass'>

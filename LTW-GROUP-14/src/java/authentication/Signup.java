@@ -45,12 +45,15 @@ public class Signup extends HttpServlet {
         Map<String, String> error = new UserValidator().validate(request);
         if(!error.isEmpty()){
             request.setAttribute("error", error);
+            request.getRequestDispatcher("FE/Signup/signup.jsp").forward(request, response);
+
         }
         else{
             new UserService().save(request);
             request.setAttribute("success", "Đăng ký thành công");
+            request.getRequestDispatcher("FE/Login/login.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("FE/Login/login.jsp").forward(request, response);
+        
     }
 
     /** 

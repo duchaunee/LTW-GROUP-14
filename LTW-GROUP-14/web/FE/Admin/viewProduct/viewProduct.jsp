@@ -177,7 +177,7 @@
                         class='text-[18px] cursor-pointer text-bgPrimary hover:text-green-600 transition-all ease-linear duration-100'
                         icon={faEdit} /></a>
                     </button>
-                        <a href="/admin-deleteproduct?id=${p.id}"> <button style="border: none" class='remove' onclick="confirmDelete(${p.countNumberOfOrderDetail()})">
+                    <a href="#"> <button style="border: none" class='remove' onclick="confirmDelete(${p.countNumberOfOrderDetail()},${p.id})">
                       <i class="fas fa-trash-alt"></i>
                       <FontAwesomeIcon
                         class='text-[18px] cursor-pointer text-bgPrimary hover:text-primary transition-all ease-linear duration-100'
@@ -212,16 +212,21 @@
   </div>
     <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
     <script>
-        function confirmDelete(id){
-            if(id === 0)
-                confirm("Bạn có chắc muốn xóa sản phẩm này ?");
-            else{
-                alert("Không thể xóa sản phẩm đang có đơn hàng");
-            }
-        }
+      function confirmDelete(n, id){
+          if(n === 0){
+             var option = confirm("Bạn có chắc muốn xóa sản phẩm này ?");
+             if ( option === true){
+             window.location.href='admin-deleteproduct?id='+id;
+           }
+          }
+  
+          else{
+              alert("Không thể xóa sản phẩm đang có đơn hàng");
+          }
+      }
 
-        
-    </script>
+      
+  </script>
   <!-- <script src="./addProduct.js"></script> -->
 </body>
 

@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import utils.Utils;
 
 /**
  *
@@ -107,6 +106,19 @@ public class UserDAO extends DAO{
             System.out.println(e);
         }
         return null;
+    }
+    
+    public void changePassword(String email, String password){
+        String query = "UPDATE user set password = ? WHERE email = ?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, password);
+            ps.setString(2, email);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     public Integer countUser(){

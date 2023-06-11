@@ -102,7 +102,7 @@ public class Utils {
         request.getSession().removeAttribute("lastRequest");
     }
     
-    private static void send(String emailAddress, String subject, String msg, String user, String password){
+    private static void send(String emailAddress, String subject, String msg, String fromEmail, String password){
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
@@ -111,12 +111,12 @@ public class Utils {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication(){
-                return new PasswordAuthentication(user, password);
+                return new PasswordAuthentication(fromEmail, password);
             }
         });
         try {
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(user));
+            message.setFrom(new InternetAddress(fromEmail));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailAddress));
             message.setSubject(subject);
             message.setContent(msg, "text/html");
@@ -126,9 +126,10 @@ public class Utils {
         }
     }
     
-    public static void sendEmail(String toEmail, String newPassword) {
-        String subject = "Subject test";
-        String message = "New password is " + newPassword;
+    public static void sendEmail(HttpServletRequest request) {
+        String subject = "Xác nhận đổi mật khẩu";
+        String toEmail = request.getParameter("email");
+        String message = EmailReset.content.replace("toEmail", toEmail);
         Utils.send(toEmail, subject, message, "Phanvanthi315.1@gmail.com", "jfdrbyucuiwguela");
     }
 }

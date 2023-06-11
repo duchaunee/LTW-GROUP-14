@@ -38,4 +38,10 @@ public class UserService {
         String password = Utils.encodeMD5(request.getParameter("password"));
         userDAO.save(email, password);
     }
+    
+    public void changePassword(HttpServletRequest request){
+        String email = request.getParameter("email");
+        String password = Utils.encodeMD5(request.getParameter("password"));
+        userDAO.changePassword(email, password);
+    }
 }

@@ -1,15 +1,16 @@
 package authentication;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.Utils;
+import service.UserService;
 
-@WebServlet(name="ResetPassword", urlPatterns={"/reset-password"})
-public class ResetPassword extends HttpServlet {
+@WebServlet(name="ConfirmResetPassword", urlPatterns={"/confirm-reset-password"})
+public class ConfirmResetPassword extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -20,14 +21,15 @@ public class ResetPassword extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         
+       
     } 
 
+  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
+        processRequest(request, response);
     } 
 
     /** 
@@ -40,10 +42,9 @@ public class ResetPassword extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        
-        
-        Utils.sendEmail(request);
-        request.setAttribute("resetPasswordMessage", "Vui lòng kiểm tra email");
+        request.setCharacterEncoding("UTF-8");
+        new UserService().changePassword(request);
+        request.setAttribute("resetPasswordMessage", "Đổi mật khẩu thành công");
         request.getRequestDispatcher("/FE/Login/login.jsp").forward(request, response);
     }
 

@@ -36,7 +36,11 @@ public class OrderItemDAO extends DAO{
     }
     public List<OrderItem>pagningOrderItem(Integer id){
         List<OrderItem>list=new ArrayList<>();
-        String query="select * from order_item order by id limit 5 offset ?";
+        String query = "SELECT ot.id, ot.product_id, ot.order_id, ot.order_status, ot.quantity \n" +
+                        "FROM order_item as ot LEFT JOIN purchase_order as po\n" +
+                        "ON ot.order_id = po.id\n" +
+                        "ORDER BY po.order_time\n" +
+                        "limit 5 offset ?";
         try{
             conn = new DBConnect().getConnection();
             ps=conn.prepareStatement(query);
@@ -47,6 +51,38 @@ public class OrderItemDAO extends DAO{
                                     pDAO.findById(rs.getInt(2)),rs.getString(4),rs.getInt(5)));
             }
         }catch(Exception e){
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public List<OrderItem>pagningOrderItem(String filterBy, String sortBy, Integer currentPage){
+        List<OrderItem>list=new ArrayList<>();
+        String query = "SELECT ot.id, ot.product_id, ot.order_id, ot.order_status, ot.quantity \n" +
+                        "FROM order_item as ot LEFT JOIN purchase_order as po\n" +
+                        "ON ot.order_id = po.id\n" +
+                        "-- filterBy\n" +
+                        "ORDER BY po.order_time -- sortBy\n" +
+                        "limit 5 offset ?";
+        if(filterBy != null && !filterBy.equals("Tất cả")) 
+            query = query.replace("-- filterBy", "WHERE order_status = '" +  filterBy + "'");
+        if(sortBy != null && sortBy.equals("Mới nhất")) 
+            query = query.replace("-- sortBy", "DESC");
+        System.out.println(query);
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setInt(1, (currentPage - 1)*5);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                list.add(new OrderItem(rs.getInt(1),
+                                       oDAO.findById(rs.getInt(3)),
+                                       pDAO.findById(rs.getInt(2)),
+                                       rs.getString(4),
+                                       rs.getInt(5)));
+            }
+        }catch(Exception e){
+            System.out.println(e);
         }
         return list;
     }

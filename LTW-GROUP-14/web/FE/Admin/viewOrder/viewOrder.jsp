@@ -23,7 +23,7 @@
       <div class="admin_left">
         <div class="admin_leftInfo">
           <img class='' src="https://source.unsplash.com/random" alt="" />
-          <span class=''>Your name here </span>
+          <span class=''>${user.name} </span>
         </div>
         <ul class='admin_leftTab'>
 
@@ -82,28 +82,44 @@
         <div class="">
           <div class="view-order_wrapper">
             <div class="view-order_top">
-              <div class='view-order_quantity'>
-                <p class=''>Số lượng</p>
-                : ${orderItemList.size()} đơn hàng
-              </div>
+                <div class='view-order_quantity'>
+                  <p class=''>Tổng số lượng</p>
+                  : ${totalProduct} đơn hàng
+                </div>
+                <form action="/admin-vieworder" method="POST" class="filterForm">
+                    <input type='hidden' name='page' value='1'/>
+                    <div class="">
+                      <select class='view-order_status' name="filterBy" id="" onchange="submitForm('filterForm')">
+                        <option key='0' value="" ${filterBy != null ? 'disabled' : ''}
+                                  >Lọc đơn hàng theo</option>
+                        <option key='1' value="Tất cả" 
+                                ${filterBy.equals('Tất cả') ? 'selected' : ''}>Tất cả</option>
+                        <option key='2' value="Đang xử lý"
+                                ${filterBy.equals('Đang xử lý') ? 'selected' : ''}>Đang xử lý</option>
+                        <option key='3' value="Vận chuyển"
+                                ${filterBy.equals('Vận chuyển') ? 'selected' : ''}>Vận chuyển</option>
+                        <option key='4' value="Đang giao"
+                                ${filterBy.equals('Đang giao') ? 'selected' : ''}>Đang giao</option>
+                        <option key='5' value="Hoàn thành"
+                                ${filterBy.equals('Hoàn thành') ? 'selected' : ''}>Hoàn thành</option>
+                        <option key='6' value="Đã hủy"
+                                ${filterBy.equals('Đã hủy') ? 'selected' : ''}>Đã hủy</option>
+                      </select>
+                    </div>
+                </form>
+            <form action="/admin-vieworder" method="POST" class="sortForm">
+                <input type='hidden' name='page' value='1'/>
               <div class="">
-                <select class='view-order_status' name="sort-by" id="">
-                  <option key='0' value="default">Lọc đơn hàng theo</option>
-                  <option key='1' value="all">Tất cả</option>
-                  <option key='2' value="Đang xử lý">Đang xử lý</option>
-                  <option key='3' value="Vận chuyển">Vận chuyển</option>
-                  <option key='4' value="Đang giao">Đang giao</option>
-                  <option key='5' value="Hoàn thành">Hoàn thành</option>
-                  <option key='6' value="Đã hủy">Đã hủy</option>
+                <select class='view-order_date' name="sortBy" id="" onchange="submitForm('sortForm')">
+                  <option key='0' value=""
+                          ${sortBy != null  ? 'disabled' : ''}>Sắp xếp đơn hàng theo</option>
+                  <option key='1' value="Mới nhất"
+                          ${sortBy.equals('Mới nhất') ? 'selected' : ''}>Mới nhất</option>
+                  <option key='2' value="Cũ nhất"
+                          ${sortBy.equals('Cũ nhất') ? 'selected' : ''}>Cũ nhất</option>
                 </select>
               </div>
-              <div class="">
-                <select class='view-order_date' name="sort-by" id="">
-                  <option key='0' value="default">Sắp xếp đơn hàng theo</option>
-                  <option key='1' value="latest">Mới nhất</option>
-                  <option key='2' value="oldest">Cũ nhất</option>
-                </select>
-              </div>
+            </form>
             </div>
             <div class="view-order_bottom">
               <table class=''>
@@ -217,18 +233,8 @@
       </div>
     </div>
   </div>
-
-  <!-- <script src="./addProduct.js"></script> -->
-  <script>
-    const currentPosition = localStorage.getItem('prevLocation');
-    if (currentPosition) window.scrollTo(0, currentPosition);
-
-    document.addEventListener('scroll', () => {
-      localStorage.setItem('prevLocation', window.scrollY);
-    });
-  </script>
-      <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
-
+    <script src="${pageContext.request.contextPath}/FE/Admin/viewOrder/viewOrder.js"></script> 
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
 </body>
 
 </html>

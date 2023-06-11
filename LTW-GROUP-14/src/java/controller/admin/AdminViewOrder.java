@@ -59,7 +59,11 @@ public class AdminViewOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        request.setCharacterEncoding("UTF-8");
+        List<OrderItem> orderItemList = new OrderItemService().pagingOrderItem(request);
+        request.setAttribute("orderItemList", orderItemList);
+        request.getSession().setAttribute("global", "Phan thi");
+        request.getRequestDispatcher("FE/Admin/viewOrder/viewOrder.jsp").forward(request, response);
     }
 
     /** 

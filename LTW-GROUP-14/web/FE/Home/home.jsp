@@ -69,6 +69,9 @@
                 </c:forEach>
             </div>
         </div>
+        <div id="mid-content" style="max-width: 1230px;margin: auto;">
+            <img style="margin-bottom: 100px;" src="${pageContext.request.contextPath}/FE/Home/Assest/img/slide-7.jpg" alt=""> 
+        </div>
         <div class="sale-product">
             <h2>SẢN PHẨM BÁN CHẠY</h2>
 

@@ -1,0 +1,32 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Jun 9, 2023, 7:04:43 PM
+    Author     : DUC HAU
+*/
+
+.spinning {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 100rem;
+  border: 3px solid transparent;
+  border-top-color: #fff;
+  border-right-color: #fff;
+  animation: spin 0.6s linear infinite;
+  position: relative;
+  z-index: 2000;
+  display: none;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -12,6 +12,7 @@ import dao.OrderItemDAO;
 import dao.ProductDAO;
 import dao.UserDAO;
 import entity.CartItem;
+import entity.User;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,12 +21,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.CheckoutService;
+import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "CheckoutSuccessController", urlPatterns = {"/CheckoutSuccessController"})
+@WebServlet(name = "CheckoutSuccessController", urlPatterns = {"/checkout-success"})
 public class CheckoutSuccessController extends HttpServlet {
     private OrderAddressDAO orderAddressDAO=new OrderAddressDAO();
     private CartDAO cartDAO=new CartDAO();
@@ -47,44 +50,18 @@ public class CheckoutSuccessController extends HttpServlet {
             throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-        String city=request.getParameter("city");
-        String district=request.getParameter("district");
-        String ward=request.getParameter("wards");
-        String phone=request.getParameter("phoneNumber");
-        String address=request.getParameter("address");
-        String note=request.getParameter("note");
-        String paymentMethod=request.getParameter("paymentMethod");
-        Integer total=Integer.parseInt(request.getParameter("total"));
-        Integer discount=Integer.parseInt(request.getParameter("discount"));
-        int cartId=Integer.parseInt(request.getParameter("cartId"));
-        List<CartItem>cartItems=cartItemDAO.findByCartID(cartId);
-        request.setAttribute("items", cartItems);
-        request.setAttribute("discount", discount);
-        request.setAttribute("city", city);
-        request.setAttribute("district", district);
-        request.setAttribute("ward", ward);
-        request.setAttribute("phone", phone);
-        request.setAttribute("note", note);
-        request.setAttribute("address", address);
-        request.setAttribute("name", userDAO.findById(cartId).getName());
-        request.setAttribute("email", userDAO.findById(cartId).getEmail());
-        request.setAttribute("time", LocalDateTime.now());
-        int orderAddressId=orderAddressDAO.save(city, district, ward, address, phone, note, paymentMethod);
-        int orderId=orderDAO.save(orderAddressId, cartId, 30000, discount, total, LocalDateTime.now(), cartItems.size(), LocalDateTime.now());
-        for(CartItem x:cartItems){
-            orderItemDAO.save(x.getProduct().getId(), orderId, "Processing", x.getQuantity());
+        User currentUser=Utils.getUserInSession(request);
+        if(currentUser == null){
+            Utils.setLastRequest(request, "/checkout-success");
+            response.sendRedirect("/login");
         }
-        for(CartItem x:cartItems){
-            productDAO.updateQuantity(x.getProduct().getId(), x.getProduct().getInventory()-x.getQuantity());
-            cartItemDAO.deleteById(x.getId());
-        }
-        if(paymentMethod.equals("cash")){
-            request.setAttribute("payment", "Trả tiền mặt khi nhận hàng");
+        else if(!currentUser.getRole().equals("USER")){
+            response.sendRedirect("/access-denied");
         }
         else{
-            request.setAttribute("payment", "Thanh toán online");
+            new CheckoutService().save(request, currentUser);
+            request.getRequestDispatcher("FE/checkoutSuccess/checkoutSuccess.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("FE/checkoutSuccess/checkoutSuccess.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

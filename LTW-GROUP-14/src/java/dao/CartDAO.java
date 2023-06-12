@@ -133,4 +133,21 @@ public class CartDAO extends DAO {
     }
     return null;
   }
+  public Cart findByUserId(Integer Id){
+        String query="select * from cart where user_id=?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setInt(1, Id);
+            rs=ps.executeQuery();
+            if(rs.next()){
+                return new Cart(rs.getInt(1),udao.findById(rs.getInt(2)),
+                                    rs.getTimestamp(3).toLocalDateTime());
+            }
+            else{
+            }
+        }catch(Exception e){
+        }
+        return null;
+    }
 }

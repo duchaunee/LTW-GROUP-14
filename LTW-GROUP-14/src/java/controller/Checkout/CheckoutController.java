@@ -4,11 +4,13 @@
  */
 package controller.Checkout;
 
+import dao.CartDAO;
 import dao.CartItemDAO;
 import dao.OrderAddressDAO;
 import dao.OrderDAO;
 import dao.UserDAO;
 import dao.VoucherDAO;
+import entity.Cart;
 import entity.CartItem;
 import entity.User;
 import java.io.IOException;
@@ -21,12 +23,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "CheckoutController", urlPatterns = {"/CheckoutController"})
+@WebServlet(name = "CheckoutController", urlPatterns = {"/checkout"})
 public class CheckoutController extends HttpServlet {
 
     private CartItemDAO cartItemDAO=new CartItemDAO();
@@ -34,6 +37,7 @@ public class CheckoutController extends HttpServlet {
     private OrderDAO orderDAO=new OrderDAO();
     private OrderAddressDAO orderAddressDAO=new OrderAddressDAO();
     private UserDAO userDAO=new UserDAO();
+    private CartDAO cartDAO=new CartDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,21 +52,6 @@ public class CheckoutController extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
-        int cartId=2;
-        User user=userDAO.findById(cartId);
-        List<CartItem>cartItems=cartItemDAO.findByCartID(cartId);
-        request.setAttribute("id", cartId);
-        request.setAttribute("items", cartItems);
-        request.setAttribute("name", user.getName());
-        request.setAttribute("email", user.getEmail());
-        String code=request.getParameter("voucherCode");
-        if(code==null){ 
-            request.setAttribute("discount", 0);
-        }
-        else{
-            request.setAttribute("discount", voucherDAO.findByCode(cartId ,code));
-        }
-        request.getRequestDispatcher("FE/Checkout/checkout.jsp").forward(request, response);
         
     }
 
@@ -78,21 +67,8 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int cartId=2;
-        User user=userDAO.findById(cartId);
-        List<CartItem>cartItems=cartItemDAO.findByCartID(cartId);
-        request.setAttribute("items", cartItems);
-        request.setAttribute("id", cartId);
-        request.setAttribute("name", user.getName());
-        request.setAttribute("email", user.getEmail());
-        String code=request.getParameter("voucherCode");
-        if(code==null){
-            request.setAttribute("discount", 0);
-        }
-        else{
-            request.setAttribute("discount", voucherDAO.findByCode(cartId, code));
-        }
-        request.getRequestDispatcher("FE/Checkout/checkout.jsp").forward(request, response);
+        
+        
     }
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -107,21 +83,30 @@ public class CheckoutController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        int cartId=2;
-        User user=userDAO.findById(cartId);
-        List<CartItem>cartItems=cartItemDAO.findByCartID(cartId);
-        request.setAttribute("id", cartId);
-        request.setAttribute("items", cartItems);
-        request.setAttribute("name", user.getName());
-        request.setAttribute("email", user.getEmail());
-        String code=request.getParameter("voucherCode");
-        if(code==null){ 
-            request.setAttribute("discount", 0);
+        User currentUser=Utils.getUserInSession(request);
+        if(currentUser == null){
+            Utils.setLastRequest(request, "/cart");
+            response.sendRedirect("/login");
+        }
+        else if(!currentUser.getRole().equals("USER")){
+            response.sendRedirect("/access-denied");
         }
         else{
-            request.setAttribute("discount", voucherDAO.findByCode(cartId ,code));
+            Cart cart=cartDAO.findByUserId(currentUser.getId());
+            List<CartItem>cartItemList=cartItemDAO.findByCartID(cart.getId());
+            request.setAttribute("items", cartItemList);
+            request.setAttribute("id", currentUser.getId());
+            request.setAttribute("name", currentUser.getName());
+            request.setAttribute("email", currentUser.getEmail());
+            String code=request.getParameter("voucherCode");
+            if(code==null){
+                request.setAttribute("discount", 0);
+            }
+            else{
+                request.setAttribute("discount", voucherDAO.findByCode(currentUser.getId(), code));
+            }
+            request.getRequestDispatcher("FE/Checkout/checkout.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("FE/Checkout/checkout.jsp").forward(request, response);
     }
 
     /**

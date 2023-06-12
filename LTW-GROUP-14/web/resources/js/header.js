@@ -26,7 +26,7 @@ const navData = [
   },
   {
     name: 'Liên hệ',
-    href: '/lien-he'
+    href: '/contact'
   },
 ];
 

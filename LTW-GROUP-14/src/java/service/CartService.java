@@ -28,7 +28,7 @@ public class CartService {
         request.setAttribute("now", currentDate);
         request.setAttribute("deli", deliveryDate);
         request.setAttribute("items", cartItemList);
-        request.setAttribute("id", currentUser.getId());
+        request.setAttribute("id", cart.getId());
         request.setAttribute("discount", 0);
     }
 }

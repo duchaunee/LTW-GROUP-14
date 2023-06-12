@@ -39,15 +39,15 @@
                     <a class='info'>
                       ${p.getProduct().getName()}
                       <div class="line"></div>
-                      <p class=''> ${String.format("%,d",Integer.parseInt(p.getProduct().getPrice().replace('.','')))} </p>
+                      <p class=''> ${String.format("%,d",p.getProduct().getPrice())} </p>
                       <strong class=''>× ${p.getQuantity()}</strong>
                     </a>
-                    <h2 class='price'>${String.format("%,d",Integer.parseInt(p.getProduct().getPrice().replace('.','')) * p.getQuantity())} ₫</h2>
+                    <h2 class='price'>${String.format("%,d",p.getProduct().getPrice() * p.getQuantity())} ₫</h2>
                   </div>
                   </c:forEach>
                   <c:set var="sum" value="0" />
                 <c:forEach items="${items}" var="p">
-                  <c:set var="price" value="${p.getProduct().getPrice().replace('.','')}"/>
+                  <c:set var="price" value="${p.getProduct().getPrice()}"/>
                   <c:set var="quantity" value="${p.getQuantity()}"/>
                   <c:set var="total" value="${price * quantity}"/>
                   <c:set var="sum" value="${sum + total}"/>

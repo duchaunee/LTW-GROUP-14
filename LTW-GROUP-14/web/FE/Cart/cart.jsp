@@ -23,8 +23,9 @@
         <div class="cart">
 
           <!-- ============ KHI GIỎ HÀNG TRỐNG ============ -->
-          <!-- <div class="w-full h-[480px] flex flex-col gap-7 items-center justify-center">
-            <div style={{ backgroundImage: "url('/emptyCart.png')" }}
+          <c:if test="${empty items}">
+          <div class="w-full h-[480px] flex flex-col gap-7 items-center justify-center">
+            <div style={{ backgroundImage: "${pageContext.request.contextPath}/FE/imgPublic/emptyCart.png" }}
               class="w-[520px] h-[500px] bg-contain bg-no-repeat bg-center"></div>
             <div
               class='text-center text-[28px] font-bold text-bgPrimary font-mono leading-[32px] uppercase'>
@@ -35,8 +36,9 @@
               <FontAwesomeIcon class='mr-[6px]' icon={faLongArrowAltLeft} />
               <span class='text-[20px]'>Quay lại trang chủ</span>
             </NavLink>
-          </div> -->
-
+          </div> 
+          </c:if>  
+          <c:if test="${!empty items}">
           <!-- LEFT-->
           <div class="cart-left">
             <table class=''>
@@ -54,36 +56,36 @@
                 <c:forEach items="${items}" var="p" varStatus="status">
                   <tr class=''>
                     <td class='product'>
-                      <form action="CartDeleteItemController" method="post">
+                      <form action="cart-deleteitem" method="post">
                         <button type="submit" class="delete" name="index" value="${p.getId()}">
                           <i class="fas fa-times"></i>
                         </button>
                       </form>
-                      <img class='' src="https://s...content-available-to-author-only...h.com/random" alt="" />
+                      <img class='' src="/productImage?imgId=${p.getProduct().image_id}&number=0" alt="" />
                       <div class="info">
                         <span class=''>${p.getProduct().getName()}</span>
                         <span class=''>${p.getProduct().getBrand()}</span>
                       </div>
                     </td>
                     <td class='price'>
-                      <span class='' id="price${status.index+1}">${String.format("%,d", Integer.parseInt(p.getProduct().getPrice().replace('.','')))}</span>
+                      <span class='' id="price${status.index+1}">${String.format("%,d", p.getProduct().getPrice())}</span>
                       <p class=''>₫</p>
                     </td>
                     <td class='quantity'>
-                        <form action="CartDecreasingQuantityController" method="post">
+                        <form action="cart-decreasing" method="post">
                         <button type='submit' class='minus' name="index1" value="${p.getId()}">
                           <i class="fas fa-minus"></i>
                         </button>
                         </form>
                       <div class='number' id="product${status.index+1}">${p.getQuantity()} </div>
-                      <form action="CartIncreasingQuantityController" method="post">
+                      <form action="cart-increasing" method="post">
                         <button type="submit" class="plus" name="index2" value="${p.getId()}">
                           <i class="fas fa-plus"></i>
                         </button>
                       </form>
                     </td>
                     <td class='total'>
-                      <p class='' id="total${status.index+1}">${String.format("%,d", Integer.parseInt(p.getProduct().getPrice().replace('.','')) * p.getQuantity())}</p>
+                      <p class='' id="total${status.index+1}">${String.format("%,d", p.getProduct().getPrice() * p.getQuantity())}</p>
                       <span class=''>₫</span>
                     </td>
                   </tr>
@@ -95,7 +97,7 @@
                 <i class="fas fa-long-arrow-alt-left"></i>
                 <span class=''>Tiếp tục xem sản phẩm</span>
               </a>
-              <form action="CartDeleteController" method="post">
+              <form action="cart-delete" method="post">
                 <button type="submit" class="update" name="id" value="${id}">
                   <span>Xóa giỏ hàng</span>
                 </button>
@@ -107,7 +109,7 @@
           <div class="cart-right">
              <c:set var="sum" value="0" />
                 <c:forEach items="${items}" var="p">
-                  <c:set var="price" value="${p.getProduct().getPrice().replace('.','')}"/>
+                  <c:set var="price" value="${p.getProduct().getPrice()}"/>
                   <c:set var="quantity" value="${p.getQuantity()}"/>
                   <c:set var="total" value="${price * quantity}"/>
                   <c:set var="sum" value="${sum + total}"/>
@@ -142,13 +144,13 @@
               </h2>
             </div>
             <div class='btn-checkout'>
-                <form action="CheckoutController" method="post">
+                <form action="checkout" method="post">
                   <button class='hover:brightness-90' type="submit">Tiến hành thanh toán</button>
                 </form>
               </div>
 
           </div>
-
+         </c:if>
         </div>
       </div>
     </div>

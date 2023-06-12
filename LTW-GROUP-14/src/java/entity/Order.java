@@ -15,7 +15,6 @@ public class Order {
     private Integer totalPayment;
     private LocalDateTime orderTime;
     private Integer amount;
-    private String phoneNumber;
     private LocalDateTime createAt;
     private List<OrderItem> orderItemList = new ArrayList<>();
     
@@ -35,14 +34,6 @@ public class Order {
         return orderItemList;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-    
     public void setOrderItemList(List<OrderItem> orderItemList) {
         this.orderItemList = orderItemList;
     }

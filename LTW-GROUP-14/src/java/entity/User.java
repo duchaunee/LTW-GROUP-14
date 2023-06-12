@@ -1,9 +1,7 @@
 package entity;
 
-import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
-import javax.servlet.http.HttpServletRequest;
-import utils.Utils;
+import java.util.List;
 
 public class User {
     private Integer id;
@@ -14,7 +12,9 @@ public class User {
     private String provider;
     private String role;
     private LocalDateTime createAt;
-
+    //OneToMany
+    private List<Order> orderList;
+    
     public Integer getId() {
         return id;
     }
@@ -78,6 +78,15 @@ public class User {
     public void setCreateAt(LocalDateTime createAt) {
         this.createAt = createAt;
     }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+    
 
     public User(Integer id, String name, String email, String password, byte [] avatar, String provider, String role, LocalDateTime createAt) {
         this.id = id;

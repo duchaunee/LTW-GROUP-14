@@ -174,6 +174,7 @@ public class UserDAO extends DAO{
                 user.setPassword(rs.getString("password"));
                 user.setProvider(rs.getString("provider"));
                 user.setRole(rs.getString("role"));
+                user.setOrderList(new OrderDAO().findByUser(user.getId()));
                 userList.add(user);
             }
         } catch (Exception e) {

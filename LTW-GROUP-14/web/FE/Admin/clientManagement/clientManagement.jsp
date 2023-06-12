@@ -27,7 +27,7 @@
         </div>
         <ul class='admin_leftTab'>
 
-            <a href="/HomeMainController" style="text-decoration: none; color: black;" class='admin_leftItem'>
+            <a href="/home" style="text-decoration: none; color: black;" class='admin_leftItem'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-home"></i>
               <span class=''>Trở về trang chủ</span>
@@ -115,35 +115,39 @@
                       Chưa có người dùng nào
                     </div>
                   </div> -->
-                  <c:forEach var="user" items="${userList}">
-                  <tr class=''>
-                    <td class='avatar'>
-                      <img src="https://source.unsplash.com/random" alt="" class='' />
-                    </td>
-                    <td class='name'>
-                      <span class=''>duc hau 1232</span>
-                    </td>
-                    <td class='email'>
-                      <p class="">duchau123@gmail.com</p>
-                    </td>
-                    <td class='login'>
-                      <!-- provider của user là google thì hiển thị thằng trên, là email thì hiển thị thằng dưới -->
-                        <i style="color: var(--text-primary);" class="fab fa-google"></i>
-                        <i style="color: #2563EB;" class="fas fa-envelope"></i> 
-                    </td>
-                    <td class='order'>
-                      <p class=''>2312</p>
-                    </td>
-                    <td class='action'>
-                      <button class=''>
-                        <i class="fas fa-lock"></i>
-                      </button>
-                      <button class=''>
-                        <i class="fas fa-gift"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </c:forEach>
+                    <c:forEach items="${userList}" var="user">
+                        <tr class=''>
+                          <td class='avatar'>
+                            <img src="/userImage?id=${user.id}" alt="" class='' />
+                          </td>
+                          <td class='name'>
+                            <span class=''>${user.name}</span>
+                          </td>
+                          <td class='email'>
+                            <p class="">${user.email}</p>
+                          </td>
+                          <td class='login'>
+                            <!-- provider của user là google thì hiển thị thằng trên, là email thì hiển thị thằng dưới -->
+                            <c:if test="${user.provider.equals('google')}">
+                                <i style="color: var(--text-primary);" class="fab fa-google"></i>
+                            </c:if>
+                            <c:if test="${user.provider.equals('email')}">
+                                <i style="color: #2563EB;" class="fas fa-envelope"></i> 
+                            </c:if>
+                          </td>
+                          <td class='order'>
+                            <p class=''>${user.orderList.size()}</p>
+                          </td>
+                          <td class='action'>
+                            <button class=''>
+                              <i class="fas fa-lock"></i>
+                            </button>
+                            <button class=''>
+                              <i class="fas fa-gift"></i>
+                            </button>
+                          </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
               </table>
             </div>

@@ -27,44 +27,42 @@
         </div>
         <ul class='admin_leftTab'>
 
-            <a href="/HomeMainController" style="text-decoration: none; color: black;" class='admin_leftItem'>
+            <a href="/home" class='admin_leftItem'>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-home"></i>
               <span class=''>Trở về trang chủ</span>
             </div>
           </a>
 
-          <a href="/admin-statistics" style="text-decoration: none; color: black;" class='admin_leftItem '>
+          <a href="/admin-statistics" class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-external-link-alt"></i>
               <span class=''>Thống kê cửa hàng</span>
             </div>
           </a>
 
-          <a href="/manage-account" style="text-decoration: none; color: black;" class='admin_leftItem '>
+          <a href="/manage-account"  class='admin_leftItem '>
             <div class=''>
               <i style="font-size: 18px;" class="fas fa-users"></i>
               <span class=''>Quản lý người dùng</span>
             </div>
           </a>
 
-          <a href="/admin-viewproduct" style="text-decoration: none; color: black;" class='admin_leftItem '>
+          <a href="/admin-viewproduct"  class='admin_leftItem '>
             <div class=''>
               <i class="fas fa-mountain"></i>
               <span class=''>Xem sản phẩm</span>
             </div>
           </a>
-
-          <a href="/admin-addproduct" style="text-decoration: none; color: black;" class='admin_leftItem '>
+          <a href="/admin-addproduct"  class='admin_leftItem '>
             <div class=''>
-              <i style="font-size: 18px;" class="fas fa-plus"></i>
-              <span class=''>Thêm sản phẩm</span>
+              <i class="fas fa-plus"></i>
+                <span class=''>Thêm sản phẩm</span>
             </div>
           </a>
-
-          <a href="/admin-vieworder" style="text-decoration: none; color: white;" class='admin_leftItem active'>
+          <a href="/admin-vieworder" class='admin_leftItem active'>
             <div class=''>
-              <i style="font-size: 18px;" class="fas fa-folder"></i>
+              <i class="fas fa-folder"></i>
               <span class=''>Xem đơn đặt hàng</span>
             </div>
           </a>
@@ -135,29 +133,6 @@
                 </thead>
                 <!-- style={{ height: `${loading ? '0' : itemsPerPage * 70 + 20}px` }} -->
                 <tbody>
-
-                  <!-- KHI DB CHƯA CÓ ĐƠN HÀNG NÀO -->
-                  <!-- <div class="w-full h-full flex flex-col gap-4 mt-8 items-center">
-                    <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                      class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                    <div
-                      class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                      Chưa có đơn hàng nào được tạo ra
-                    </div>
-                  </div> -->
-
-                  <!-- KHI FILTER MÀ KHÔNG CÓ ĐƠN HÀNG NÀO HỢP LỆ -->
-                  <!-- <div class="w-full flex flex-col gap-4 items-center mt-8">
-                    <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                      class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                    <div
-                      class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                      Chưa có đơn hàng nào
-                      <p class="inline-block text-primary ml-[6px]">{filterRef.current.value}
-                      </p>
-                    </div>
-                  </div> -->
-
                   <!-- Mỗi 1 thẻ tr là 1 hàng -->
                   <c:forEach var="orderItem" items="${orderItemList}">
                   <tr class='view-order_item'>
@@ -194,40 +169,13 @@
                 </tbody>
               </table>
             </div>
-            <!-- {loading && (
-            <div class="w-full h-[350px]">
-              <Spinning color='#1f2028' size='30px' />
-            </div>
-            )} -->
           </div>
-
-
-          <!-- Pagination -->
-          <!-- {!loading && allOrders.length !== 0 && (
-            <div class="">
-              <Pagination
-                products={allOrdersSort}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                itemsPerPage={itemsPerPage}
-                quantity={quantity}
-                setPageProducts={setPageProducts} />
-            </div>
-          )} -->
         </div>
-        <!-- <Routes>
-          <Route path='' element={<HomeAdmin />} />
-          <Route path='home' element={<HomeAdmin />} />
-          <Route path='view-users' element={<ViewUsers />} />
-          <Route path='view-products' element={<ViewProducts />} />
-          <Route path='add-product/:id' element={<AddProduct />} />
-          <Route path='view-orders/:id' element={<ViewOrders />} />
-        </Routes> -->
         <ul class="pagination">
             <c:forEach begin="1" end="${totalPage}" var="i">
-              <li>
-                <a href="admin-vieworder?page=${i}">${i}</a>
-              </li>
+                <li style="color: var(--text-bgPrimary)">
+                    <a href="admin-vieworder?page=${i}">${i}</a>
+                </li>
             </c:forEach>
         </ul>
       </div>

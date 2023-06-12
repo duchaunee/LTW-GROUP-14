@@ -62,6 +62,7 @@ public class OrderDAO extends DAO{
             else{
             }
         }catch(Exception e){
+            System.out.println(e);
         }
         return null;
     }
@@ -84,7 +85,6 @@ public class OrderDAO extends DAO{
                 order.setTotalPayment(rs.getInt("total_payment"));
                 order.setOrderTime(rs.getTimestamp("order_time").toLocalDateTime());
                 order.setAmount(rs.getInt("order_amount"));
-                order.setPhoneNumber(rs.getString("phone_number"));
                 order.setCreateAt(rs.getTimestamp("create_at").toLocalDateTime());
                 order.setOrderItemList(new OrderItemDAO().findByOrder(rs.getInt("id")));
                 orderList.add(order);
@@ -94,6 +94,35 @@ public class OrderDAO extends DAO{
         }
         return orderList;
     }
+    
+    public List<Order> findByUser(Integer user_id){
+        String query = "SELECT * FROM purchase_order WHERE user_id = ?";
+        List<Order> orderList = new ArrayList<>();
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, user_id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Order order = new Order();
+                order.setId(rs.getInt("id"));
+                order.setOrderAddress(orderAddressDAO.findById(rs.getInt("order_address_id")));
+                order.setUser(userDAO.findById(rs.getInt("user_id")));
+                order.setDeliveryfee(rs.getInt("deliveryfee"));
+                order.setDiscount(rs.getInt("discount"));
+                order.setTotalPayment(rs.getInt("total_payment"));
+                order.setOrderTime(rs.getTimestamp("order_time").toLocalDateTime());
+                order.setAmount(rs.getInt("order_amount"));
+                order.setCreateAt(rs.getTimestamp("create_at").toLocalDateTime());
+                order.setOrderItemList(new OrderItemDAO().findByOrder(rs.getInt("id")));
+                orderList.add(order);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return orderList;
+    }
+    
     public int save(Integer orderAddressId,  Integer userId, Integer deliveryfee, Integer discount, Integer totalPayment,
             LocalDateTime orderTime, Integer orderAmount, LocalDateTime createAt){
         String query="insert into purchase_order (order_address_id, user_id, deliveryfee, discount, total_payment, order_time, order_amount,create_at)\n" +

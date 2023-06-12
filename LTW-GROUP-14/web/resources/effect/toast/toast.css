@@ -93,31 +93,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
   animation: countdown 2s linear forwards;
 }
 
-/* thẻ i là icon, thẻ p là text title (success, error, warning) */
+/* thẻ i là icon */
+.toast .toast__icon {
+  margin-top: 4px;
+}
+
 .toast.success i {
   font-size: 20px;
   color: rgba(0, 128, 0, 0.8);
-  margin-top: 2px;
   text-transform: capitalize;
 }
 
 .toast.error i {
   font-size: 20px;
   color: #fe3b25;
-  margin-top: 2px;
   text-transform: capitalize;
 }
 
 .toast.warning i {
   font-size: 20px;
   color: rgb(255, 165, 0);
-  margin-top: 2px;
   text-transform: capitalize;
 }
 
 /* =========== */
 .toast__msg {
-  margin: 0 20px 0 16px;
+  margin: 0 20px 0 10px;
 }
 
 .toast__msg span {

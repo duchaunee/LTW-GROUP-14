@@ -64,6 +64,6 @@ function hideToast(timeHide, toast) {
   // sau khi bị ẩn thì 1111ms sau thì xóa element đó đi
   setTimeout(() => {
     toast.remove();
-    toasts.classList.remove('active');
+//    toasts.classList.remove('active');
   }, timeHide + 1111);
 }

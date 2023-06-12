@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 #toasts {
   position: fixed;
   width: 312px;
-  min-height: 66px;
+  max-height: 0;
   top: 20px;
   display: flex; 
   flex-direction: column;

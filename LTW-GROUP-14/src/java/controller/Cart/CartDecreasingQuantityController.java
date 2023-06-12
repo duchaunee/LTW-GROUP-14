@@ -7,6 +7,7 @@ package controller.Cart;
 import controller.*;
 import dao.CartItemDAO;
 import entity.CartItem;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,12 +15,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "CartDecreasingQuantityController", urlPatterns = {"/CartDecreasingQuantityController"})
+@WebServlet(name = "CartDecreasingQuantityController", urlPatterns = {"/cart-decreasing"})
 public class CartDecreasingQuantityController extends HttpServlet {
     private CartItemDAO cartItemDAO=new CartItemDAO();
 
@@ -35,10 +37,20 @@ public class CartDecreasingQuantityController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int index=Integer.parseInt(request.getParameter("index1"));
-        CartItem u=cartItemDAO.findById(index);
-        if(u.getQuantity()>=2) cartItemDAO.decreasingQuantity(index);
-        response.sendRedirect(request.getContextPath() + "/CartController");
+        User currentUser=Utils.getUserInSession(request);
+        if(currentUser == null){
+            Utils.setLastRequest(request, "/cart-decreasing");
+            response.sendRedirect("/login");
+        }
+        else if(!currentUser.getRole().equals("USER")){
+            response.sendRedirect("/access-denied");
+        }
+        else{
+            int index=Integer.parseInt(request.getParameter("index1"));
+            CartItem u=cartItemDAO.findById(index);
+            if(u.getQuantity()>=2) cartItemDAO.decreasingQuantity(index);
+            response.sendRedirect(request.getContextPath() + "/cart");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

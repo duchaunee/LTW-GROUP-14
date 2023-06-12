@@ -6,6 +6,7 @@ package controller.Cart;
 
 import controller.*;
 import dao.CartItemDAO;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,12 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import utils.Utils;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "CartDeleteItemController", urlPatterns = {"/CartDeleteItemController"})
+@WebServlet(name = "CartDeleteItemController", urlPatterns = {"/cart-deleteitem"})
 public class CartDeleteItemController extends HttpServlet {
     private CartItemDAO cartItemDAO=new CartItemDAO();
     /**
@@ -33,9 +35,19 @@ public class CartDeleteItemController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int index=Integer.parseInt(request.getParameter("index"));
-        cartItemDAO.deleteById(index);
-        response.sendRedirect(request.getContextPath() + "/CartController");
+        User currentUser=Utils.getUserInSession(request);
+        if(currentUser == null){
+            Utils.setLastRequest(request, "/cart-deleteitem");
+            response.sendRedirect("/login");
+        }
+        else if(!currentUser.getRole().equals("USER")){
+            response.sendRedirect("/access-denied");
+        }
+        else{
+            int index=Integer.parseInt(request.getParameter("index"));
+            cartItemDAO.deleteById(index);
+            response.sendRedirect(request.getContextPath() + "/cart");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

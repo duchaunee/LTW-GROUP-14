@@ -25,12 +25,12 @@
                   <i class="fas fa-tags"></i>
                   <p class=''>Phiếu ưu đãi</p>
                 </div>
-                <form action="CheckoutController" method="post">
+                <form action="checkout" method="post">
                   <input class="voucher-input" placeholder="Mã ưu đãi" type="text" name="voucherCode" id="voucherCode" />
                   <button class="voucher-apply-btn" type="submit">Áp dụng</button>
                 </form>
               </div>
-          <form action="CheckoutSuccessController" method="post">
+          <form action="checkout-success" method="post">
         <div class="checkout">
      
           <div class='checkout-child'>
@@ -107,14 +107,14 @@
                   <h2 class='name'>${p.getProduct().getName()}
                     <strong class='quantity'>× ${p.getQuantity()}</strong>
                   </h2>
-                  <span class='price'>${String.format("%,d",Integer.parseInt(p.getProduct().getPrice().replace('.','')) * p.getQuantity())} ₫</span>
+                  <span class='price'>${String.format("%,d",p.getProduct().getPrice() * p.getQuantity())} ₫</span>
                 </div>
               </c:forEach>
 
               <div class='total'>
                   <c:set var="sum" value="0" />
                 <c:forEach items="${items}" var="p">
-                  <c:set var="price" value="${p.getProduct().getPrice().replace('.','')}"/>
+                  <c:set var="price" value="${p.getProduct().getPrice()}"/>
                   <c:set var="quantity" value="${p.getQuantity()}"/>
                   <c:set var="total" value="${price * quantity}"/>
                   <c:set var="sum" value="${sum + total}"/>

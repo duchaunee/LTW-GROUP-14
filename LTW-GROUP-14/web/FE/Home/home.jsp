@@ -62,7 +62,7 @@
                         <p class="name-product-carousel-cell">
                             <a class="carousel-cell-bottom-title" href="#">${p.getName()}</a>
                         </p>
-                        <h1 class="related-products-price">${p.getPrice()} ₫</h1>
+                        <h1 class="related-products-price">${String.format("%,d",p.getPrice())} ₫</h1>
                         <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
                     </div>                                                   
                 </div>
@@ -85,7 +85,7 @@
                         <p class="name-product-carousel-cell">
                             <a class="carousel-cell-bottom-title" href="#">${p.getName()}</a>
                         </p>
-                        <h1 class="related-products-price">${p.getPrice()} ₫</h1>
+                        <h1 class="related-products-price">${String.format("%,d",p.getPrice())} ₫</h1>
                         <a class="related-products-button" type="submit">THÊM VÀO GIỎ</a>
                     </div>                                                   
                 </div>

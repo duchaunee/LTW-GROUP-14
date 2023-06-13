@@ -54,7 +54,7 @@ public class CheckoutService {
             int orderAddressId=orderAddressDAO.save(city, district, ward, address, phone, note, paymentMethod);
             int orderId=orderDAO.save(orderAddressId, cart.getId(), 30000, discount, total, LocalDateTime.now(), cartItems.size(), LocalDateTime.now());
             for(CartItem x:cartItems){
-                orderItemDAO.save(x.getProduct().getId(), orderId, "Processing", x.getQuantity());
+                orderItemDAO.save(x.getProduct().getId(), orderId, "Đang xử lý", x.getQuantity());
             }
             for(CartItem x:cartItems){
                 productDAO.updateQuantity(x.getProduct().getId(), x.getProduct().getInventory()-x.getQuantity());

@@ -67,6 +67,12 @@
               <span class=''>Xem đơn đặt hàng</span>
             </div>
           </a>
+          <a href="/admin-viewpreview" style="text-decoration: none; color: black;" class='admin_leftItem '>
+            <div class=''>
+              <i style="font-size: 18px;" class="fas fa-folder"></i>
+              <span class=''>Xem đánh giá</span>
+            </div>
+          </a>
           <!-- <NavActive to='home' icon={faHome} text='Thống kê' />
           <NavActive to='view-users' icon={faUsers} iconSize='text-[18px]' text='Quản lý khách hàng' />
           <NavActive to='view-products' icon={faMountain} iconSize='text-[22px]' text='Xem sản phẩm' />

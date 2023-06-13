@@ -69,6 +69,12 @@
               <span class=''>Xem đơn đặt hàng</span>
             </div>
           </a>
+          <a href="/admin-viewpreview" style="text-decoration: none; color: black;" class='admin_leftItem '>
+            <div class=''>
+              <i style="font-size: 18px;" class="fas fa-folder"></i>
+              <span class=''>Xem đánh giá</span>
+            </div>
+          </a>
         </ul>
 
       </div>

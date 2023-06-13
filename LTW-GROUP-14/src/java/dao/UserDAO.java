@@ -193,4 +193,18 @@ public class UserDAO extends DAO{
         } catch (SQLException e) {
         }
     }
+    public void update(Integer userId, String name, String password, String avatar){
+        String query = "UPDATE user SET name = ?, password = ?, avatar = ? WHERE id = ?";
+        try {
+            conn = new DBConnect().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, password);
+            ps.setString(3, avatar);
+            ps.setInt(4,userId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

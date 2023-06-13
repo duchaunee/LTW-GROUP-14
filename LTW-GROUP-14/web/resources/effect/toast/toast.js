@@ -46,7 +46,7 @@ function createElementMsg(status) {
             `;
   toasts.appendChild(toast);
 
-  toast.style.animation = `show_slide_${position} 0.66s linear forwards`;
+  toast.style.animation = `show_slide_${position} 0.8s linear forwards`;
   //sau 2s thì cho chui về
   hideToast(2000, toast);
   

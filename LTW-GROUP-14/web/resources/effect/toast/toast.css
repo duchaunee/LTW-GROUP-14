@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 #toasts {
   position: fixed;
   width: 312px;
-  max-height: 0;
+  max-height: 0; /*để nó không đè mất cái button "Tài Khoản" ở header*/
   top: 20px;
   display: flex; 
   flex-direction: column;
@@ -38,22 +38,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 .toast.success {
   position: relative;
   background-color: #fff;
-  border-left: 6px solid rgba(0, 128, 0, 0.8);
-  animation: show_slide_topLeft 0.66s linear forwards;
+  border-left: 5px solid rgba(0, 128, 0, 0.8);
+  animation: show_slide_topLeft 0.4s linear forwards;
 }
 
 .toast.warning {
   position: relative;
   background-color: #fff;
-  border-left: 6px solid rgb(255, 165, 0);
-  animation: show_slide_topRight 0.66s linear forwards;
+  border-left: 5px solid rgb(255, 165, 0);
+  animation: show_slide_topRight 0.4s linear forwards;
 }
 
 .toast.error {
   position: relative;
   background-color: #fff;
-  border-left: 6px solid #fe3b25;
-  animation: show_slide_topRight 0.66s linear forwards;
+  border-left: 5px solid #e74c3c;
+  animation: show_slide_topRight 0.4s linear forwards;
 }
 
 /* Thanh line chạy bên dưới */
@@ -71,19 +71,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 
 .toast.error:after {
   content: "";
-  --height: 4px;
+  --height: 5px;
   height: var(--height);
   position: absolute;
   top: calc(100% - var(--height));
   left: -1px;
   width: calc(100% + 1px);
-  background-color: #fe3b25;
+  background-color: #e74c3c;
   animation: countdown 2s linear forwards;
 }
 
 .toast.warning:after {
   content: "";
-  --height: 4px;
+  --height: 5px;
   height: var(--height);
   position: absolute;
   top: calc(100% - var(--height));
@@ -106,7 +106,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 
 .toast.error i {
   font-size: 20px;
-  color: #fe3b25;
+  color: #e74c3c;
   text-transform: capitalize;
 }
 
@@ -161,15 +161,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 
 @keyframes show_slide_topRight {
   0% {
-    transform: translateX(calc(160%));
+    transform: translateX(calc(150%));
   }
 
-  45% {
+  30% {
     transform: translateX(-30px);
   }
 
-  75% {
-    transform: translateX(20px);
+  46% {
+    transform: translateX(10px);
+  }
+  
+  68% {
+    transform: translateX(0);
   }
 
   100% {
@@ -179,15 +183,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 
 @keyframes show_slide_topLeft {
   0% {
-    transform: translateX(calc(-160%));
+    transform: translateX(calc(-150%));
   }
 
-  45% {
-    transform: translateX(26px);
+  30% {
+    transform: translateX(30px);
   }
 
-  75% {
-    transform: translateX(-20px);
+  46% {
+    transform: translateX(-10px);
+  }
+  
+  68% {
+    transform: translateX(0);
   }
 
   100% {

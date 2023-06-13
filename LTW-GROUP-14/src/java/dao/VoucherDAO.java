@@ -66,4 +66,20 @@ public class VoucherDAO extends DAO{
         }
         return 0;
     }
+    public List<Voucher> findByUserId(Integer userId) {
+        List<Voucher>list=new ArrayList<>();
+        String query="select * from voucher where user_id=?";
+        try{
+            conn = new DBConnect().getConnection();
+            ps=conn.prepareStatement(query);
+            ps.setInt(1, userId);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                list.add(new Voucher(rs.getInt(1),udao.findById(rs.getInt(2)),
+                                    rs.getString(3),rs.getInt(4)));
+            }
+        }catch(Exception e){
+        }
+        return list;
+    }
 }

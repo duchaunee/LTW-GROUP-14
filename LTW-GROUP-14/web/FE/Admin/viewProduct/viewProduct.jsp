@@ -91,7 +91,7 @@
             <span class='view-product_quantity'>
               <p class=''>Số lượng</p>: ${size} sản phẩm
             </span>
-            <!-- <div class='view-product_filter'>
+            <div class='view-product_filter'>
               <div class="">
                 <select class='view-product_filterBrand' name="sort-by" id="">
                   <option key='0' value="default">Lọc sản phẩm theo</option>
@@ -123,7 +123,7 @@
                   <option key='6' value="z-a">Z - A</option>
                 </select>
               </div>
-            </div> -->
+            </div>
           </div>
 
           <!-- <div class='flex flex-col items-center'>

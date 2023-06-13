@@ -156,9 +156,14 @@
                     ${payment}
                     <!-- Chuyển khoản ngân hàng -->
                   </strong>
-                </li>
-
+                </li>               
               </ul>
+              <a href="/home" style="text-decoration: none;color: black;font-weight: 700; " class='admin_leftItem'>
+                <div class=''>
+                  <i style="font-size: 18px;" class="fas fa-home"></i>
+                  <span class=''>Trở về trang chủ</span>
+                </div>
+                </a>
             </div>
           </form>
         </div>

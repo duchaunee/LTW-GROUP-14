@@ -1,18 +1,18 @@
-package controller;
+package controller.admin;
 import dao.ContactDAO;
-import entity.User;
+import entity.Contact;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import utils.Utils;
 
-@WebServlet(name="ContactController", urlPatterns={"/contact"})
-public class Contact extends HttpServlet {
+@WebServlet(name="AdminViewPrivew", urlPatterns={"/admin-viewpreview"})
+public class AdminViewPeview extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -29,10 +29,10 @@ public class Contact extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Contact</title>");  
+            out.println("<title>Servlet AdminViewPeview</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Contact at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AdminViewPeview at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -49,19 +49,12 @@ public class Contact extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-         request.getRequestDispatcher("FE/Contact/contact.jsp").forward(request, response);
-//        User user = Utils.getUserInSession(request);
-//        if(user == null){
-//            Utils.setLastRequest(request, "/contact");
-//            response.sendRedirect("/login");
-//        }
-//        else if(!user.getRole().equals("USER")){
-//            response.sendRedirect("/access-denied");
-//        }
-//        else{
-//            Utils.removeLastRequest(request);
-//            request.getRequestDispatcher("FE/Contact/contact.jsp").forward(request, response);
-//        }
+//        processRequest(request, response);
+           ContactDAO dao =new ContactDAO();
+           List<Contact> list=dao.getAllContact();
+// det data to jsp
+           request.setAttribute("listS",list);
+           request.getRequestDispatcher("FE/Admin/viewContact/viewContact.jsp").forward(request, response);
     } 
 
     /** 
@@ -74,12 +67,7 @@ public class Contact extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-//        processRequest(request, response);
-       ContactDAO dao=new ContactDAO();
-       dao.save(request);
-       response.sendRedirect("/home");
-       
-       
+        processRequest(request, response);
     }
 
     /** 

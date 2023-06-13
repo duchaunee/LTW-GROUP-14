@@ -69,24 +69,25 @@
             </div>
 
         </div>
-        <form action="" class="table-content">
+        <form action="/contact" method="post" class="table-content">
                 <div class="row">
                     <div class="name">
-                        <input  class="row-input" type="text" placeholder="Họ và tên">  
+                        <input value="${contact.name}" required name='name' autocomplete="off" class="row-input" type="text" placeholder="Họ và tên">  
                     </div>
+                    
                     <div class="email">
-                        <input  class="row-input" type="text" placeholder="Email">
+                        <input required name="email" autocomplete="off" class="row-input" type="text" placeholder="Email">
                     </div>               
                 </div>              
                 <div class="row">
                     <div class="name">
-                        <input  class="row-input" type="text" placeholder="Số điện thoại"> 
+                        <input required name="SDT" autocomplete="off"  class="row-input" type="text" placeholder="Số điện thoại"> 
                     </div>
                     <div class="email">
-                        <input  class="row-input" type="text" placeholder="Địa chỉ">
+                        <input required name="adress" autocomplete="off" class="row-input" type="text" placeholder="Địa chỉ">
                     </div>   
                 </div>
-                <textarea name="" id="" cols="40" rows="10"></textarea>
+                <textarea required name="cmt" autocomplete="off" id="" cols="40" rows="10"></textarea>
                 <div class="submit">
                     <input type="submit" value="Gửi" class="submit-button">
                 </div>

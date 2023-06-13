@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,21 +21,27 @@
   <div class="cart_wrapper">
     <div class="cart_main">
       <div class="cart_body">
-        <div class="cart">
+        <div class="cart" style=" box-shadow: 5px 10px 18px red; text-align: center;border: 1px solid #ddd;margin: auto; width: 400px;display: block;">
 
           <!-- ============ KHI GIỎ HÀNG TRỐNG ============ -->
           <c:if test="${empty items}">
           <div class="w-full h-[480px] flex flex-col gap-7 items-center justify-center">
-            <div style={{ backgroundImage: "${pageContext.request.contextPath}/FE/imgPublic/emptyCart.png" }}
-              class="w-[520px] h-[500px] bg-contain bg-no-repeat bg-center"></div>
-            <div
+<!--            <div style={{ backgroundImage: "${pageContext.request.contextPath}/FE/imgPublic/emptyCart.png" }}
+              class="w-[520px] h-[500px] bg-contain bg-no-repeat bg-center"></div>-->
+              <img style="width:70%; margin: auto;" src="${pageContext.request.contextPath}/FE/imgPublic/emptyCart.png" alt="alt"/>
+            <div style="color: red;font-size: 20px;font-weight: 500;margin-bottom: 10px"
               class='text-center text-[28px] font-bold text-bgPrimary font-mono leading-[32px] uppercase'>
               Giỏ hàng của bạn hiện đang trống
             </div>
             <NavLink to='/'
               class='bg-primary text-white px-4 py-3 hover:bg-[#a40206] transition-all ease-linear duration-[120ms]'>
               <FontAwesomeIcon class='mr-[6px]' icon={faLongArrowAltLeft} />
-              <span class='text-[20px]'>Quay lại trang chủ</span>
+              <a href="/home" style="text-decoration: none; color: black; font-weight: 700;font-size: 20px" class='admin_leftItem'>
+            <div class=''>
+              <i style="font-size: 18px;" class="fas fa-home"></i>
+              <span class=''>Trở về trang chủ</span>
+            </div>
+            </a>
             </NavLink>
           </div> 
           </c:if>  

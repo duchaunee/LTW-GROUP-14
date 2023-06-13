@@ -12,6 +12,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/CSS/reset.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/FE/Admin/clientManagement/clientManagement.css">
+  
 </head>
 
 
@@ -68,11 +69,6 @@
               <span class=''>Xem đơn đặt hàng</span>
             </div>
           </a>
-          <!-- <NavActive to='home' icon={faHome} text='Thống kê' />
-          <NavActive to='view-users' icon={faUsers} iconSize='text-[18px]' text='Quản lý khách hàng' />
-          <NavActive to='view-products' icon={faMountain} iconSize='text-[22px]' text='Xem sản phẩm' />
-          <NavActive to='add-product/add' icon={faPlus} text='Thêm sản phẩm' />
-          <NavActive to='view-orders/view' icon={faFolder} text='Xem đơn đặt hàng' /> -->
         </ul>
 
       </div>
@@ -82,73 +78,8 @@
         <div class="">
           <div class="admin_right-main">
             <div class="">
-              <table class=''>
-                <thead>
-                  <tr class="">
-                    <td class="avatar">Ảnh đại diện</td>
-                    <td class="name"> Họ tên người dùng</td>
-                    <td class="email">Địa chỉ email</td>
-                    <td class="login">Phương thức</td>
-                    <td class="order">Số đơn hàng</td>
-                    <td class="action"> Hành động </td>
-                  </tr>
-                </thead>
-                <!-- style={{ height: `${loading ? '0' : itemsPerPage * 70 + 20}px` }}  cua body -->
-                <tbody>
-                    <c:if test="${userList.size() == 0}">
-                        <div class="w-full h-full flex flex-col gap-4 items-center mt-8">
-                          <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                            class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                          <div
-                            class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                            Chưa có người dùng nào được tạo ra
-                          </div>
-                        </div>
-                    </c:if>
+              <table class='user-info'>
 
-                  <!-- <div class="w-full flex flex-col gap-4 items-center mt-8">
-                    <div style={{ backgroundImage: "url('/emptyOrder.jpg')" }}
-                      class="w-[220px] h-[250px] bg-cover bg-no-repeat bg-center"></div>
-                    <div
-                      class='text-center text-[18px] font-bold text-bgPrimary leading-[32px] uppercase'>
-                      {/* search */}
-                      Chưa có người dùng nào
-                    </div>
-                  </div> -->
-                    <c:forEach items="${userList}" var="user">
-                        <tr class=''>
-                          <td class='avatar'>
-                            <img src="/userImage?id=${user.id}" alt="" class='' />
-                          </td>
-                          <td class='name'>
-                            <span class=''>${user.name}</span>
-                          </td>
-                          <td class='email'>
-                            <p class="">${user.email}</p>
-                          </td>
-                          <td class='login'>
-                            <!-- provider của user là google thì hiển thị thằng trên, là email thì hiển thị thằng dưới -->
-                            <c:if test="${user.provider.equals('google')}">
-                                <i style="color: var(--text-primary);" class="fab fa-google"></i>
-                            </c:if>
-                            <c:if test="${user.provider.equals('email')}">
-                                <i style="color: #2563EB;" class="fas fa-envelope"></i> 
-                            </c:if>
-                          </td>
-                          <td class='order'>
-                            <p class=''>${user.orderList.size()}</p>
-                          </td>
-                          <td class='action'>
-                            <button class=''>
-                              <i class="fas fa-lock"></i>
-                            </button>
-                            <button class=''>
-                              <i class="fas fa-gift"></i>
-                            </button>
-                          </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
               </table>
             </div>
             <!-- {loading && (
@@ -184,6 +115,7 @@
 
   <!-- <script src="./addProduct.js"></script> -->
     <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
+    <script src="${pageContext.request.contextPath}/FE/Admin/clientManagement/clientManagement.js"></script>
 
 </body>
 

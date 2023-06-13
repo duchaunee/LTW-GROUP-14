@@ -7,16 +7,12 @@ package api;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import dao.CartDAO;
-import dao.CartItemDAO;
-import dao.ProductDAO;
 import entity.Cart;
-import entity.CartItem;
 import entity.User;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;

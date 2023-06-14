@@ -225,7 +225,7 @@
                     <li class='girlShoes__bot---newestItem'>
                       <div class="skeleton active"></div>
                       <a href="/san-pham-chi-tiet?id=${p.id}">
-                        <img class='' src='https://source.unsplash.com/random' alt="" />
+                        <img class='' src='/productImage?imgId=${p.image_id}&number=0' alt="" />
                       </a>
                       <div class="">
                         <a style="text-decoration: none;" href="/san-pham-chi-tiet?id=${p.id}" class='line-clamp-1'>
@@ -253,7 +253,7 @@
                     <div class='girlShoes__bot--productItem'>
                       <div class='girlShoes__bot--productItem img'>
                         <a href="/san-pham-chi-tiet?id=${product.id}" class=''>
-                          <img draggable="false" class='' src='https://source.unsplash.com/random'
+                          <img draggable="false" class='' src='/productImage?imgId=${product.image_id}&number=0'
                                alt="" />
                         </a>
                       </div>

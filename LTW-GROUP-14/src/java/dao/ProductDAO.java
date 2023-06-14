@@ -180,7 +180,7 @@ public class ProductDAO extends DAO {
                 rs.getString(7),
                 rs.getTimestamp(8).toLocalDateTime(),
                 rs.getTimestamp(9).toLocalDateTime());
-//        product.setImage_id(rs.getInt("image_id"));
+        product.setImage_id(rs.getInt("image_id"));
         list.add(product);
       }
     } catch (Exception e) {

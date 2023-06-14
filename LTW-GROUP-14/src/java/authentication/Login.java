@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
         else{
             request.getSession().setAttribute("user", user);
             String lastRequest = Utils.getLastRequest(request);
-            if(lastRequest == null) lastRequest = "/home";
+            if(lastRequest == null || lastRequest.equals("/profile")) lastRequest = "/home";
             response.sendRedirect(lastRequest);
         }
     }

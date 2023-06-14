@@ -17,6 +17,8 @@
 </head>
 
 <body>
+            <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" /> 
+
   <div class="checkoutSuccess_wrapper">
     <div class="checkoutSuccess_main">
       <div class="checkoutSuccess_body">
@@ -170,7 +172,7 @@
       </div>
     </div>
   </div>
-                    
+       <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />             
 </body>
 
 </html>

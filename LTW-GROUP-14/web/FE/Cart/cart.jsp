@@ -27,7 +27,7 @@
 
           <!-- ============ KHI GIỎ HÀNG TRỐNG ============ -->
           <c:if test="${empty items}">
-          <div style=" box-shadow: 5px 10px 18px #988f8f; text-align: center;border: 1px solid #ddd;margin: auto; width: 400px;display: block;" class="w-full h-[480px] flex flex-col gap-7 items-center justify-center">
+          <div style=" box-shadow: 5px 10px 18px #988f8f; text-align: center;border: 1px solid #ddd;margin: auto;" class="w-full h-[480px] flex flex-col gap-7 items-center justify-center">
 <!--            <div style={{ backgroundImage: "${pageContext.request.contextPath}/FE/imgPublic/emptyCart.png" }}
               class="w-[520px] h-[500px] bg-contain bg-no-repeat bg-center"></div>-->
               <img style="width:70%; margin: auto;" src="${pageContext.request.contextPath}/FE/imgPublic/emptyCart.png" alt="alt"/>

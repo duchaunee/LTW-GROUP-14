@@ -18,6 +18,8 @@
 </head>
 
 <body>
+            <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" /> 
+
   <div class="cart_wrapper">
     <div class="cart_main">
       <div class="cart_body">
@@ -162,8 +164,9 @@
       </div>
     </div>
   </div>
-
+<jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
   <script src="${pageContext.request.contextPath}/FE/Cart/cart.js"></script>
+  
 </body>
 
 </html>

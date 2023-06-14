@@ -15,6 +15,8 @@
 </head>
 
 <body>
+            <jsp:include page="${pageContext.request.contextPath}/FE/Header/header.jsp" /> 
+
   <div class="infoAccount_wrapper">
     <div class="infoAccount_main">
       <div class="info-voucher">
@@ -121,6 +123,7 @@
       </form>
     </div>
   </div>
+    <jsp:include page="${pageContext.request.contextPath}/FE/Footer/footer.jsp" />
 
   <script src="${pageContext.request.contextPath}/FE/infoAccount/infoAccount.js"></script>
 </body>

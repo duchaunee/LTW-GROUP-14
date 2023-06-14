@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Account;
+package controller.Account;
 
 import dao.UserDAO;
 import dao.VoucherDAO;
@@ -16,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.CartService;
 import utils.Utils;
 
 /**
@@ -84,9 +83,9 @@ public class InfoAccountController extends HttpServlet {
             String newPassword=request.getParameter("newPassword");
             String newPassword2=request.getParameter("newPassword2");
             if(name==null&&newPassword==null&&avatar==null&&password==null&&newPassword2==null){
-                request.getRequestDispatcher("FE/infoAccount/infoAccount.jsp").forward(request, response);
+//                request.getRequestDispatcher("FE/infoAccount/infoAccount.jsp").forward(request, response);
             }
-            if(password!=null&&!Utils.encodeMD5(password).equals(currentUser.getPassword())){
+            else if(password!=null&&!Utils.encodeMD5(password).equals(currentUser.getPassword())){
                 System.err.println(password);
             }
             else if(!newPassword.equals(newPassword2)){
@@ -129,11 +128,10 @@ public class InfoAccountController extends HttpServlet {
             String newPassword=request.getParameter("newPassword");
             String newPassword2=request.getParameter("newPassword2");
             if(name==null&&newPassword==null&&avatar==null&&password==null&&newPassword2==null){
-                request.getRequestDispatcher("FE/infoAccount/infoAccount.jsp").forward(request, response);
+//                request.getRequestDispatcher("FE/infoAccount/infoAccount.jsp").forward(request, response);
             }
-            if(password!=null&&!Utils.encodeMD5(password).equals(currentUser.getPassword())){
+            else if(password!=null&&!Utils.encodeMD5(password).equals(currentUser.getPassword())){
                 System.err.println(password);
-
             }
             else if(!newPassword.equals(newPassword2)){
                 System.err.println(newPassword);
